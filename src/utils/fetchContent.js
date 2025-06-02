@@ -13,56 +13,46 @@ export async function fetchExternalBlogs() {
     }
     
     // Client-side only code (browser environment)
-    try {
-      // Attempt to fetch the RSS feed from Astro Paper
-      const response = await fetch('https://astro-paper-project.vercel.app/rss.xml');
-      if (!response.ok) {
-        throw new Error(`Failed to fetch RSS feed: ${response.status}`);
-      }
-      
-      const text = await response.text();
-      
-      // Parse the RSS XML data using our environment-agnostic parser
-      const items = await parseRSSFeed(text);
-      
-      // Convert to blog post format
-      const blogPosts = items.slice(0, 5).map(item => {
-        // Process the item data
-        const title = item.title;
-        const link = item.link;
-        const pubDate = item.pubDate;
-        const description = item.description;
-        
-        // Extract image from description
-        const image = extractImageFromHTML(description);
-        
-        // Clean up the description
-        const excerpt = cleanHTML(description, 150);
-        
-        // Format date
-        const date = formatDate(pubDate);
-        
-        return {
-          title,
-          excerpt,
-          date,
-          image,
-          slug: link,
-          external: true
-        };
-      });
-      
-      return blogPosts;
-    } catch (parseError) {
-      console.error('Error processing blog data:', parseError);
-      return getFallbackBlogs();
+    const response = await fetch('https://astro-paper-project.vercel.app/rss.xml');
+    if (!response.ok) {
+      throw new Error(`Failed to fetch RSS feed: ${response.status}`);
     }
+    
+    const text = await response.text();
+    
+    // Parse the RSS XML data using our environment-agnostic parser
+    const items = await parseRSSFeed(text);
+    
+    // Convert to blog post format
+    const blogPosts = items.slice(0, 5).map(item => {
+      // Process the item data
+      const title = item.title;
+      const link = item.link;
+      const pubDate = item.pubDate;
+      const description = item.description;
+      
+      // Extract image from description
+      const image = extractImageFromHTML(description);
+      
+      // Clean up the description
+      const excerpt = cleanHTML(description, 150);
+      
+      // Format date
+      const date = formatDate(pubDate);
+      
+      return {
+        title,
+        excerpt,
+        date,
+        image,
+        slug: link,
+        external: true
+      };
+    });
+    
+    return blogPosts;
   } catch (error) {
-    console.error('Error fetching external blogs:', error);
-    return getFallbackBlogs();
-  }
-  } catch (error) {
-    console.error('Error fetching external blogs:', error);
+    console.error('Error fetching or processing external blogs:', error);
     return getFallbackBlogs();
   }
 }
@@ -116,7 +106,7 @@ export async function fetchGithubPages() {
       switch (page.slug) {
         case '/about':
           title = "My Professional Journey";
-          excerpt = "Follow my career journey from Linux System Administrator to Cloud Engineer, with experience in DevOps practices, CI/CD, and cloud technologies.";
+          excerpt = "Follow my career journey from Linux System Administrator to Cloud Engineer, with a strong focus on shell scripting and on-premise infrastructure.";
           content = `<div class="content-page">
             <div class="timeline">
               <div class="timeline-entry">
