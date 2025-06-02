@@ -1,82 +1,99 @@
 // Utility to fetch blogs from external sources
+import { parseRSSFeed, extractImageFromHTML, formatDate, cleanHTML } from './rssParser.js';
+
+// Check if we're in a server-side environment
+const isSSR = typeof window === 'undefined';
+
 export async function fetchExternalBlogs() {
   try {
-    // Fetch blogs from AstroPaper project
-    const response = await fetch('https://astro-paper-project.vercel.app/rss.xml');
-    const text = await response.text();
-
-    // Parse the RSS XML data
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(text, 'application/xml');
-    const items = xml.querySelectorAll('item');
+    // Handle SSR case - use fallback data directly if in SSR environment
+    if (isSSR) {
+      console.log('Running in SSR mode, using fallback blog data');
+      return getFallbackBlogs();
+    }
     
-    // Convert to blog post format
-    const blogPosts = Array.from(items).slice(0, 5).map(item => {
-      const title = item.querySelector('title')?.textContent || '';
-      const link = item.querySelector('link')?.textContent || '';
-      const pubDate = item.querySelector('pubDate')?.textContent || '';
-      let description = item.querySelector('description')?.textContent || '';
-      
-      // Extract image from description if possible
-      let image = '/blog-placeholder-1.jpg'; // Default image
-      const imgMatch = description.match(/<img[^>]+src="([^">]+)"/);
-      if (imgMatch && imgMatch[1]) {
-        image = imgMatch[1];
+    // Client-side only code (browser environment)
+    try {
+      // Attempt to fetch the RSS feed from Astro Paper
+      const response = await fetch('https://astro-paper-project.vercel.app/rss.xml');
+      if (!response.ok) {
+        throw new Error(`Failed to fetch RSS feed: ${response.status}`);
       }
       
-      // Clean up the description by removing HTML tags
-      description = description.replace(/<[^>]*>/g, '').substring(0, 150) + '...';
+      const text = await response.text();
       
-      // Format date
-      const date = new Date(pubDate);
-      const formattedDate = date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
+      // Parse the RSS XML data using our environment-agnostic parser
+      const items = await parseRSSFeed(text);
+      
+      // Convert to blog post format
+      const blogPosts = items.slice(0, 5).map(item => {
+        // Process the item data
+        const title = item.title;
+        const link = item.link;
+        const pubDate = item.pubDate;
+        const description = item.description;
+        
+        // Extract image from description
+        const image = extractImageFromHTML(description);
+        
+        // Clean up the description
+        const excerpt = cleanHTML(description, 150);
+        
+        // Format date
+        const date = formatDate(pubDate);
+        
+        return {
+          title,
+          excerpt,
+          date,
+          image,
+          slug: link,
+          external: true
+        };
       });
       
-      return {
-        title,
-        excerpt: description,
-        date: formattedDate,
-        image,
-        slug: link,
-        external: true
-      };
-    });
-    
-    return blogPosts;
+      return blogPosts;
+    } catch (parseError) {
+      console.error('Error processing blog data:', parseError);
+      return getFallbackBlogs();
+    }
   } catch (error) {
     console.error('Error fetching external blogs:', error);
-    
-    // Return fallback data
-    return [
-      {
-        title: "Implementing CI/CD with GitHub Actions",
-        excerpt: "Learn how to set up an efficient CI/CD pipeline using GitHub Actions for your web projects.",
-        date: "May 15, 2023",
-        image: "/blog-placeholder-1.jpg",
-        slug: "https://astro-paper-project.vercel.app/posts/how-to-configure-astropaper-theme/",
-        external: true
-      },
-      {
-        title: "Kubernetes vs. Docker Swarm",
-        excerpt: "A comparison of container orchestration tools and how to choose the right one for your project.",
-        date: "April 28, 2023",
-        image: "/blog-placeholder-2.jpg",
-        slug: "https://astro-paper-project.vercel.app/posts/adding-new-posts-in-astropaper-theme/",
-        external: true
-      },
-      {
-        title: "Cloud Cost Optimization Strategies",
-        excerpt: "Practical tips to reduce your cloud infrastructure costs without sacrificing performance.",
-        date: "March 12, 2023",
-        image: "/blog-placeholder-3.jpg",
-        slug: "https://astro-paper-project.vercel.app/posts/example-draft-post/",
-        external: true
-      }
-    ];
+    return getFallbackBlogs();
   }
+  } catch (error) {
+    console.error('Error fetching external blogs:', error);
+    return getFallbackBlogs();
+  }
+}
+
+// Helper function to get fallback blog data when external fetch fails
+function getFallbackBlogs() {
+  return [
+    {
+      title: "Implementing CI/CD with GitHub Actions",
+      excerpt: "Learn how to set up an efficient CI/CD pipeline using GitHub Actions for your web projects.",
+      date: "May 15, 2023",
+      image: "/blog-placeholder-1.jpg",
+      slug: "https://astro-paper-project.vercel.app/posts/how-to-configure-astropaper-theme/",
+      external: true
+    },
+    {
+      title: "Kubernetes vs. Docker Swarm",
+      excerpt: "A comparison of container orchestration tools and how to choose the right one for your project.",
+      date: "April 28, 2023",
+      image: "/blog-placeholder-2.jpg",
+      slug: "https://astro-paper-project.vercel.app/posts/adding-new-posts-in-astropaper-theme/",
+      external: true
+    },
+    {
+      title: "Cloud Cost Optimization Strategies",
+      excerpt: "Practical tips to reduce your cloud infrastructure costs without sacrificing performance.",
+      date: "March 12, 2023",
+      image: "/blog-placeholder-3.jpg",
+      slug: "https://astro-paper-project.vercel.app/posts/example-draft-post/",
+      external: true    }
+  ];
 }
 
 // Utility to fetch markdown content from local files
