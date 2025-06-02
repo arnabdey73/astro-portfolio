@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "copy-content": "mkdir -p ./dist/content && cp -r ./content/* ./dist/content/"
+    "copy-content": "node scripts/copy-content.js"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
