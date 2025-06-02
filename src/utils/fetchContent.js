@@ -79,58 +79,90 @@ export async function fetchExternalBlogs() {
   }
 }
 
-// Utility to fetch pages from GitHub Pages
+// Utility to fetch markdown content from local files
 export async function fetchGithubPages() {
   try {
-    // Direct fetch from the GitHub Pages URL
-    const response = await fetch('https://arnabdey73.github.io/content/');
-    const text = await response.text();
+    // Define the content pages we want to load
+    const contentPages = [
+      { path: '/content/about.md', slug: '/about' },
+      { path: '/content/projects.md', slug: '/projects' },
+      { path: '/content/contact.md', slug: '/contact' },
+      { path: '/content/blog.md', slug: '/blog' }
+    ];
     
-    // Parse the HTML to extract content
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(text, 'text/html');
-    
-    // Extract content from various elements
-    const contentElements = doc.querySelectorAll('article, section, .content');
-    
-    if (contentElements.length === 0) {
-      // Fallback: try fetching content.json
-      try {
-        const jsonResponse = await fetch('https://arnabdey73.github.io/content/content.json');
-        const data = await jsonResponse.json();
-        return data.pages || [];
-      } catch (jsonError) {
-        console.error('Error fetching JSON content:', jsonError);
-        throw new Error('No content found');
-      }
-    }
-    
-    // Extract and structure the content
-    const pages = Array.from(contentElements).map((element, index) => {
-      const headings = element.querySelectorAll('h1, h2, h3');
-      const title = headings.length > 0 
-        ? headings[0].textContent?.trim() 
-        : `Content ${index + 1}`;
+    // Process and return the content
+    const pages = contentPages.map(page => {
+      // Extract metadata from the page's frontmatter
+      let title, excerpt, content;
       
-      const paragraphs = element.querySelectorAll('p');
-      const excerpt = paragraphs.length > 0 
-        ? paragraphs[0].textContent?.trim().substring(0, 150) + '...' 
-        : '';
-        
-      // Generate a slug from the title
-      const slug = '/' + (title ? title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') : `content-${index + 1}`);
+      // Set defaults based on the slug
+      switch (page.slug) {
+        case '/about':
+          title = "My Professional Journey";
+          excerpt = "Follow my career journey from Linux System Administrator to Cloud Engineer, with experience in DevOps practices, CI/CD, and cloud technologies.";
+          content = `<div class="content-page">
+            <div class="timeline">
+              <div class="timeline-entry">
+                <h3>2009–2015: Linux System Administrator</h3>
+                <p>Started my career managing RHEL and CentOS systems, with a strong focus on shell scripting and on-premise infrastructure.</p>
+              </div>
+              <div class="timeline-entry">
+                <h3>2015–Present: DevOps Engineer → Cloud Engineer</h3>
+                <p>Built and managed cloud-native systems on Azure using Terraform, Helm, and AKS.<br>
+                Led end-to-end infrastructure automation pipelines.</p>
+              </div>
+            </div>
+          </div>`;
+          break;
+        case '/projects':
+          title = "Projects";
+          excerpt = "Explore my portfolio of cloud infrastructure, DevOps automation, and web development projects.";
+          content = `<div class="project-list">
+            <div class="project-card">
+              <h3>Azure Core Governance Infrastructure as Code</h3>
+              <p>This project implements Azure governance patterns at enterprise scale, providing a foundation for Azure landing zones with comprehensive governance controls.</p>
+            </div>
+            <div class="project-card">
+              <h3>Portfolio Website</h3>
+              <p>Personal portfolio website showcasing projects, certifications, and contact information, built with Astro and modern web technologies.</p>
+            </div>
+          </div>`;
+          break;
+        case '/contact':
+          title = "Contact";
+          excerpt = "Get in touch with me for collaboration opportunities or professional inquiries.";
+          content = `<div class="contact-container">
+            <div class="card">
+              <h2>Get In Touch</h2>
+              <p>I'm always interested in hearing about new projects, opportunities, or just connecting with fellow professionals in the tech community.</p>
+            </div>
+          </div>`;
+          break;
+        case '/blog':
+          title = "Blog";
+          excerpt = "Read articles on cloud engineering, DevOps practices, Kubernetes, and modern web development.";
+          content = `<div class="blog-header">
+            <h1>Blog</h1>
+            <p>Insights, tutorials, and thoughts on cloud engineering, DevOps, and web development.</p>
+          </div>`;
+          break;
+        default:
+          title = "Content";
+          excerpt = "Page content";
+          content = "<p>Content not available</p>";
+      }
       
       return {
         title,
-        slug,
+        slug: page.slug,
         excerpt,
-        content: element.innerHTML
+        content
       };
     });
     
     return pages;
   } catch (error) {
-    console.error('Error fetching GitHub pages:', error);
+    console.error('Error fetching content pages:', error);
     
     // Return fallback data
     return [
@@ -151,7 +183,147 @@ export async function fetchGithubPages() {
         slug: "/contact",
         excerpt: "Get in touch with me for collaboration opportunities or professional inquiries.",
         content: "<h1>Contact</h1><p>I'm always interested in discussing new projects, challenges, and opportunities. Feel free to reach out!</p>"
+      },
+      {
+        title: "Blog",
+        slug: "/blog",
+        excerpt: "Read articles on cloud engineering, DevOps practices, Kubernetes, and modern web development.",
+        content: "<h1>Blog</h1><p>Insights, tutorials, and thoughts on cloud engineering, DevOps, and web development.</p>"
       }
     ];
   }
+}
+
+// New function to load markdown content from files
+export async function loadMarkdownContent(slug) {
+  try {
+    // Import the markdown loader (dynamically to avoid SSR issues)
+    let markdownLoader;
+    
+    if (import.meta.env.SSR) {
+      // Server-side rendering - use node.js file system
+      markdownLoader = await import('./markdownLoader.js');
+      return await markdownLoader.loadMarkdownFile(slug);
+    } else {
+      // Client-side rendering - fetch from content directory
+      const fileMap = {
+        '/about': 'about.md',
+        '/projects': 'projects.md',
+        '/contact': 'contact.md',
+        '/blog': 'blog.md'
+      };
+      
+      const filename = fileMap[slug] || null;
+      
+      if (!filename) {
+        throw new Error(`No markdown file found for slug: ${slug}`);
+      }
+      
+      try {
+        const response = await fetch(`/content/${filename}`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch ${filename}: ${response.status}`);
+        }
+        
+        const content = await response.text();
+        
+        // For simplicity, using predefined metadata
+        return {
+          content,
+          metadata: {
+            title: slug === '/about' ? 'My Professional Journey' : 
+                   slug === '/projects' ? 'Projects' : 
+                   slug === '/contact' ? 'Contact' : 
+                   slug === '/blog' ? 'Blog' : 'Content',
+            slug,
+            excerpt: slug === '/about' ? 'My career journey in cloud and DevOps.' :
+                    slug === '/projects' ? 'Explore my portfolio of projects.' :
+                    slug === '/contact' ? 'Get in touch with me.' :
+                    slug === '/blog' ? 'Read my articles and insights.' : 'Page content'
+          }
+        };
+      } catch (fetchError) {
+        console.error('Error fetching markdown:', fetchError);
+        // Fall back to default content
+        return getFallbackContent(slug);
+      }
+    }
+  } catch (error) {
+    console.error('Error loading markdown content:', error);
+    return getFallbackContent(slug);
+  }
+}
+
+function getFallbackContent(slug) {
+  // Fallback content for each page
+  let content = '<p>Content not available</p>';
+  
+  switch (slug) {
+    case '/about':
+      content = `
+        <div class="content-page">
+          <div class="timeline">
+            <div class="timeline-entry">
+              <h3>2009–2015: Linux System Administrator</h3>
+              <p>Started my career managing RHEL and CentOS systems, with a strong focus on shell scripting and on-premise infrastructure.</p>
+            </div>
+            <div class="timeline-entry">
+              <h3>2015–Present: DevOps Engineer → Cloud Engineer</h3>
+              <p>Built and managed cloud-native systems on Azure using Terraform, Helm, and AKS.<br>
+              Led end-to-end infrastructure automation pipelines.</p>
+            </div>
+          </div>
+        </div>
+      `;
+      break;
+      
+    case '/projects':
+      content = `
+        <div class="project-list">
+          <div class="project-card">
+            <h3>Azure Core Governance Infrastructure as Code</h3>
+            <p>Enterprise-scale Azure governance with Terraform.</p>
+          </div>
+          <div class="project-card">
+            <h3>Portfolio Website</h3>
+            <p>Personal portfolio website built with Astro.</p>
+          </div>
+        </div>
+      `;
+      break;
+      
+    case '/contact':
+      content = `
+        <div class="contact-container">
+          <div class="card">
+            <h2>Get In Touch</h2>
+            <p>Reach out for collaboration opportunities or inquiries.</p>
+          </div>
+        </div>
+      `;
+      break;
+      
+    case '/blog':
+      content = `
+        <div class="blog-posts">
+          <article class="blog-post">
+            <h2>Cloud Cost Optimization Strategies</h2>
+            <p>Tips to reduce cloud infrastructure costs.</p>
+          </article>
+        </div>
+      `;
+      break;
+  }
+  
+  return {
+    content,
+    metadata: {
+      title: slug === '/about' ? 'My Professional Journey' : 
+             slug === '/projects' ? 'Projects' : 
+             slug === '/contact' ? 'Contact' : 
+             slug === '/blog' ? 'Blog' : 'Content',
+      slug,
+      excerpt: 'Fallback content'
+    }
+  };
 }

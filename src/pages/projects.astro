@@ -2,57 +2,51 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getPageBySlug } from '../utils/createPages.js';
-
-// Sample projects data (will be replaced by real data from GitHub)
-const projects = [
-  {
-    title: 'Cloud Infrastructure Automation',
-    description: 'An extensive Terraform module collection for automating AWS and Azure infrastructure provisioning with best practices for security and scalability.',
-    technologies: ['Terraform', 'AWS', 'Azure', 'GitHub Actions', 'Python'],
-    image: '/blog-placeholder-1.jpg',
-    link: '#'
-  },
-  {
-    title: 'Kubernetes Monitoring Suite',
-    description: 'A comprehensive monitoring solution for Kubernetes clusters using Prometheus, Grafana, and custom exporters to provide detailed insights into cluster health and performance.',
-    technologies: ['Kubernetes', 'Prometheus', 'Grafana', 'Go', 'Helm'],
-    image: '/blog-placeholder-2.jpg',
-    link: '#'
-  },
-  {
-    title: 'CI/CD Pipeline Framework',
-    description: 'A modular CI/CD framework built on Jenkins that enables teams to rapidly set up standardized deployment pipelines with security scanning, testing, and deployment strategies.',
-    technologies: ['Jenkins', 'Docker', 'Groovy', 'SonarQube', 'Bash'],
-    image: '/blog-placeholder-3.jpg',
-    link: '#'
-  },
-  {
-    title: 'Microservices Application Platform',
-    description: 'A cloud-native application platform built on Kubernetes that provides standardized tooling, deployment patterns, and observability for microservices architecture.',
-    technologies: ['Kubernetes', 'Istio', 'React', 'Node.js', 'MongoDB'],
-    image: '/blog-placeholder-4.jpg',
-    link: '#'
-  }
-];
+import MarkdownContent from '../components/MarkdownContent.astro';
+import { loadMarkdownContent } from '../utils/fetchContent.js';
 
 // Fetch the projects page content
-const projectsPage = await getPageBySlug('/projects') || {
-  title: 'Projects',
-  content: '<h1>My Projects</h1><p>Here are some of the projects I\'ve worked on throughout my career. These projects showcase my expertise in cloud infrastructure, DevOps practices, and web development.</p>'
-};
+const { content: projectsContent, metadata: projectsMetadata } = await loadMarkdownContent('/projects');
+
+// Sample projects data
+const projects = [
+  {
+    title: 'Azure Core Governance Infrastructure as Code',
+    description: 'This project implements Azure governance patterns at enterprise scale, providing a foundation for Azure landing zones with comprehensive governance controls.',
+    technologies: ['Terraform', 'Azure', 'Security', 'Governance'],
+    image: '/blog-placeholder-1.jpg',
+    link: 'https://github.com/arnabdey73/iac-azure-core-governance'
+  },
+  {
+    title: 'Azure Cost Optimizer',
+    description: 'A comprehensive solution to help optimize Azure costs by leveraging Azure SDKs and tools for cost analysis and resource management.',
+    technologies: ['Python', 'Azure', 'Cost Management', 'Terraform'],
+    image: '/blog-placeholder-2.jpg',
+    link: 'https://github.com/arnabdey73/azure-cost-optimizer'
+  },
+  {
+    title: 'Portfolio Website',
+    description: 'Personal portfolio website built with Astro, featuring dark mode toggle, external blog integration, and responsive design.',
+    technologies: ['Astro', 'JavaScript', 'HTML5', 'CSS3'],
+    image: '/blog-placeholder-3.jpg',
+    link: 'https://github.com/arnabdey73/astro-portfolio'
+  }
+];
 ---
 
 <BaseLayout 
-  title={`${projectsPage.title} | Arnab Dey`}
+  title={`${projectsMetadata.title} | Arnab Dey`}
   description="Explore projects by Arnab Dey showcasing cloud infrastructure, DevOps automation, and web development expertise."
   layout="standard"
 >
   <Header slot="header" />
   
   <main class="projects-page">
-    <div class="container">
-      <div class="intro" set:html={projectsPage.content}></div>
+    <div class="container">      <div class="intro">
+        <h1>My Projects</h1>
+        <p>Here are some of the projects I've worked on throughout my career. These projects showcase my expertise in cloud infrastructure, DevOps practices, and web development.</p>
+        <MarkdownContent content={projectsContent} className="project-content-md" />
+      </div>
       
       <div class="projects-grid">
         {projects.map(project => (
@@ -68,7 +62,7 @@ const projectsPage = await getPageBySlug('/projects') || {
                   <span class="tech-tag">{tech}</span>
                 ))}
               </div>
-              <a href={project.link} class="project-link">View Project →</a>
+              <a href={project.link} class="project-link" target="_blank" rel="noopener noreferrer">View Project →</a>
             </div>
           </div>
         ))}
@@ -183,6 +177,59 @@ const projectsPage = await getPageBySlug('/projects') || {
   
   .project-link:hover {
     color: var(--primary-dark);
+  }
+  
+  /* Project markdown specific styles */
+  .project-content-md {
+    margin-top: 2rem;
+  }
+  
+  .project-content-md .project-card {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .project-content-md .project-card:last-child {
+    border-bottom: none;
+  }
+  
+  .project-content-md .tech-icons-mini {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .project-content-md .tech-item-mini {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.8rem;
+    background-color: var(--hover-background);
+    border-radius: 20px;
+    font-size: 0.85rem;
+  }
+  
+  .project-content-md .github-link {
+    margin-top: 1rem;
+  }
+  
+  .project-content-md .github-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+  
+  .project-content-md .github-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
   }
   
   @media (max-width: 768px) {

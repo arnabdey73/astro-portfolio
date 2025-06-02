@@ -2,10 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { fetchExternalBlogs } from '../utils/fetchContent.js';
+import MarkdownContent from '../components/MarkdownContent.astro';
+import { fetchExternalBlogs, loadMarkdownContent } from '../utils/fetchContent.js';
 
 // Fetch blog posts from external sources
 const blogPosts = await fetchExternalBlogs();
+
+// Fetch the blog page content
+const { content: blogContent, metadata: blogMetadata } = await loadMarkdownContent('/blog');
 
 // Categories for filtering
 const categories = ['All', 'Cloud', 'DevOps', 'Kubernetes', 'Web Development', 'Infrastructure'];
@@ -19,10 +23,10 @@ const categories = ['All', 'Cloud', 'DevOps', 'Kubernetes', 'Web Development', '
   <Header slot="header" />
   
   <main class="blog-page">
-    <div class="container">
-      <div class="blog-header">
+    <div class="container">      <div class="blog-header">
         <h1>Blog</h1>
         <p>Insights, tutorials, and thoughts on cloud engineering, DevOps, and web development.</p>
+        <MarkdownContent content={blogContent} className="blog-content-md" />
       </div>
       
       <div class="blog-categories">
@@ -240,6 +244,52 @@ const categories = ['All', 'Cloud', 'DevOps', 'Kubernetes', 'Web Development', '
   
   .hidden {
     display: none;
+  }
+  
+  /* Blog markdown specific styles */
+  .blog-content-md {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .blog-content-md .blog-posts {
+    margin-top: 2rem;
+  }
+  
+  .blog-content-md .blog-post {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .blog-content-md .blog-post:hover {
+    transform: translateY(-5px);
+  }
+  
+  .blog-content-md .blog-post h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .blog-content-md .meta {
+    color: var(--muted-text-color);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .blog-content-md .read-more {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+  }
+  
+  .blog-content-md .read-more:hover {
+    text-decoration: underline;
   }
   
   @media (max-width: 768px) {

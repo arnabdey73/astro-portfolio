@@ -1,0 +1,112 @@
+---
+// MarkdownContent.astro - Component for rendering markdown content
+const { content, className = "" } = Astro.props;
+---
+
+<div class={`markdown-content ${className}`} set:html={content}></div>
+
+<style>
+  .markdown-content {
+    line-height: 1.7;
+  }
+  
+  .markdown-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+  }
+  
+  .markdown-content h2 {
+    font-size: 2rem;
+    margin: 2rem 0 1rem;
+    color: var(--heading-color);
+  }
+  
+  .markdown-content h3 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 1rem;
+    color: var(--heading-color);
+  }
+  
+  .markdown-content p {
+    margin-bottom: 1.25rem;
+  }
+  
+  .markdown-content ul, 
+  .markdown-content ol {
+    margin: 1rem 0 1.5rem 2rem;
+  }
+  
+  .markdown-content li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .markdown-content a {
+    color: var(--link-color);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+  }
+  
+  .markdown-content a:hover {
+    color: var(--link-hover-color);
+  }
+  
+  .markdown-content code {
+    font-family: monospace;
+    background-color: var(--hover-background);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+  
+  .markdown-content pre {
+    background-color: var(--card-background);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  
+  .markdown-content pre code {
+    background-color: transparent;
+    padding: 0;
+  }
+  
+  .markdown-content blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+    font-style: italic;
+    margin: 1.5rem 0;
+    color: var(--muted-text-color);
+  }
+  
+  .markdown-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  .markdown-content hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2rem 0;
+  }
+  
+  .markdown-content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1.5rem 0;
+  }
+  
+  .markdown-content th, 
+  .markdown-content td {
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+  }
+  
+  .markdown-content th {
+    background-color: var(--hover-background);
+    font-weight: 600;
+  }
+</style>

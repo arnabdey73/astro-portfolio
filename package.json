@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "copy-content": "mkdir -p ./dist/content && cp -r ./content/* ./dist/content/"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",

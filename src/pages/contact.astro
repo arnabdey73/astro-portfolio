@@ -2,25 +2,25 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getPageBySlug } from '../utils/createPages.js';
+import MarkdownContent from '../components/MarkdownContent.astro';
+import { loadMarkdownContent } from '../utils/fetchContent.js';
 
 // Fetch the contact page content
-const contactPage = await getPageBySlug('/contact') || {
-  title: 'Contact',
-  content: '<h1>Get In Touch</h1><p>I\'m always interested in hearing about new projects, opportunities, or just connecting with fellow professionals in the tech community. Feel free to reach out!</p>'
-};
+const { content: contactContent, metadata: contactMetadata } = await loadMarkdownContent('/contact');
 ---
 
 <BaseLayout 
-  title={`${contactPage.title} | Arnab Dey`}
+  title={`${contactMetadata.title} | Arnab Dey`}
   description="Get in touch with Arnab Dey for collaboration opportunities, professional inquiries, or to discuss cloud and DevOps solutions."
   layout="standard"
 >
   <Header slot="header" />
-  
-  <main class="contact-page">
-    <div class="container">
-      <div class="contact-intro" set:html={contactPage.content}></div>
+    <main class="contact-page">
+    <div class="container">      <div class="contact-intro">
+        <h1>Get In Touch</h1>
+        <p>I'm always interested in hearing about new projects, opportunities, or just connecting with fellow professionals in the tech community. Feel free to reach out!</p>
+        <MarkdownContent content={contactContent} className="contact-content-md" />
+      </div>
       
       <div class="contact-content">
         <div class="contact-info">
@@ -222,6 +222,65 @@ const contactPage = await getPageBySlug('/contact') || {
   .submit-button:hover {
     background-color: var(--primary-dark);
     transform: translateY(-2px);
+  }
+  
+  /* Contact markdown specific styles */
+  .contact-content-md {
+    max-width: 700px;
+  }
+  
+  .contact-content-md .card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+  
+  .contact-content-md .contact-method {
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-content-md h3 {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .contact-content-md h3 i {
+    color: var(--primary-color);
+  }
+  
+  .contact-content-md .contact-link,
+  .contact-content-md .location-link {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 0.25rem;
+  }
+  
+  .contact-content-md .contact-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .contact-content-md .contact-icon {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--hover-background);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  
+  .contact-content-md .contact-icon:hover {
+    background-color: var(--primary-color);
+    color: white;
   }
   
   @media (max-width: 768px) {
