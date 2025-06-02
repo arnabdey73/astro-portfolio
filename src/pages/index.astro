@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import IntroCard from '../components/IntroCard.astro';
+import TechStack from '../components/TechStack.astro';
+import BlogFeed from '../components/BlogFeed.astro';
+---
+
+<BaseLayout 
+  title="Arnab Dey - Cloud & DevOps Engineer"
+  description="Full-stack developer and cloud engineer specializing in modern web technologies, DevOps practices, and scalable cloud infrastructure."
+  type="website"
+  layout="splash"
+  classes={["landing", "dark-theme"]}
+>
+  <Header slot="header" />
+  
+  <main>
+    <IntroCard />
+    <TechStack />
+    <BlogFeed />
+  </main>
+  
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* Global CSS Variables */
+  :root {
+    /* Light theme */
+    --primary-color: #007acc;
+    --primary-dark: #005a99;
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --heading-color: #2c3e50;
+    --muted-text-color: #6c757d;
+    --border-color: #e9ecef;
+    --link-color: #007acc;
+    --link-hover-color: #005a99;
+    --section-background: #f8f9fa;
+    --card-background: #ffffff;
+    --footer-background: #f8f9fa;
+    --hover-background: #f8f9fa;
+  }
+  
+  /* Dark theme */
+  [data-theme="dark"] {
+    --primary-color: #4da6ff;
+    --primary-dark: #0066cc;
+    --background-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --heading-color: #ffffff;
+    --muted-text-color: #999999;
+    --border-color: #333333;
+    --link-color: #66b3ff;
+    --link-hover-color: #4da6ff;
+    --section-background: #1a1a1a;
+    --card-background: #2d2d2d;
+    --footer-background: #1a1a1a;
+    --hover-background: #2d2d2d;
+  }
+  
+  /* Global styles */
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
+  }
+  
+  main {
+    min-height: calc(100vh - 200px);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Blog preview section */
+  .blog-preview {
+    padding: 4rem 0;
+    background: var(--background-color);
+    text-align: center;
+  }
+  
+  .blog-preview h2 {
+    font-size: 2.5rem;
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+  }
+  
+  .blog-preview p {
+    font-size: 1.1rem;
+    color: var(--muted-text-color);
+    margin-bottom: 2rem;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 122, 204, 0.3);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .blog-preview {
+      padding: 2rem 0;
+    }
+    
+    .blog-preview h2 {
+      font-size: 2rem;
+    }
+  }
+</style>
