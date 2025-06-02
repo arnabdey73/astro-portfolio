@@ -1,48 +1,31 @@
 ---
 // BlogFeed component - Display recent blog posts
-const blogPosts = [
-  {
-    title: "Implementing CI/CD with GitHub Actions",
-    excerpt: "Learn how to set up an efficient CI/CD pipeline using GitHub Actions for your web projects.",
-    date: "May 15, 2023",
-    image: "/blog-placeholder-1.jpg",
-    slug: "/blog/implementing-ci-cd-with-github-actions"
-  },
-  {
-    title: "Kubernetes vs. Docker Swarm: When to Use Each",
-    excerpt: "A comparison of container orchestration tools and how to choose the right one for your project.",
-    date: "April 28, 2023",
-    image: "/blog-placeholder-2.jpg",
-    slug: "/blog/kubernetes-vs-docker-swarm"
-  },
-  {
-    title: "Cloud Cost Optimization Strategies",
-    excerpt: "Practical tips to reduce your cloud infrastructure costs without sacrificing performance.",
-    date: "March 12, 2023",
-    image: "/blog-placeholder-3.jpg",
-    slug: "/blog/cloud-cost-optimization-strategies"
-  }
-];
+import { fetchExternalBlogs } from '../utils/fetchContent.js';
+
+// Fetch blog posts from external source
+const blogPosts = await fetchExternalBlogs();
 ---
 
 <section id="blog" class="blog-section">
   <div class="container">
-    <h2 class="section-title">Recent Blog Posts</h2>
-    <div class="blog-grid">
+    <h2 class="section-title">Recent Blog Posts</h2>    <div class="blog-grid">
       {blogPosts.map((post) => (
-        <a href={post.slug} class="blog-card">
+        <a href={post.slug} class="blog-card" target={post.external ? "_blank" : "_self"} rel={post.external ? "noopener noreferrer" : ""}>
           <div class="blog-image">
             <img 
               src={post.image} 
               alt={post.title} 
               loading="lazy"
+              onerror="this.src='/blog-placeholder-1.jpg'"
             />
           </div>
           <div class="blog-content">
             <span class="blog-date">{post.date}</span>
             <h3>{post.title}</h3>
             <p>{post.excerpt}</p>
-            <span class="read-more">Read More →</span>
+            <span class="read-more">
+              {post.external ? "Read on AstroPaper →" : "Read More →"}
+            </span>
           </div>
         </a>
       ))}

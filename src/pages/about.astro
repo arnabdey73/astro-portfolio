@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getPageBySlug } from '../utils/createPages.js';
+
+// Fetch the about page content
+const aboutPage = await getPageBySlug('/about') || {
+  title: 'About Me',
+  content: `
+    <h1>About Me</h1>
+    <p>I'm a Cloud & DevOps Engineer with expertise in designing and implementing scalable cloud infrastructure and CI/CD pipelines. With a background in both software development and IT operations, I bridge the gap between development and operations to create efficient, reliable, and secure systems.</p>
+    
+    <h2>My Journey</h2>
+    <p>With over 5 years of experience in the tech industry, I've worked with a variety of organizations ranging from startups to enterprises. My career has focused on implementing DevOps practices, automating infrastructure deployment, and optimizing cloud resources for performance and cost.</p>
+    
+    <h2>Expertise</h2>
+    <ul>
+      <li><strong>Cloud Platforms:</strong> AWS, Azure, Google Cloud</li>
+      <li><strong>Infrastructure as Code:</strong> Terraform, CloudFormation, ARM Templates</li>
+      <li><strong>Containerization:</strong> Docker, Kubernetes</li>
+      <li><strong>CI/CD:</strong> Jenkins, GitHub Actions, Azure DevOps</li>
+      <li><strong>Monitoring & Logging:</strong> Prometheus, Grafana, ELK Stack</li>
+      <li><strong>Programming:</strong> Python, JavaScript/TypeScript, Go, Bash</li>
+    </ul>
+    
+    <h2>Philosophy</h2>
+    <p>I believe in building systems that are not only technically sound but also align with business goals and user needs. My approach combines technical expertise with a strong focus on collaboration, knowledge sharing, and continuous improvement.</p>
+  `
+};
+---
+
+<BaseLayout 
+  title={`${aboutPage.title} | Arnab Dey`}
+  description="Learn more about Arnab Dey, a Cloud & DevOps Engineer specializing in modern infrastructure and automation."
+  layout="standard"
+>
+  <Header slot="header" />
+  
+  <main class="about-page">
+    <div class="container">
+      <article set:html={aboutPage.content}></article>
+    </div>
+  </main>
+  
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .about-page {
+    padding: 4rem 0;
+    min-height: 70vh;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  article {
+    line-height: 1.7;
+  }
+  
+  article h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+  }
+  
+  article h2 {
+    font-size: 1.8rem;
+    margin: 2.5rem 0 1rem;
+    color: var(--heading-color);
+  }
+  
+  article p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  article ul {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+  }
+  
+  article li {
+    margin-bottom: 0.75rem;
+  }
+</style>

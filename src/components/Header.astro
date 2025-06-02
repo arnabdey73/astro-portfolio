@@ -1,5 +1,6 @@
 ---
 // Header component for navigation
+import DarkModeToggle from './DarkModeToggle.astro';
 ---
 
 <header>
@@ -14,11 +15,7 @@
         <li><a href="/projects">Projects</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/contact">Contact</a></li>
-      </ul>
-      <button class="theme-toggle" aria-label="Toggle dark mode">
-        <span class="light-icon">☀️</span>
-        <span class="dark-icon">🌙</span>
-      </button>
+      </ul>      <DarkModeToggle />
     </nav>
   </div>
 </header>
@@ -61,41 +58,11 @@
   .nav-links a:hover {
     color: var(--primary-color);
   }
-  
-  .theme-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-  }
-  
-  /* Theme toggle icons display based on current theme */
-  [data-theme="dark"] .light-icon,
-  .dark-icon {
-    display: none;
-  }
-  
-  [data-theme="dark"] .dark-icon,
-  .light-icon {
-    display: inline;
-  }
-  
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
     .nav-links {
       display: none;
     }
   }
 </style>
 
-<script>
-  // Theme toggle functionality
-  const themeToggle = document.querySelector('.theme-toggle');
-  
-  themeToggle?.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  });
-</script>
+

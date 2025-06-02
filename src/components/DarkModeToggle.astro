@@ -1,0 +1,95 @@
+---
+// DarkModeToggle.astro - A reusable dark mode toggle component
+---
+
+<button class="theme-toggle" aria-label="Toggle dark mode">
+  <svg xmlns="http://www.w3.org/2000/svg" id="sun-svg" class="icon-sun">
+    <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" id="moon-svg" class="icon-moon">
+    <path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+  </svg>
+</button>
+
+<style>
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    padding: 0;
+    transition: background-color 0.3s ease;
+  }
+
+  .theme-toggle:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+  }
+
+  .theme-toggle svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke-width: 2px;
+    stroke: var(--text-color);
+    fill: none;
+    transition: stroke 0.3s ease, fill 0.3s ease, transform 0.3s ease;
+  }
+
+  .theme-toggle .icon-sun {
+    display: block;
+  }
+
+  .theme-toggle .icon-moon {
+    display: none;
+  }
+
+  /* Dark mode styles */
+  :global([data-theme="dark"]) .theme-toggle .icon-sun {
+    display: none;
+  }
+
+  :global([data-theme="dark"]) .theme-toggle .icon-moon {
+    display: block;
+    fill: var(--text-color);
+  }
+</style>
+
+<script>
+  // Theme toggle functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.querySelector('.theme-toggle');
+    
+    // Check for user preference
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedTheme = localStorage.getItem('theme');
+    
+    // Apply theme on initial load
+    if (storedTheme) {
+      document.documentElement.setAttribute('data-theme', storedTheme);
+    } else if (prefersDarkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    
+    // Add event listener
+    themeToggle?.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      // Add animation class
+      document.documentElement.classList.add('theme-transition');
+      
+      // Apply new theme
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      // Remove animation class after transition completes
+      setTimeout(() => {
+        document.documentElement.classList.remove('theme-transition');
+      }, 300);
+    });
+  });
+</script>

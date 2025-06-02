@@ -16,15 +16,30 @@
           <a href="/projects" class="button primary">View My Projects</a>
           <a href="/contact" class="button secondary">Get In Touch</a>
         </div>
-      </div>
-      <div class="intro-image">
-        <img 
-          src="/profile-placeholder.png" 
-          alt="Arnab Dey" 
-          width="400" 
-          height="400"
-          loading="eager"
-        />
+      </div>      <div class="intro-image">
+        <div class="profile-flip-container">
+          <div class="profile-flipper">          <div class="profile-front">
+            <img 
+              src="/images/avatar.jpg" 
+              alt="Arnab Dey" 
+              width="400" 
+              height="400"
+              loading="eager"
+              onerror="this.src='/profile-placeholder.png'; this.onerror=null;"
+            />
+          </div>
+          <div class="profile-back">
+            <img 
+              src="/images/avatar2.jpg" 
+              alt="Arnab Dey - Alternative" 
+              width="400" 
+              height="400"
+              loading="eager"
+              onerror="this.src='/images/banner.jpeg'; this.onerror=null;"
+            />
+          </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -106,19 +121,133 @@
     color: white;
     transform: translateY(-2px);
   }
-  
-  .intro-image {
+    .intro-image {
     flex: 1;
     display: flex;
     justify-content: center;
+    perspective: 1000px; /* 3D effect */
+  }
+    /* Flip container */
+  .profile-flip-container {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    cursor: pointer;
+    animation: float 6s ease-in-out infinite;
   }
   
-  .intro-image img {
+  /* Floating animation */
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  /* Flipper - contains front and back */
+  .profile-flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transform-style: preserve-3d;
+  }
+  
+  /* Flip animation on hover */
+  .profile-flip-container:hover .profile-flipper {
+    transform: rotateY(180deg);
+  }
+  
+  /* Add a glow effect on hover */
+  .profile-flip-container:hover {
+    animation: float 6s ease-in-out infinite, glow 1.5s ease-in-out infinite alternate;
+  }
+    @keyframes glow {
+    from {
+      box-shadow: 0 0 10px rgba(var(--primary-color-rgb, 0, 122, 204), 0.2);
+    }
+    to {
+      box-shadow: 0 0 20px rgba(var(--primary-color-rgb, 0, 122, 204), 0.6);
+    }
+  }
+  
+  /* Add 3D depth effect */
+  .profile-front::before,
+  .profile-back::before {
+    content: '';
+    position: absolute;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
     border-radius: 50%;
+    top: 5px;
+    left: 5px;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.3) 0%, 
+      rgba(255, 255, 255, 0) 50%, 
+      rgba(0, 0, 0, 0.2) 100%);
+    z-index: 3;
+    pointer-events: none;
+  }
+  
+  /* Darker overlay for the back image */
+  .profile-back::before {
+    background: linear-gradient(135deg, 
+      rgba(0, 0, 0, 0.1) 0%, 
+      rgba(0, 0, 0, 0) 50%, 
+      rgba(0, 0, 0, 0.3) 100%);
+  }
+  
+  /* Position the front and back sides */
+  .profile-front, .profile-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  /* Style the front side (default) */
+  .profile-front {
+    z-index: 2;
+  }
+  
+  /* Style the back side */
+  .profile-back {
+    transform: rotateY(180deg);
+  }
+    /* Style images in the flip container */
+  .profile-front img, .profile-back img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    max-width: 400px;
+    border-radius: 50%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border: 5px solid var(--border-color);
+    transition: all 0.5s ease;
+  }
+  
+  /* Add a subtle pulse effect when the flip is triggered */
+  .profile-flipper.flipping .profile-front img,
+  .profile-flipper.flipping .profile-back img {
+    animation: pulse 0.5s ease-in-out;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
   
   @media (max-width: 992px) {
@@ -149,10 +278,63 @@
     .cta-buttons {
       justify-content: center;
     }
-    
-    .intro-image img {
-      max-width: 300px;
+      .profile-flip-container {
+      width: 300px;
+      height: 300px;
       margin-bottom: 2rem;
     }
   }
 </style>
+
+<script>
+  // Add touch support for mobile devices and enhanced animations
+  document.addEventListener('DOMContentLoaded', () => {
+    const flipContainer = document.querySelector('.profile-flip-container') as HTMLElement | null;
+    
+    if (flipContainer) {
+      const flipper = flipContainer.querySelector('.profile-flipper') as HTMLElement | null;
+      
+      if (!flipper) return;
+      
+      // Add touch event for mobile
+      flipContainer.addEventListener('touchstart', function() {
+        triggerFlip();
+      });
+      
+      // Mouse hover events
+      flipContainer.addEventListener('mouseenter', function() {
+        flipper.classList.add('flipping');
+      });
+      
+      flipContainer.addEventListener('mouseleave', function() {
+        setTimeout(() => {
+          flipper.classList.remove('flipping');
+        }, 800);
+      });
+      
+      // Function to trigger flip with animation
+      const triggerFlip = () => {
+        flipper.classList.add('flipping');
+        const currentTransform = flipper.style.transform || '';
+        const isFlipped = currentTransform.includes('rotateY(180deg)');
+        flipper.style.transform = isFlipped ? 'rotateY(0deg)' : 'rotateY(180deg)';
+        
+        setTimeout(() => {
+          flipper.classList.remove('flipping');
+        }, 800);
+      };
+      
+      // Add automatic flip every few seconds
+      let autoFlipped = false;
+      setInterval(() => {
+        autoFlipped = !autoFlipped;
+        flipper.classList.add('flipping');
+        flipper.style.transform = autoFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+        
+        setTimeout(() => {
+          flipper.classList.remove('flipping');
+        }, 800);
+      }, 6000); // Flip every 6 seconds
+    }
+  });
+</script>

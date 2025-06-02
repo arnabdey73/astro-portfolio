@@ -28,28 +28,79 @@ const {
         <meta property="og:type" content={type} />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <title>{title}</title>
+        
+        <!-- Preload theme initialization script to avoid flash -->
+        <script is:inline src="/theme-init.js"></script>
+        
+        <!-- Preconnect to external resources -->
+        <link rel="preconnect" href="https://astro-paper-project.vercel.app" />
+        <link rel="preconnect" href="https://arnabdey73.github.io" />
     </head>
     <body class:list={[layout, ...classes]}>
         <slot name="header" />
         <slot />
         <slot name="footer" />
-
-        <script>
-            // Check for dark mode preference
-            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const storedTheme = localStorage.getItem('theme');
-            
-            if (storedTheme) {
-                document.documentElement.setAttribute('data-theme', storedTheme);
-            } else if (prefersDarkMode) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
-        </script>
     </body>
 </html>
 
-<style is:global>
-    /* Any global styles can be placed here */
+<style is:global>    /* Global styles */    :root {
+        /* Light theme */
+        --primary-color: #007acc;
+        --primary-color-rgb: 0, 122, 204;
+        --primary-dark: #005a99;
+        --primary-dark-rgb: 0, 90, 153;
+        --background-color: #ffffff;
+        --background-color-rgb: 255, 255, 255;
+        --text-color: #333333;
+        --text-color-rgb: 51, 51, 51;
+        --heading-color: #2c3e50;
+        --heading-color-rgb: 44, 62, 80;
+        --muted-text-color: #6c757d;
+        --border-color: #e9ecef;
+        --link-color: #007acc;
+        --link-hover-color: #005a99;
+        --section-background: #f8f9fa;
+        --card-background: #ffffff;
+        --footer-background: #f8f9fa;
+        --hover-background: #f8f9fa;
+        
+        /* CSS Transition for theme change */
+        color-scheme: light;
+    }
+    
+    /* Dark theme */
+    [data-theme="dark"] {
+        --primary-color: #4da6ff;
+        --primary-color-rgb: 77, 166, 255;
+        --primary-dark: #0066cc;
+        --primary-dark-rgb: 0, 102, 204;
+        --background-color: #1a1a1a;
+        --background-color-rgb: 26, 26, 26;
+        --text-color: #e0e0e0;
+        --text-color-rgb: 224, 224, 224;
+        --heading-color: #ffffff;
+        --heading-color-rgb: 255, 255, 255;
+        --muted-text-color: #999999;
+        --border-color: #333333;
+        --link-color: #66b3ff;
+        --link-hover-color: #4da6ff;
+        --section-background: #1a1a1a;
+        --card-background: #2d2d2d;
+        --footer-background: #1a1a1a;
+        --hover-background: #2d2d2d;
+        
+        color-scheme: dark;
+    }
+    
+    /* Theme transition */
+    .theme-transition {
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    html, body {
+        transition: background-color 0.3s ease;
+    }
+    
     img {
         max-width: 100%;
         height: auto;
@@ -74,5 +125,24 @@ const {
     .splash {
         max-width: 1400px;
         margin: 0 auto;
+    }
+    
+    /* Scroll behavior */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Reset */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
     }
 </style>

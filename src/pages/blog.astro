@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { fetchExternalBlogs } from '../utils/fetchContent.js';
+
+// Fetch blog posts from external sources
+const blogPosts = await fetchExternalBlogs();
+
+// Categories for filtering
+const categories = ['All', 'Cloud', 'DevOps', 'Kubernetes', 'Web Development', 'Infrastructure'];
+---
+
+<BaseLayout 
+  title="Blog | Arnab Dey"
+  description="Read articles on cloud engineering, DevOps practices, Kubernetes, and modern web development."
+  layout="standard"
+>
+  <Header slot="header" />
+  
+  <main class="blog-page">
+    <div class="container">
+      <div class="blog-header">
+        <h1>Blog</h1>
+        <p>Insights, tutorials, and thoughts on cloud engineering, DevOps, and web development.</p>
+      </div>
+      
+      <div class="blog-categories">
+        <div class="category-filter">
+          {categories.map((category) => (
+            <button class="category-button" data-category={category}>
+              {category}
+            </button>
+          ))}
+        </div>
+        <div class="blog-search">
+          <input type="text" id="blog-search-input" placeholder="Search articles..." />
+        </div>
+      </div>
+      
+      <div class="blog-grid" id="blog-grid">
+        {blogPosts.map((post) => (
+          <a href={post.slug} 
+             class="blog-card" 
+             target={post.external ? "_blank" : "_self"} 
+             rel={post.external ? "noopener noreferrer" : ""}
+             data-categories={post.tags ? post.tags.join(',').toLowerCase() : 'cloud,devops'}>
+            <div class="blog-image">
+              <img 
+                src={post.image} 
+                alt={post.title} 
+                loading="lazy"
+                onerror="this.src='/blog-placeholder-1.jpg'"
+              />
+            </div>
+            <div class="blog-content">
+              <span class="blog-date">{post.date}</span>
+              <h2>{post.title}</h2>
+              <p>{post.excerpt}</p>
+              <span class="read-more">
+                {post.external ? "Read on AstroPaper →" : "Read More →"}
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+      
+      <div id="no-results" class="no-results hidden">
+        <p>No articles found matching your search.</p>
+      </div>
+    </div>
+  </main>
+  
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .blog-page {
+    padding: 4rem 0;
+    min-height: 70vh;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .blog-header {
+    margin-bottom: 2.5rem;
+  }
+  
+  .blog-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+  
+  .blog-header p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    max-width: 700px;
+  }
+  
+  .blog-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .category-button {
+    padding: 0.5rem 1rem;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .category-button:hover,
+  .category-button.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+  }
+  
+  .blog-search {
+    margin-bottom: 1.5rem;
+  }
+  
+  .blog-search input {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    width: 300px;
+    background-color: var(--card-background);
+    color: var(--text-color);
+    font-size: 0.95rem;
+  }
+  
+  .blog-search input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .blog-card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: var(--text-color);
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .blog-image {
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .blog-card:hover .blog-image img {
+    transform: scale(1.05);
+  }
+  
+  .blog-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .blog-date {
+    font-size: 0.9rem;
+    color: var(--muted-text-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .blog-content h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--heading-color);
+  }
+  
+  .blog-content p {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .read-more {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: auto;
+    transition: color 0.2s ease;
+  }
+  
+  .blog-card:hover .read-more {
+    color: var(--primary-dark);
+  }
+  
+  .no-results {
+    text-align: center;
+    padding: 3rem;
+    font-size: 1.2rem;
+    color: var(--text-color);
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    .blog-categories {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .blog-search input {
+      width: 100%;
+    }
+    
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Get DOM elements
+    const categoryButtons = document.querySelectorAll('.category-button');
+    const blogCards = document.querySelectorAll('.blog-card');
+    const searchInput = document.getElementById('blog-search-input');
+    const noResultsElement = document.getElementById('no-results');
+    
+    // Set "All" as the active category by default
+    document.querySelector('.category-button')?.classList.add('active');
+    
+    // Filter blogs by category
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category')?.toLowerCase();
+        
+        // Update active button
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        // Filter cards
+        let visibleCount = 0;
+        
+        blogCards.forEach(card => {
+          if (category === 'all') {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            const cardCategories = card.getAttribute('data-categories')?.toLowerCase().split(',') || [];
+            if (cardCategories.includes(category)) {
+              card.style.display = 'flex';
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          }
+        });
+        
+        // Toggle no results message
+        noResultsElement.classList.toggle('hidden', visibleCount > 0);
+      });
+    });
+    
+    // Search functionality
+    searchInput?.addEventListener('input', (e) => {
+      const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
+      let visibleCount = 0;
+      
+      blogCards.forEach(card => {
+        const title = card.querySelector('h2')?.textContent?.toLowerCase() || '';
+        const excerpt = card.querySelector('p')?.textContent?.toLowerCase() || '';
+        
+        if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      // Toggle no results message
+      noResultsElement.classList.toggle('hidden', visibleCount > 0);
+    });
+  });
+</script>
