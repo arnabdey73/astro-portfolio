@@ -7,31 +7,6 @@ import { loadMarkdownContent } from '../utils/fetchContent.js';
 
 // Fetch the projects page content
 const { content: projectsContent, metadata: projectsMetadata } = await loadMarkdownContent('/projects');
-
-// Sample projects data
-const projects = [
-  {
-    title: 'Azure Core Governance Infrastructure as Code',
-    description: 'This project implements Azure governance patterns at enterprise scale, providing a foundation for Azure landing zones with comprehensive governance controls.',
-    technologies: ['Terraform', 'Azure', 'Security', 'Governance'],
-    image: '/blog-placeholder-1.jpg',
-    link: 'https://github.com/arnabdey73/iac-azure-core-governance'
-  },
-  {
-    title: 'Azure Cost Optimizer',
-    description: 'A comprehensive solution to help optimize Azure costs by leveraging Azure SDKs and tools for cost analysis and resource management.',
-    technologies: ['Python', 'Azure', 'Cost Management', 'Terraform'],
-    image: '/blog-placeholder-2.jpg',
-    link: 'https://github.com/arnabdey73/azure-cost-optimizer'
-  },
-  {
-    title: 'Portfolio Website',
-    description: 'Personal portfolio website built with Astro, featuring dark mode toggle, external blog integration, and responsive design.',
-    technologies: ['Astro', 'JavaScript', 'HTML5', 'CSS3'],
-    image: '/blog-placeholder-3.jpg',
-    link: 'https://github.com/arnabdey73/astro-portfolio'
-  }
-];
 ---
 
 <BaseLayout 
@@ -40,33 +15,14 @@ const projects = [
   layout="standard"
 >
   <Header slot="header" />
-  
-  <main class="projects-page">
-    <div class="container">      <div class="intro">
+    <main class="projects-page">
+    <div class="container">
+      <div class="intro">
         <h1>My Projects</h1>
         <p>Here are some of the projects I've worked on throughout my career. These projects showcase my expertise in cloud infrastructure, DevOps practices, and web development.</p>
-        <MarkdownContent content={projectsContent} className="project-content-md" />
       </div>
       
-      <div class="projects-grid">
-        {projects.map(project => (
-          <div class="project-card">
-            <div class="project-image">
-              <img src={project.image} alt={project.title} loading="lazy" />
-            </div>
-            <div class="project-content">
-              <h2>{project.title}</h2>
-              <p>{project.description}</p>
-              <div class="project-technologies">
-                {project.technologies.map(tech => (
-                  <span class="tech-tag">{tech}</span>
-                ))}
-              </div>
-              <a href={project.link} class="project-link" target="_blank" rel="noopener noreferrer">View Project →</a>
-            </div>
-          </div>
-        ))}
-      </div>
+      <MarkdownContent content={projectsContent} className="project-content-md" />
     </div>
   </main>
   
