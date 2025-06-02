@@ -1,0 +1,158 @@
+---
+// IntroCard component - Hero section for the portfolio homepage
+---
+
+<section class="intro-card">
+  <div class="container">
+    <div class="intro-content">
+      <div class="intro-text">
+        <h1>Hi, I'm <span class="highlight">Arnab Dey</span></h1>
+        <h2>Cloud & DevOps Engineer</h2>
+        <p>
+          I build scalable cloud infrastructure and develop efficient DevOps pipelines.
+          Passionate about automation, containerization, and modern development practices.
+        </p>
+        <div class="cta-buttons">
+          <a href="/projects" class="button primary">View My Projects</a>
+          <a href="/contact" class="button secondary">Get In Touch</a>
+        </div>
+      </div>
+      <div class="intro-image">
+        <img 
+          src="/profile-placeholder.png" 
+          alt="Arnab Dey" 
+          width="400" 
+          height="400"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro-card {
+    padding: 5rem 0;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .intro-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .intro-text {
+    flex: 1;
+  }
+  
+  .intro-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  
+  .intro-text h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  .intro-text p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+  
+  .highlight {
+    color: var(--primary-color);
+    position: relative;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .button.primary {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .button.primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+  }
+  
+  .button.secondary {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    background: transparent;
+  }
+  
+  .button.secondary:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+  }
+  
+  .intro-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .intro-image img {
+    border-radius: 50%;
+    object-fit: cover;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 5px solid var(--border-color);
+  }
+  
+  @media (max-width: 992px) {
+    .intro-text h1 {
+      font-size: 3rem;
+    }
+    
+    .intro-text h2 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .intro-card {
+      padding: 3rem 0;
+    }
+    
+    .intro-content {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+    
+    .intro-text p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-buttons {
+      justify-content: center;
+    }
+    
+    .intro-image img {
+      max-width: 300px;
+      margin-bottom: 2rem;
+    }
+  }
+</style>

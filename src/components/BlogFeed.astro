@@ -1,0 +1,182 @@
+---
+// BlogFeed component - Display recent blog posts
+const blogPosts = [
+  {
+    title: "Implementing CI/CD with GitHub Actions",
+    excerpt: "Learn how to set up an efficient CI/CD pipeline using GitHub Actions for your web projects.",
+    date: "May 15, 2023",
+    image: "/blog-placeholder-1.jpg",
+    slug: "/blog/implementing-ci-cd-with-github-actions"
+  },
+  {
+    title: "Kubernetes vs. Docker Swarm: When to Use Each",
+    excerpt: "A comparison of container orchestration tools and how to choose the right one for your project.",
+    date: "April 28, 2023",
+    image: "/blog-placeholder-2.jpg",
+    slug: "/blog/kubernetes-vs-docker-swarm"
+  },
+  {
+    title: "Cloud Cost Optimization Strategies",
+    excerpt: "Practical tips to reduce your cloud infrastructure costs without sacrificing performance.",
+    date: "March 12, 2023",
+    image: "/blog-placeholder-3.jpg",
+    slug: "/blog/cloud-cost-optimization-strategies"
+  }
+];
+---
+
+<section id="blog" class="blog-section">
+  <div class="container">
+    <h2 class="section-title">Recent Blog Posts</h2>
+    <div class="blog-grid">
+      {blogPosts.map((post) => (
+        <a href={post.slug} class="blog-card">
+          <div class="blog-image">
+            <img 
+              src={post.image} 
+              alt={post.title} 
+              loading="lazy"
+            />
+          </div>
+          <div class="blog-content">
+            <span class="blog-date">{post.date}</span>
+            <h3>{post.title}</h3>
+            <p>{post.excerpt}</p>
+            <span class="read-more">Read More →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+    <div class="blog-cta">
+      <a href="/blog" class="button secondary">View All Posts</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .blog-section {
+    padding: 5rem 0;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--heading-color);
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .blog-card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: var(--text-color);
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .blog-image {
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .blog-card:hover .blog-image img {
+    transform: scale(1.05);
+  }
+  
+  .blog-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .blog-date {
+    font-size: 0.9rem;
+    color: var(--muted-text-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .blog-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--heading-color);
+  }
+  
+  .blog-content p {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .read-more {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: auto;
+    transition: color 0.2s ease;
+  }
+  
+  .blog-card:hover .read-more {
+    color: var(--primary-dark);
+  }
+  
+  .blog-cta {
+    text-align: center;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .button.secondary {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    background: transparent;
+  }
+  
+  .button.secondary:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 768px) {
+    .blog-section {
+      padding: 3rem 0;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

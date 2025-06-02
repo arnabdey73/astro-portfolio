@@ -1,0 +1,78 @@
+---
+// BaseLayout.astro - The main layout component for the portfolio
+interface Props {
+    title: string;
+    description: string;
+    type?: string;
+    layout?: string;
+    classes?: string[];
+}
+
+const { 
+    title, 
+    description, 
+    type = "website", 
+    layout = "default",
+    classes = [] 
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content={type} />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{title}</title>
+    </head>
+    <body class:list={[layout, ...classes]}>
+        <slot name="header" />
+        <slot />
+        <slot name="footer" />
+
+        <script>
+            // Check for dark mode preference
+            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const storedTheme = localStorage.getItem('theme');
+            
+            if (storedTheme) {
+                document.documentElement.setAttribute('data-theme', storedTheme);
+            } else if (prefersDarkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        </script>
+    </body>
+</html>
+
+<style is:global>
+    /* Any global styles can be placed here */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    a {
+        color: var(--link-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    
+    a:hover {
+        color: var(--link-hover-color);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--heading-color);
+        line-height: 1.2;
+        margin-top: 0;
+    }
+    
+    .splash {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+</style>
