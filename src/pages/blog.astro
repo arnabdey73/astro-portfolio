@@ -1,0 +1,7 @@
+---
+// Server-side redirect to external blog at blog.arnabdey.dev
+export async function get({ redirect }) {
+  return redirect("https://blog.arnabdey.dev");
+}
+---
+<!-- This page intentionally left empty as it redirects to https://blog.arnabdey.dev -->

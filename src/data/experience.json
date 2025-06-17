@@ -1,0 +1,42 @@
+[
+  {
+    "role": "DevOps Engineer",
+    "company": "AFRY",
+    "period": "2022 - Present",
+    "location": "Sweden",
+    "description": [
+      "Implemented Azure landing zone architecture using Terraform and Azure Bicep",
+      "Designed and implemented CI/CD pipelines using Azure DevOps for multiple client projects",
+      "Established infrastructure monitoring solutions using Azure Monitor, Log Analytics, and Grafana",
+      "Created automated cost optimization processes, achieving 20% reduction in cloud spend"
+    ],
+    "technologies": ["Azure", "Terraform", "Azure DevOps", "PowerShell", "Kubernetes"]
+  },
+  {
+    "role": "Senior Cloud Infrastructure Engineer",
+    "company": "Previous Employer",
+    "period": "2018 - 2022",
+    "location": "Remote",
+    "description": [
+      "Led cloud infrastructure design and implementation for enterprise customers",
+      "Migrated legacy on-premise applications to Azure PaaS and IaaS solutions",
+      "Automated infrastructure provisioning using Terraform and Ansible",
+      "Managed AWS-based infrastructure hosting Production/Stage/UAT environments for multiple clients",
+      "Implemented comprehensive Disaster Recovery solutions at both application and infrastructure levels"
+    ],
+    "technologies": ["AWS", "Jenkins", "Chef", "Zabbix", "Git"]
+  },
+  {
+    "role": "IT Infrastructure Specialist",
+    "company": "Earlier Company",
+    "period": "2015 - 2018",
+    "location": "India",
+    "description": [
+      "Managed on-premise data center operations with 200+ physical and virtual servers",
+      "Implemented virtualization solutions using VMware vSphere",
+      "Automated routine system administration tasks using PowerShell and Bash scripts",
+      "Designed and maintained backup and disaster recovery processes"
+    ],
+    "technologies": ["VMware", "Windows Server", "Linux", "PowerShell", "Networking"]
+  }
+]

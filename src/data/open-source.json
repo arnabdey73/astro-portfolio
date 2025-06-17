@@ -1,0 +1,80 @@
+{
+  "categories": [
+    {
+      "name": "Infrastructure as Code",
+      "slug": "iac",
+      "icon": "devicon-terraform-plain colored"
+    },
+    {
+      "name": "Azure Cloud",
+      "slug": "azure",
+      "icon": "devicon-azure-plain colored"
+    },
+    {
+      "name": "DevOps",
+      "slug": "devops",
+      "icon": "devicon-jenkins-plain colored"
+    },
+    {
+      "name": "Kubernetes",
+      "slug": "kubernetes",
+      "icon": "devicon-kubernetes-plain colored"
+    },
+    {
+      "name": "Automation",
+      "slug": "automation",
+      "icon": "devicon-python-plain colored"
+    },
+    {
+      "name": "Monitoring",
+      "slug": "monitoring",
+      "icon": "devicon-grafana-original colored"
+    }
+  ],
+  "contributions": [
+    {
+      "name": "Terraform Azure Modules",
+      "description": "Contributions to Azure modules in the Terraform Registry, focusing on security improvements and best practices.",
+      "url": "https://github.com/terraform-providers/terraform-provider-azurerm",
+      "category": "iac"
+    },
+    {
+      "name": "Azure DevOps Task Extensions",
+      "description": "Developed and maintained custom Azure DevOps task extensions for specialized deployment scenarios.",
+      "url": "https://github.com/arnabdey73/azure-devops-extensions",
+      "category": "devops"
+    },
+    {
+      "name": "Kubernetes Monitoring Tools",
+      "description": "Contributed to open-source monitoring solutions for Kubernetes with custom dashboards and alerts.",
+      "url": "https://github.com/arnabdey73/k8s-monitoring",
+      "category": "kubernetes"
+    }
+  ],
+  "repositories": [
+    {
+      "name": "azure-governance-module",
+      "description": "Terraform module for implementing Azure governance at scale",
+      "stars": 27,
+      "forks": 8,
+      "url": "https://github.com/arnabdey73/azure-governance-module",
+      "category": "iac"
+    },
+    {
+      "name": "azure-cost-optimizer",
+      "description": "Python tool for optimizing Azure resource costs",
+      "stars": 43,
+      "forks": 12,
+      "url": "https://github.com/arnabdey73/azure-cost-optimizer",
+      "category": "azure"
+    },
+    {
+      "name": "k8s-monitoring",
+      "description": "Comprehensive monitoring solution for Kubernetes clusters",
+      "stars": 18,
+      "forks": 5,
+      "url": "https://github.com/arnabdey73/k8s-monitoring",
+      "category": "kubernetes"
+    }
+  ]
+}

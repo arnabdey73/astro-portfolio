@@ -1,0 +1,300 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Sample contributions data - in a real project, this would typically come from GitHub API
+const contributions = [
+  {
+    repository: "framework/framework",
+    organization: "popular-framework",
+    description: "Contributed performance improvements to the core rendering engine, resulting in 15% faster page loads.",
+    url: "https://github.com/popular-framework/framework/pulls/1234",
+    type: "Pull Request",
+    status: "Merged"
+  },
+  {
+    repository: "awesome-library",
+    organization: "open-source-org",
+    description: "Fixed a critical bug in the authentication module that was causing session timeouts.",
+    url: "https://github.com/open-source-org/awesome-library/pulls/567",
+    type: "Pull Request",
+    status: "Merged"
+  },
+  {
+    repository: "docs-project",
+    organization: "community-docs",
+    description: "Improved documentation for getting started guide, added examples and clarified configuration steps.",
+    url: "https://github.com/community-docs/docs-project/pulls/890",
+    type: "Pull Request",
+    status: "Merged"
+  },
+  {
+    repository: "ui-component-library",
+    organization: "design-system",
+    description: "Created new accessible form components with comprehensive keyboard navigation support.",
+    url: "https://github.com/design-system/ui-component-library/pulls/345",
+    type: "Pull Request",
+    status: "Open"
+  }
+];
+
+// Sample projects data - in a real project, this would typically come from GitHub API
+const ownProjects = [
+  {
+    name: "awesome-project",
+    description: "A utility library for handling common tasks in web applications with zero dependencies.",
+    stars: 456,
+    forks: 78,
+    url: "https://github.com/your-username/awesome-project"
+  },
+  {
+    name: "react-component",
+    description: "A collection of reusable React components built with accessibility and performance in mind.",
+    stars: 289,
+    forks: 34,
+    url: "https://github.com/your-username/react-component"
+  },
+  {
+    name: "cli-tool",
+    description: "Command-line tool for automating development workflows and increasing productivity.",
+    stars: 157,
+    forks: 21,
+    url: "https://github.com/your-username/cli-tool"
+  }
+];
+---
+
+<Layout 
+  title="Open Source | Your Name - Portfolio" 
+  description="Explore open source contributions and projects by Your Name, including pull requests, issues, and personal repositories."
+>
+  <Header />
+  
+  <main class="bg-white dark:bg-gray-900">
+    <!-- Hero Section -->
+    <section class="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl sm:tracking-tight lg:text-5xl">
+            Open Source
+          </h1>
+          <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-600 dark:text-gray-300">
+            My contributions to open source projects and personal public repositories.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GitHub Stats -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+            GitHub Activity
+          </h2>
+        </div>
+        
+        <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+          <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+              <dl>
+                <dt class="text-sm font-medium text-gray-600 dark:text-gray-300 truncate">
+                  Repositories
+                </dt>
+                <dd class="mt-1 text-3xl font-semibold text-indigo-600 dark:text-indigo-400">
+                  25+
+                </dd>
+              </dl>
+            </div>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+              <dl>
+                <dt class="text-sm font-medium text-gray-600 dark:text-gray-300 truncate">
+                  Contributions (Year)
+                </dt>
+                <dd class="mt-1 text-3xl font-semibold text-indigo-600 dark:text-indigo-400">
+                  500+
+                </dd>
+              </dl>
+            </div>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+              <dl>
+                <dt class="text-sm font-medium text-gray-600 dark:text-gray-300 truncate">
+                  Pull Requests
+                </dt>
+                <dd class="mt-1 text-3xl font-semibold text-indigo-600 dark:text-indigo-400">
+                  75+
+                </dd>
+              </dl>
+            </div>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+              <dl>
+                <dt class="text-sm font-medium text-gray-600 dark:text-gray-300 truncate">
+                  Issues
+                </dt>
+                <dd class="mt-1 text-3xl font-semibold text-indigo-600 dark:text-indigo-400">
+                  120+
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-10 text-center">
+          <div class="inline-flex shadow rounded-md">
+            <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+              <svg class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+              </svg>
+              View GitHub Profile
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Contributions -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Recent Contributions
+          </h2>
+          <p class="mt-3 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
+            Pull requests and issues I've worked on for other open source projects.
+          </p>
+        </div>
+        
+        <div class="mt-12 space-y-6">
+          {contributions.map((contribution) => (
+            <div class="bg-white dark:bg-gray-800 shadow overflow-hidden rounded-lg">
+              <div class="px-4 py-5 sm:px-6">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
+                      <a href={contribution.url} target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 dark:hover:text-indigo-400">
+                        {contribution.organization}/{contribution.repository}
+                      </a>
+                    </h3>
+                    <p class="mt-1 max-w-2xl text-sm text-gray-600 dark:text-gray-300">
+                      {contribution.description}
+                    </p>
+                  </div>
+                  <div class="ml-4 flex-shrink-0 flex">
+                    <span class={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                      contribution.status === "Merged" 
+                        ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" 
+                        : "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+                    }`}>
+                      {contribution.status}
+                    </span>
+                    <span class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
+                      {contribution.type}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Personal Projects -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Personal Open Source Projects
+          </h2>
+          <p class="mt-3 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
+            Public repositories that I've created and maintain.
+          </p>
+        </div>
+        
+        <div class="mt-12 grid gap-8 md:grid-cols-3">
+          {ownProjects.map((project) => (
+            <div class="bg-white dark:bg-gray-800 shadow overflow-hidden rounded-lg flex flex-col">
+              <div class="px-6 py-6 flex-1">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white">
+                  <a href={project.url} target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 dark:hover:text-indigo-400">
+                    {project.name}
+                  </a>
+                </h3>
+                <p class="mt-3 text-sm text-gray-600 dark:text-gray-300">
+                  {project.description}
+                </p>
+              </div>
+              <div class="px-6 py-4 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                <div class="flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <span class="ml-1 text-gray-600 dark:text-gray-300">{project.stars}</span>
+                </div>
+                <div class="flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="ml-1 text-gray-600 dark:text-gray-300">{project.forks}</span>
+                </div>
+                <a href={project.url} target="_blank" rel="noopener noreferrer" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300">
+                  View Repository &rarr;
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Sponsor Section -->
+    <section class="py-16 bg-gradient-to-br from-indigo-600 to-purple-600 dark:from-indigo-800 dark:to-purple-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+            Support My Open Source Work
+          </h2>
+          <p class="mt-4 max-w-2xl mx-auto text-xl text-indigo-100">
+            If you find my projects helpful, please consider supporting my work.
+          </p>
+        </div>
+        
+        <div class="mt-12 flex flex-col md:flex-row gap-6 justify-center items-center">
+          <a href="https://github.com/sponsors/your-username" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full md:w-auto bg-white px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 hover:bg-gray-50">
+            <svg class="h-6 w-6 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+            </svg>
+            GitHub Sponsors
+          </a>
+          
+          <a href="https://patreon.com/your-username" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full md:w-auto bg-white px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 hover:bg-gray-50">
+            <svg class="h-6 w-6 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.82 2.41C18.78 2.41 22 5.65 22 9.62C22 13.58 18.78 16.8 14.82 16.8C10.85 16.8 7.61 13.58 7.61 9.62C7.61 5.65 10.85 2.41 14.82 2.41Z" />
+              <path d="M2 21.6L2 2.41H5.6V21.6H2Z" />
+            </svg>
+            Patreon
+          </a>
+          
+          <a href="https://www.buymeacoffee.com/your-username" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full md:w-auto bg-white px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 hover:bg-gray-50">
+            <svg class="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4v-2z" />
+            </svg>
+            Buy Me a Coffee
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

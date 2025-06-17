@@ -1,48 +1,115 @@
-# Astro Starter Kit: Basics
+# 🌐 Personal Portfolio with Astro
 
-```sh
-npm create astro@latest -- --template basics
+This project is a **professional developer portfolio** built with [Astro](https://astro.build), designed to showcase my experience as a DevOps/Cloud Engineer, highlight open-source projects, publish technical blogs, and prepare for potential **monetization** via GitHub Sponsors and Patreon.
+
+---
+
+## 📌 Goals
+
+* Establish a **credible and elegant personal brand** online
+* Attract **potential employers and collaborators**
+* Enable future **monetization opportunities**
+* Maintain a performant, accessible, and SEO-friendly site
+
+---
+
+## 📁 Pages Structure
+
+| Page            | Purpose                                                                               |
+| --------------- | ------------------------------------------------------------------------------------- |
+| `/` (Home)      | Elevator pitch, tagline, recent work snapshot                                         |
+| `/about`        | Background, journey, skills, tech stack                                               |
+| `/projects`     | Key projects with images, GitHub links, and live demos                                |
+| `/blog`         | [External Blog](https://blog.arnabdey.dev) built with Astro, integrated into the site |
+| `/case-studies` | Long-form deep-dives on real-world problem-solving                                    |
+| `/open-source`  | Contributions, sponsorship pitch, and GitHub activity                                 |
+| `/resume`       | Downloadable and web-friendly resume                                                  |
+| `/contact`      | Email, LinkedIn, GitHub, and optional contact form                                    |
+| `/support`      | GitHub Sponsors, Patreon, BuyMeACoffee links                                          |
+
+---
+
+## 🛠️ Tech Stack
+
+* **Framework**: Astro
+* **Styling**: Tailwind CSS
+* **Markdown**: MDX for case studies
+* **Deployment**: Vercel (CI/CD + previews)
+* **Analytics**: Plausible / Umami (privacy-first)
+* **Accessibility**: WCAG AA compliance planned
+
+---
+
+## ✅ Features
+
+* 💼 Professionally curated content (About, Projects, Resume)
+* 🖍️ Blog hosted at [blog.arnabdey.dev](https://blog.arnabdey.dev) with Astro
+* 🚀 Fast and SEO-optimized build
+* 🧐 Designed with AI assistance (GitHub Copilot + Claude Sonnet)
+* 🌟 Monetization hooks included
+
+---
+
+## 📂 Repo Structure
+
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
+astro-portfolio/
+├── public/                        # Static assets (images, icons, etc.)
+│   ├── favicon.ico
+│   └── og-images/
+│       └── project-x.png
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/               # Reusable UI components
+│   │   ├── Header.astro
+│   │   ├── Footer.astro
+│   │   ├── ProjectCard.astro
+│   │   └── SponsorButton.astro
+│   ├── layouts/                  # Page layouts
+│   │   ├── BaseLayout.astro
+│   │   ├── BlogLayout.astro
+│   │   └── ProjectLayout.astro
+│   ├── pages/                    # Main route pages
+│   │   ├── index.astro           # Home
+│   │   ├── about.astro
+│   │   ├── projects.astro
+│   │   ├── case-studies.astro
+│   │   ├── open-source.astro
+│   │   ├── resume.astro
+│   │   ├── contact.astro
+│   │   └── support.astro
+│   ├── styles/                   # Custom Tailwind or global styles
+│   │   └── globals.css
+│   ├── data/                     # Project data, links, case study metadata
+│   │   ├── projects.json
+│   │   └── sponsors.js
+│   └── utils/                    # Helpers, date formatters, RSS, etc.
+│       └── formatDate.ts
+├── astro.config.mjs              # Astro config
+├── tailwind.config.js            # Tailwind setup
+├── tsconfig.json                 # TypeScript config (optional)
+├── package.json
+├── README.md
+└── vercel.json                   # Vercel deployment config (optional)
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+---
 
-## 🧞 Commands
+## 🧐 Future Enhancements
 
-All commands are run from the root of the project, from a terminal:
+* RSS feed for external blog
+* Search and filtering on projects and case studies
+* Dark/light theme toggle
+* Email subscription or newsletter
+* GitHub Sponsors integration with widget
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+---
 
-## 👀 Want to learn more?
+## 🤝 Contributions & Feedback
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This site is my personal playground and professional anchor. If you're reviewing this repo for collaboration, inspiration, or hiring — feel free to open issues or send feedback.
+
+---
+
+## 📃 License
+
+MIT License — feel free to use this as a base with proper attribution.

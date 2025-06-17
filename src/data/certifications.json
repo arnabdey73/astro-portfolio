@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Azure Administrator Associate",
+    "issuer": "Microsoft",
+    "date": "2024",
+    "description": "Validated expertise in implementing, monitoring, and maintaining Microsoft Azure solutions, including major services related to compute, storage, network, and security.",
+    "credentialUrl": "https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator/",
+    "technologies": ["Azure", "Cloud", "Infrastructure"]
+  },
+  {
+    "title": "Azure DevOps Engineer Expert",
+    "issuer": "Microsoft",
+    "date": "2023",
+    "description": "Demonstrated advanced skills in designing and implementing strategies for collaboration, code, infrastructure, source control, security, compliance, continuous integration, testing, delivery, monitoring, and feedback.",
+    "credentialUrl": "https://learn.microsoft.com/en-us/credentials/certifications/devops-engineer/",
+    "technologies": ["Azure DevOps", "CI/CD", "Infrastructure as Code"]
+  },
+  {
+    "title": "Terraform Associate",
+    "issuer": "HashiCorp",
+    "date": "2023",
+    "description": "Certified expertise in understanding infrastructure as code concepts, Terraform's purpose, and ability to build infrastructure on multiple platforms.",
+    "credentialUrl": "https://www.hashicorp.com/certification/terraform-associate",
+    "technologies": ["Terraform", "Infrastructure as Code"]
+  },
+  {
+    "title": "AWS Solutions Architect Associate",
+    "issuer": "Amazon Web Services",
+    "date": "2022",
+    "description": "Validated ability to design and deploy secure and robust applications on AWS technologies.",
+    "credentialUrl": "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+    "technologies": ["AWS", "Cloud Architecture"]
+  },
+  {
+    "title": "Professional Scrum Master I",
+    "issuer": "Scrum.org",
+    "date": "2021",
+    "description": "Demonstrated understanding of Scrum framework and ability to apply Scrum in team environments.",
+    "credentialUrl": "https://www.scrum.org/professional-scrum-certifications/professional-scrum-master-i-certification",
+    "technologies": ["Scrum", "Agile"]
+  }
+]

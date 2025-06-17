@@ -1,0 +1,41 @@
+{
+  "addresses": [
+    {
+      "type": "Email",
+      "value": "arnabdey73@gmail.com",
+      "icon": "fa-envelope"
+    },
+    {
+      "type": "Phone",
+      "value": "+46 76 45 16 092",
+      "icon": "fa-phone"
+    },
+    {
+      "type": "Location",
+      "value": "Sweden",
+      "icon": "fa-map-marker-alt"
+    }
+  ],
+  "socialLinks": [
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/in/arnabdey73",
+      "icon": "fa-linkedin",
+      "username": "arnabdey73"
+    },
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/arnabdey73",
+      "icon": "fa-github",
+      "username": "arnabdey73"
+    },
+    {
+      "platform": "Bluesky",
+      "url": "https://bsky.app/profile/arnabdey73.bsky.social",
+      "icon": "fa-twitter",
+      "username": "arnabdey73.bsky.social"
+    }
+  ],
+  "contactFormEnabled": true,
+  "preferredContactMethod": "Email"
+}

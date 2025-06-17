@@ -1,0 +1,169 @@
+{
+  "categories": [
+    {
+      "name": "Cloud Platforms",
+      "skills": [
+        {
+          "name": "Azure",
+          "icon": "devicon-azure-plain colored",
+          "level": 5
+        },
+        {
+          "name": "AWS",
+          "icon": "devicon-amazonwebservices-original colored",
+          "level": 3
+        },
+        {
+          "name": "OpenStack",
+          "icon": "devicon-openstack-plain colored",
+          "level": 3
+        },
+        {
+          "name": "Google Cloud",
+          "icon": "devicon-googlecloud-plain colored",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "name": "OS & Platforms",
+      "skills": [
+        {
+          "name": "Ubuntu",
+          "icon": "devicon-ubuntu-plain colored",
+          "level": 5
+        },
+        {
+          "name": "Windows Server",
+          "icon": "devicon-windows8-original colored",
+          "level": 4
+        },
+        {
+          "name": "RHEL",
+          "icon": "devicon-redhat-plain colored",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure as Code",
+      "skills": [
+        {
+          "name": "Terraform",
+          "icon": "devicon-terraform-plain colored",
+          "level": 5
+        },
+        {
+          "name": "Ansible",
+          "icon": "devicon-ansible-plain colored",
+          "level": 4
+        },
+        {
+          "name": "ARM Templates",
+          "icon": "devicon-azure-plain colored",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Containerization",
+      "skills": [
+        {
+          "name": "Docker",
+          "icon": "devicon-docker-plain colored",
+          "level": 4
+        },
+        {
+          "name": "Kubernetes",
+          "icon": "devicon-kubernetes-plain colored",
+          "level": 3
+        },
+        {
+          "name": "Helm",
+          "icon": "devicon-helm-plain",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "CI/CD",
+      "skills": [
+        {
+          "name": "Azure DevOps",
+          "icon": "devicon-azure-plain colored",
+          "level": 5
+        },
+        {
+          "name": "Jenkins",
+          "icon": "devicon-jenkins-plain colored",
+          "level": 4
+        },
+        {
+          "name": "GitHub Actions",
+          "icon": "devicon-github-original colored",
+          "level": 4
+        }
+      ]
+    },
+    {
+      "name": "Programming",
+      "skills": [
+        {
+          "name": "Python",
+          "icon": "devicon-python-plain colored",
+          "level": 4
+        },
+        {
+          "name": "Bash",
+          "icon": "devicon-bash-plain colored",
+          "level": 4
+        },
+        {
+          "name": "PowerShell",
+          "icon": "devicon-windows8-original colored",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "Monitoring",
+      "skills": [
+        {
+          "name": "Azure Monitor",
+          "icon": "devicon-azure-plain colored",
+          "level": 4
+        },
+        {
+          "name": "Grafana",
+          "icon": "devicon-grafana-original colored",
+          "level": 3
+        },
+        {
+          "name": "Prometheus",
+          "icon": "fas fa-chart-area",
+          "level": 3
+        },
+        {
+          "name": "ELK Stack",
+          "icon": "fas fa-search",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "name": "AI Tools",
+      "skills": [
+        {
+          "name": "GitHub Copilot",
+          "icon": "fab fa-github",
+          "level": 4
+        },
+        {
+          "name": "GPT-4",
+          "icon": "fas fa-robot",
+          "level": 4
+        }
+      ]
+    }
+  ]
+}

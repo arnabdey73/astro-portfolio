@@ -1,0 +1,41 @@
+{
+  "name": "Arnab Dey",
+  "title": "Cloud & DevOps Engineer",
+  "tagline": "I help organizations build scalable, resilient cloud infrastructure and streamline their development workflows with modern DevOps practices.",
+  "email": "arnabdey73@gmail.com",
+  "phone": "+46 76 45 16 092",
+  "location": "Sweden",
+  "resumeUrl": "https://github.com/arnabdey73/resume/raw/master/Arnab-Dey-Cloud-DevOps-Engineer.pdf",
+  "socialLinks": [
+    {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/arnabdey73",
+      "icon": "fa-linkedin"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/arnabdey73",
+      "icon": "fa-github"
+    },
+    {
+      "name": "Email",
+      "url": "mailto:arnabdey73@gmail.com",
+      "icon": "fa-envelope"
+    },
+    {
+      "name": "Twitter/Bluesky",
+      "url": "https://bsky.app/profile/arnabdey73.bsky.social",
+      "icon": "fa-twitter"
+    }
+  ],
+  "professional": {
+    "experience": "14+ years of IT experience",
+    "specialties": ["DevOps", "CI/CD", "Azure"],
+    "currentEmployer": {
+      "name": "AFRY",
+      "title": "DevOps Engineer"
+    },
+    "education": "West Bengal University of Technology"
+  },
+  "blogUrl": "https://blog.arnabdey.dev"
+}
