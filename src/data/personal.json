@@ -2,7 +2,7 @@
   "name": "Arnab Dey",
   "title": "Cloud & DevOps Engineer",
   "tagline": "I help organizations build scalable, resilient cloud infrastructure and streamline their development workflows with modern DevOps practices.",
-  "email": "arnabdey73@gmail.com",
+  "email": "mail@arnabdey.dev",
   "phone": "+46 76 45 16 092",
   "location": "Sweden",
   "resumeUrl": "https://github.com/arnabdey73/resume/raw/master/Arnab-Dey-Cloud-DevOps-Engineer.pdf",
@@ -19,7 +19,7 @@
     },
     {
       "name": "Email",
-      "url": "mailto:arnabdey73@gmail.com",
+      "url": "mailto:mail@arnabdey.dev",
       "icon": "fa-envelope"
     },
     {

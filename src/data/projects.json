@@ -3,56 +3,35 @@
     "title": "Azure Core Governance Infrastructure as Code",
     "description": "This project implements Azure governance patterns at enterprise scale, providing a foundation for Azure landing zones with comprehensive governance controls including management groups, policies, role assignments, and security baselines.",
     "technologies": ["Terraform", "Azure", "RBAC", "Policies"],
-    "githubUrl": "https://github.com/arnabdey73/azure-governance-module",
+    "githubUrl": "https://github.com/arnabdey73/iac-azure-core-governance",
+    "featured": true
+  },
+  {
+    "title": "Azure IaC Module Library",
+    "description": "A comprehensive library of reusable Terraform modules for Azure cloud resources. These modules follow best practices for security, scalability, and maintainability, enabling consistent and reliable infrastructure deployments across different environments.",
+    "technologies": ["Terraform", "Azure", "IaC", "Modules"],
+    "githubUrl": "https://github.com/arnabdey73/iac-module-library-azure",
     "featured": true
   },
   {
     "title": "Azure Cost Optimizer",
     "description": "A tool that identifies cost optimization opportunities in Azure subscriptions through automated analysis of resource usage patterns, idle resources, and right-sizing recommendations, helping organizations reduce cloud spend.",
     "technologies": ["Python", "Azure CLI", "Azure SDK", "Cost Management API"],
-    "githubUrl": "https://github.com/arnabdey73/azure-cost-optimizer",
+    "githubUrl": "https://github.com/arnabdey73/iac-module-library-azure",
     "featured": true
   },
   {
-    "title": "Azure IaC Module Library",
-    "description": "A comprehensive library of reusable Terraform modules for Azure cloud resources. These modules follow best practices for security, scalability, and maintainability, enabling consistent and reliable infrastructure deployments across different environments.",
-    "technologies": ["Terraform", "Azure"],
-    "githubUrl": null,
+    "title": "GitLab-Centered DevOps Suite for OpenStack",
+    "description": "A comprehensive DevOps solution built around GitLab that facilitates continuous integration, delivery, and deployment for OpenStack environments with automated testing, security scanning, and infrastructure provisioning.",
+    "technologies": ["GitLab CI/CD", "OpenStack", "Python", "Ansible"],
+    "githubUrl": "https://github.com/arnabdey73/openstack-devops-suite",
     "featured": true
   },
   {
-    "title": "Multi-Environment CI/CD Pipeline",
-    "description": "A robust CI/CD pipeline implementation for deploying applications to multiple environments (Dev, Test, UAT, Prod) with appropriate controls, approvals, and validation at each stage. Ensures consistent and reliable software delivery.",
-    "technologies": ["Azure DevOps", "YAML", "Infrastructure as Code", "Validation Testing"],
-    "githubUrl": null,
+    "title": "Personal Portfolio with Astro",
+    "description": "Personal portfolio website showcasing projects, certifications, and contact information, built with Astro and Tailwind CSS for superior performance and SEO.",
+    "technologies": ["Astro", "Tailwind CSS", "JavaScript", "Responsive Design"],
+    "githubUrl": "https://github.com/arnabdey73/astro-portfolio",
     "featured": true
-  },
-  {
-    "title": "Kubernetes Monitoring Suite",
-    "description": "A comprehensive monitoring solution for Kubernetes clusters that integrates various open-source tools to provide metrics, logging, and alerting capabilities with custom dashboards for different stakeholders.",
-    "technologies": ["Kubernetes", "Prometheus", "Grafana", "ELK Stack"],
-    "githubUrl": "https://github.com/arnabdey73/k8s-monitoring",
-    "featured": false
-  },
-  {
-    "title": "DR Automation Framework",
-    "description": "An automated disaster recovery framework that orchestrates the recovery process for critical applications according to predefined SLAs, ensuring business continuity during outages with minimal manual intervention.",
-    "technologies": ["Python", "Azure SDK", "PowerShell", "Terraform"],
-    "githubUrl": "https://github.com/arnabdey73/azure-dr-automation",
-    "featured": true
-  },
-  {
-    "title": "Security Compliance Scanner",
-    "description": "A tool that evaluates Azure resources against industry best practices and compliance standards. It provides comprehensive reports on security posture and actionable recommendations for remediating vulnerabilities.",
-    "technologies": ["Python", "Azure Security Center API", "PowerShell"],
-    "githubUrl": null,
-    "featured": false
-  },
-  {
-    "title": "Portfolio Website",
-    "description": "Personal portfolio website showcasing projects, certifications, and contact information, built with Jekyll and Tailwind CSS.",
-    "technologies": ["Jekyll", "Tailwind CSS", "HTML5", "CSS3"],
-    "githubUrl": "https://github.com/arnabdey73/arnabdey73.github.io",
-    "featured": false
   }
 ]
