@@ -2,69 +2,18 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getProjects, getPersonalInfo } from '../utils/portfolio-data.js';
 
-// Sample projects data - in a real project, this would typically come from a CMS or data file
-const projects = [
-  {
-    title: "Project One",
-    description: "A full-stack web application for managing personal finances with budgeting tools and expense tracking.",
-    image: "/placeholder.jpg",
-    tags: ["React", "Node.js", "MongoDB", "Express"],
-    demoUrl: "#",
-    sourceUrl: "#",
-    featured: true
-  },
-  {
-    title: "Project Two",
-    description: "E-commerce platform with product catalog, shopping cart, and payment integration using Stripe.",
-    image: "/placeholder.jpg",
-    tags: ["Vue", "Firebase", "Tailwind CSS"],
-    demoUrl: "#",
-    sourceUrl: "#",
-    featured: true
-  },
-  {
-    title: "Project Three",
-    description: "Blog platform with markdown support, comment system, and admin dashboard for content management.",
-    image: "/placeholder.jpg",
-    tags: ["Next.js", "GraphQL", "PostgreSQL"],
-    demoUrl: "#",
-    sourceUrl: "#",
-    featured: true
-  },
-  {
-    title: "Project Four",
-    description: "Weather application with location-based forecasts, interactive maps, and historical data.",
-    image: "/placeholder.jpg",
-    tags: ["React", "OpenWeatherAPI", "Mapbox"],
-    demoUrl: "#",
-    sourceUrl: "#",
-    featured: false
-  },
-  {
-    title: "Project Five",
-    description: "Task management application with Kanban board, drag-and-drop functionality, and team collaboration.",
-    image: "/placeholder.jpg",
-    tags: ["React", "Redux", "Node.js", "Socket.io"],
-    demoUrl: "#",
-    sourceUrl: "#",
-    featured: false
-  },
-  {
-    title: "Project Six",
-    description: "Social media dashboard for scheduling posts, analyzing engagement, and managing multiple accounts.",
-    image: "/placeholder.jpg",
-    tags: ["Vue", "Express", "Social APIs"],
-    demoUrl: "#",
-    sourceUrl: "#",
-    featured: false
-  }
-];
+const personalInfo = getPersonalInfo();
+const allProjects = getProjects();
+
+// Extract all unique technology tags for filtering
+const allTags = [...new Set(allProjects.flatMap(project => project.technologies))];
 ---
 
 <Layout 
-  title="Projects | Your Name - Portfolio" 
-  description="Explore projects built by Your Name, including web applications, websites, and open source work."
+  title={`Projects | ${personalInfo.name} - Portfolio`}
+  description={`Explore projects built by ${personalInfo.name}, including cloud infrastructure, DevOps automation, and open source work.`}
 >
   <Header />
   
@@ -77,7 +26,7 @@ const projects = [
             Projects
           </h1>
           <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-600 dark:text-gray-300">
-            A collection of my work, side projects, and experiments.
+            A collection of my professional work and open-source projects.
           </p>
         </div>
       </div>
@@ -94,10 +43,11 @@ const projects = [
             <button class="filter-btn active px-4 py-2 rounded-md text-sm font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200" data-filter="all">
               All Projects
             </button>
-            <button class="filter-btn px-4 py-2 rounded-md text-sm font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-indigo-100 hover:text-indigo-800 dark:hover:bg-indigo-900 dark:hover:text-indigo-200" data-filter="React">
-              React
-            </button>
-            <button class="filter-btn px-4 py-2 rounded-md text-sm font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-indigo-100 hover:text-indigo-800 dark:hover:bg-indigo-900 dark:hover:text-indigo-200" data-filter="Vue">
+            {allTags.map(tag => (
+              <button class="filter-btn px-4 py-2 rounded-md text-sm font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-indigo-100 hover:text-indigo-800 dark:hover:bg-indigo-900 dark:hover:text-indigo-200" data-filter={tag}>
+                {tag}
+              </button>
+            ))}
               Vue
             </button>
             <button class="filter-btn px-4 py-2 rounded-md text-sm font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-indigo-100 hover:text-indigo-800 dark:hover:bg-indigo-900 dark:hover:text-indigo-200" data-filter="Node.js">
@@ -112,8 +62,8 @@ const projects = [
     <section class="py-12 sm:py-16 lg:py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="projects-grid">
-          {projects.map((project) => (
-            <div class="project-card group bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300" data-tags={project.tags.join(',')}>
+          {allProjects.map((project: any) => (
+            <div class="project-card group bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300" data-tags={project.technologies.join(',')}>
               <div class="h-48 bg-gray-200 dark:bg-gray-700">
                 <!-- Project image placeholder -->
                 <div class="w-full h-full flex items-center justify-center text-gray-500 dark:text-gray-400">
@@ -128,19 +78,18 @@ const projects = [
                   {project.description}
                 </p>
                 <div class="mt-4 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
+                  {project.technologies.map((tech: string) => (
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200">
-                      {tag}
+                      {tech}
                     </span>
                   ))}
                 </div>
                 <div class="mt-6 flex space-x-3">
-                  <a href={project.demoUrl} class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
-                    Live Demo
-                  </a>
-                  <a href={project.sourceUrl} class="inline-flex items-center px-3 py-2 border border-gray-300 dark:border-gray-600 text-sm leading-4 font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
-                    Source Code
-                  </a>
+                  {project.githubUrl && (
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-3 py-2 border border-gray-300 dark:border-gray-600 text-sm leading-4 font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
+                      Source Code
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -183,8 +132,10 @@ const projects = [
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
         // Remove active class from all buttons
-        filterButtons.forEach(btn => btn.classList.remove('active', 'bg-indigo-100', 'text-indigo-800', 'dark:bg-indigo-900', 'dark:text-indigo-200'));
-        filterButtons.forEach(btn => btn.classList.add('bg-gray-100', 'text-gray-800', 'dark:bg-gray-700', 'dark:text-gray-200'));
+        filterButtons.forEach(btn => {
+          btn.classList.remove('active', 'bg-indigo-100', 'text-indigo-800', 'dark:bg-indigo-900', 'dark:text-indigo-200');
+          btn.classList.add('bg-gray-100', 'text-gray-800', 'dark:bg-gray-700', 'dark:text-gray-200');
+        });
         
         // Add active class to clicked button
         button.classList.add('active', 'bg-indigo-100', 'text-indigo-800', 'dark:bg-indigo-900', 'dark:text-indigo-200');
@@ -192,15 +143,20 @@ const projects = [
         
         const filter = button.getAttribute('data-filter');
         
-        projectCards.forEach(card => {
+        projectCards.forEach((card: Element) => {
+          const htmlCard = card as HTMLElement;
+          
           if (filter === 'all') {
-            card.style.display = 'block';
+            htmlCard.style.display = 'block';
           } else {
-            const tags = card.getAttribute('data-tags').split(',');
-            if (tags.includes(filter)) {
-              card.style.display = 'block';
-            } else {
-              card.style.display = 'none';
+            const tagsAttr = card.getAttribute('data-tags');
+            if (tagsAttr) {
+              const tags = tagsAttr.split(',');
+              if (filter && tags.includes(filter)) {
+                htmlCard.style.display = 'block';
+              } else {
+                htmlCard.style.display = 'none';
+              }
             }
           }
         });

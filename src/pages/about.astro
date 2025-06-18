@@ -2,11 +2,18 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getPersonalInfo, getExperience, getSkills, getCertifications, getMarkdownContent } from '../utils/portfolio-data.js';
+
+const personalInfo = getPersonalInfo();
+const experience = getExperience();
+const skills = getSkills();
+const certifications = getCertifications();
+const aboutContent = getMarkdownContent('about');
 ---
 
-<Layout 
-  title="About Me | Your Name - Portfolio" 
-  description="Learn about Your Name's background, skills, and professional journey in web development."
+<Layout
+  title={`About Me | ${personalInfo.name} - Portfolio`}
+  description={`Learn about ${personalInfo.name}'s background, skills, and professional journey as a ${personalInfo.title}.`}
 >
   <Header />
   
@@ -19,7 +26,7 @@ import Footer from '../components/Footer.astro';
             About Me
           </h1>
           <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-600 dark:text-gray-300">
-            Web developer passionate about creating fast, accessible, and user-friendly digital experiences.
+            {personalInfo.tagline}
           </p>
         </div>
       </div>
@@ -30,14 +37,28 @@ import Footer from '../components/Footer.astro';
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:grid lg:grid-cols-12 lg:gap-8">
           <div class="lg:col-span-5 mb-10 lg:mb-0">
-            <!-- Profile image placeholder -->
+            <!-- Profile image flip card -->
             <div class="h-full rounded-lg bg-gray-100 dark:bg-gray-800 overflow-hidden">
               <div class="h-full flex items-center justify-center p-8">
-                <!-- Replace with your image -->
-                <div class="bg-indigo-100 dark:bg-indigo-900/30 rounded-full h-64 w-64 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-32 w-32 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
+                <div class="flip-card" tabindex="0" role="button" aria-label="Profile photo. Press Enter or Space to flip the card." aria-pressed="false">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <img 
+                        src="/assets/img/avatar.jpg" 
+                        alt={`${personalInfo.name} - ${personalInfo.title}`} 
+                        class="profile-image"
+                        loading="eager" 
+                      />
+                    </div>
+                    <div class="flip-card-back">
+                      <img 
+                        src="/assets/img/img.jpg" 
+                        alt="Alternate view" 
+                        class="profile-image"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -45,23 +66,15 @@ import Footer from '../components/Footer.astro';
           
           <div class="lg:col-span-7">
             <h2 class="text-2xl font-bold text-gray-900 dark:text-white">My Journey</h2>
-            <div class="mt-6 space-y-6 text-gray-600 dark:text-gray-300">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.
-              </p>
-              <p>
-                Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero.
-              </p>
-              <p>
-                Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor.
-              </p>
+            <div class="mt-6 space-y-6 text-gray-600 dark:text-gray-300 prose dark:prose-invert prose-indigo max-w-none">
+              <div set:html={aboutContent} />
             </div>
             
             <!-- Work Experience -->
             <div class="mt-12">
               <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Experience</h2>
               <div class="mt-6 space-y-8">
-                <!-- Experience Item 1 -->
+                {experience.map((job, index) => (
                 <div class="relative">
                   <div class="ml-9 pb-8">
                     <div class="-ml-12 absolute rounded-full w-8 h-8 bg-indigo-600 dark:bg-indigo-500 flex items-center justify-center">
@@ -70,34 +83,26 @@ import Footer from '../components/Footer.astro';
                         <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
                       </svg>
                     </div>
-                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">Senior Developer</h3>
-                    <p class="text-sm text-indigo-600 dark:text-indigo-400">Company Name • 2020 - Present</p>
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">{job.role}</h3>
+                    <p class="text-sm text-indigo-600 dark:text-indigo-400">{job.company} • {job.period}</p>
                     <div class="mt-2 text-gray-600 dark:text-gray-300">
-                      <p>Responsible for leading development of flagship products and mentoring junior developers.</p>
+                      <p class="mb-1">{job.location}</p>
                       <ul class="mt-2 list-disc list-inside space-y-1 text-sm">
-                        <li>Led team of 5 developers in completing major platform rewrite</li>
-                        <li>Improved site performance by 35% through optimization techniques</li>
-                        <li>Implemented CI/CD pipeline reducing deployment time by 60%</li>
+                        {job.description.map(item => (
+                          <li>{item}</li>
+                        ))}
                       </ul>
+                      <div class="mt-3 flex flex-wrap gap-2">
+                        {job.technologies.map(tech => (
+                          <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-                
-                <!-- Experience Item 2 -->
-                <div class="relative">
-                  <div class="ml-9 pb-8">
-                    <div class="-ml-12 absolute rounded-full w-8 h-8 bg-indigo-600 dark:bg-indigo-500 flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
-                        <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
-                      </svg>
-                    </div>
-                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">Web Developer</h3>
-                    <p class="text-sm text-indigo-600 dark:text-indigo-400">Previous Company • 2017 - 2020</p>
-                    <div class="mt-2 text-gray-600 dark:text-gray-300">
-                      <p>Full-stack developer working on client projects across various industries.</p>
-                      <ul class="mt-2 list-disc list-inside space-y-1 text-sm">
-                        <li>Developed and maintained over 20 client websites</li>
+                ))}
                         <li>Created responsive design system used across all client projects</li>
                         <li>Introduced accessibility standards that became company policy</li>
                       </ul>
@@ -275,4 +280,6 @@ import Footer from '../components/Footer.astro';
   </main>
   
   <Footer />
+  
+  <script src="../scripts/flip-card.js"></script>
 </Layout>

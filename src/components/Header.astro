@@ -1,4 +1,9 @@
 ---
+import { getPersonalInfo, getSiteMetadata } from "../utils/portfolio-data.js";
+
+const personalInfo = getPersonalInfo();
+const siteMetadata = getSiteMetadata();
+
 const navItems = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
@@ -17,8 +22,8 @@ const currentPath = Astro.url.pathname;
       <!-- Logo -->
       <div class="flex justify-start lg:w-0 lg:flex-1">
         <a href="/" class="text-xl font-bold text-gray-900 dark:text-white">
-          <span class="sr-only">Your Name</span>
-          <span>Portfolio</span>
+          <span class="sr-only">{personalInfo.name}</span>
+          <span>{personalInfo.name.split(' ')[0]}'s Portfolio</span>
         </a>
       </div>
       

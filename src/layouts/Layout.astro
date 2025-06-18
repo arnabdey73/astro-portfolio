@@ -1,17 +1,21 @@
 ---
 import "../styles/global.css";
+import "../styles/flip-animation.css";
+import { getSiteMetadata } from "../utils/portfolio-data.js";
 
 interface Props {
-	title: string;
-	description: string;
+	title?: string;
+	description?: string;
 	image?: string;
 	canonicalURL?: string;
 }
 
+const siteMetadata = getSiteMetadata();
+
 const { 
-	title, 
-	description, 
-	image = "/images/og-default.jpg",
+	title = siteMetadata.title, 
+	description = siteMetadata.description, 
+	image = siteMetadata.image || "/images/og-default.jpg",
 	canonicalURL = Astro.url.href
 } = Astro.props;
 ---
@@ -43,6 +47,9 @@ const {
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content={new URL(image, Astro.url)} />
+		
+		<!-- Devicon for tech icons -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 	</head>
 	<body class="min-h-screen bg-white dark:bg-gray-900">
 		<slot />
