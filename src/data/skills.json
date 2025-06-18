@@ -9,13 +9,23 @@
           "level": 5
         },
         {
-          "name": "AWS",
-          "icon": "devicon-amazonwebservices-original colored",
-          "level": 3
+          "name": "Azure DevOps",
+          "icon": "devicon-azure-plain colored",
+          "level": 5
         },
         {
-          "name": "OpenStack",
-          "icon": "devicon-openstack-plain colored",
+          "name": "Azure Functions",
+          "icon": "devicon-azure-plain colored",
+          "level": 4
+        },
+        {
+          "name": "Azure Kubernetes Service",
+          "icon": "devicon-azure-plain colored",
+          "level": 4
+        },
+        {
+          "name": "AWS",
+          "icon": "devicon-amazonwebservices-original colored",
           "level": 3
         },
         {
@@ -54,6 +64,11 @@
           "level": 5
         },
         {
+          "name": "Azure Bicep",
+          "icon": "devicon-azure-plain colored",
+          "level": 4
+        },
+        {
           "name": "Ansible",
           "icon": "devicon-ansible-plain colored",
           "level": 4
@@ -61,6 +76,11 @@
         {
           "name": "ARM Templates",
           "icon": "devicon-azure-plain colored",
+          "level": 4
+        },
+        {
+          "name": "Pulumi",
+          "icon": "devicon-azure-plain",
           "level": 3
         }
       ]
