@@ -28,6 +28,13 @@
     "featured": true
   },
   {
+    "title": "Azure Core Governance SRE Agent",
+    "description": "An intelligent Site Reliability Engineering (SRE) agent that automates monitoring, incident response, and governance compliance for Azure cloud environments, helping to maintain high reliability and compliance standards.",
+    "technologies": ["Python", "Azure Functions", "AI/ML", "Monitoring"],
+    "githubUrl": "https://github.com/arnabdey73/azure-core-governance-sre-agent",
+    "featured": true
+  },
+  {
     "title": "Personal Portfolio with Astro",
     "description": "Personal portfolio website showcasing projects, certifications, and contact information, built with Astro and Tailwind CSS for superior performance and SEO.",
     "technologies": ["Astro", "Tailwind CSS", "JavaScript", "Responsive Design"],

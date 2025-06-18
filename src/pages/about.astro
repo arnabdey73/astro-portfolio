@@ -65,7 +65,15 @@ const aboutContent = getMarkdownContent('about');
           </div>
           
           <div class="lg:col-span-7">
-            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">My Journey</h2>
+            <div class="flex items-center justify-between">
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">My Journey</h2>
+              <a href={personalInfo.resumeUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download Resume
+              </a>
+            </div>
             <div class="mt-6 space-y-6 text-gray-600 dark:text-gray-300 prose dark:prose-invert prose-indigo max-w-none">
               <div set:html={aboutContent} />
             </div>
@@ -228,13 +236,13 @@ const aboutContent = getMarkdownContent('about');
           <div class="bg-white dark:bg-gray-800 shadow-sm rounded-lg p-6">
             <div class="flex flex-col md:flex-row md:justify-between md:items-center">
               <div>
-                <h3 class="text-lg font-medium text-gray-900 dark:text-white">Bachelor of Science in Computer Science</h3>
-                <p class="text-indigo-600 dark:text-indigo-400">University Name</p>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white">Bachelor of Technology in Computer Science & Engineering</h3>
+                <p class="text-indigo-600 dark:text-indigo-400">West Bengal University of Technology</p>
               </div>
-              <p class="mt-2 md:mt-0 text-gray-600 dark:text-gray-300">2013 - 2017</p>
+              <p class="mt-2 md:mt-0 text-gray-600 dark:text-gray-300">2005 - 2009</p>
             </div>
             <p class="mt-4 text-gray-600 dark:text-gray-300">
-              Graduated with honors. Specialized in web technologies and software engineering.
+              Graduated with honors. Specialized in Hosting technologies and software engineering.
               Senior project focused on developing an accessibility-first web framework.
             </p>
           </div>
@@ -243,9 +251,8 @@ const aboutContent = getMarkdownContent('about');
           <div class="bg-white dark:bg-gray-800 shadow-sm rounded-lg p-6">
             <h3 class="text-lg font-medium text-gray-900 dark:text-white">Certifications</h3>
             <ul class="mt-4 space-y-2 text-gray-600 dark:text-gray-300">
-              <li>AWS Certified Solutions Architect</li>
-              <li>Google Professional Web Developer</li>
-              <li>Microsoft Certified: Azure Developer Associate</li>
+              <li>Google Associate Cloud Engineer</li>
+              <li>Microsoft Certified: Azure Fundamentals</li>
             </ul>
           </div>
         </div>
