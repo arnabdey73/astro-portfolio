@@ -8,6 +8,8 @@ import {
   formatRepositoryForDisplay
 } from '../../utils/github-api.js';
 
+export const prerender = false;
+
 // Simple in-memory cache with 1-hour expiration
 let cache = {
   data: null,

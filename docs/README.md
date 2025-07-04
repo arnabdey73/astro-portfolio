@@ -8,6 +8,7 @@ This directory contains all the development documentation and implementation gui
 - **[CONTACT_FORM_COMPLETE.md](./CONTACT_FORM_COMPLETE.md)** - Complete contact form implementation guide
 - **[CONTACT_FORM_EMAIL_SETUP.md](./CONTACT_FORM_EMAIL_SETUP.md)** - Email delivery setup with Resend
 - **[CONTACT_FORM_FIXED.md](./CONTACT_FORM_FIXED.md)** - Contact form bug fixes and improvements
+- **[CONTACT_FORM_API_FIXED.md](./CONTACT_FORM_API_FIXED.md)** - Production API endpoint fix and Formspree integration
 - **[contact-form-email-setup.md](./contact-form-email-setup.md)** - Additional email setup instructions
 - **[contact-form-setup-guide.md](./contact-form-setup-guide.md)** - Step-by-step contact form setup
 
