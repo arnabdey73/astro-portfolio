@@ -11,6 +11,7 @@ import openSource from '../data/open-source.json';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { marked } from 'marked';
+import { addThumbnailsToProjects, getProjectThumbnail } from './thumbnail-generator.js';
 
 // Get Markdown content as HTML
 export function getMarkdownContent(filename) {
@@ -36,10 +37,15 @@ export function getSiteMetadata() {
 
 // Get all projects or featured only
 export function getProjects(featuredOnly = false) {
+  let projectList;
   if (featuredOnly) {
-    return projects.filter(project => project.featured);
+    projectList = projects.filter(project => project.featured);
+  } else {
+    projectList = projects;
   }
-  return projects;
+  
+  // Add thumbnails to all projects
+  return addThumbnailsToProjects(projectList);
 }
 
 // Get project by title (slug)

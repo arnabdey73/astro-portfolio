@@ -39,6 +39,7 @@
     "description": "Personal portfolio website showcasing projects, certifications, and contact information, built with Astro and Tailwind CSS for superior performance and SEO.",
     "technologies": ["Astro", "Tailwind CSS", "JavaScript", "Responsive Design"],
     "githubUrl": "https://github.com/arnabdey73/astro-portfolio",
-    "featured": true
+    "featured": true,
+    "thumbnail": "/assets/img/portfolio-thumbnail.jpg"
   }
 ]
