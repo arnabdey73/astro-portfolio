@@ -40,6 +40,6 @@
     "technologies": ["Astro", "Tailwind CSS", "JavaScript", "Responsive Design"],
     "githubUrl": "https://github.com/arnabdey73/astro-portfolio",
     "featured": true,
-    "thumbnail": "/assets/img/portfolio-thumbnail.jpg"
+    "thumbnail": "/assets/img/portfolio-thumbnail.svg"
   }
 ]

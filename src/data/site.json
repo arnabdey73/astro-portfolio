@@ -2,7 +2,7 @@
   "title": "Arnab Dey | Cloud & DevOps Engineer Portfolio",
   "description": "Portfolio website for Arnab Dey, a Cloud & DevOps Engineer specializing in Azure, Terraform, and modern DevOps practices.",
   "author": "Arnab Dey",
-  "image": "/assets/img/portfolio-thumbnail.jpg",
+  "image": "/assets/img/portfolio-thumbnail.svg",
   "twitterHandle": "",
   "baseUrl": "https://arnabdey.dev",
   "seo": {

@@ -1,0 +1,60 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="portfolioGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF5D01"/>
+      <stop offset="50%" style="stop-color:#4F46E5"/>
+      <stop offset="100%" style="stop-color:#7C3AED"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="400" fill="url(#portfolioGradient)"/>
+  
+  <!-- Geometric patterns -->
+  <circle cx="100" cy="80" r="40" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="500" cy="320" r="60" fill="rgba(255,255,255,0.1)"/>
+  <rect x="450" y="50" width="80" height="80" fill="rgba(255,255,255,0.1)" rx="10"/>
+  <rect x="50" y="280" width="100" height="60" fill="rgba(255,255,255,0.1)" rx="8"/>
+  
+  <!-- Main text -->
+  <text x="300" y="180" 
+        font-family="Arial, sans-serif" 
+        font-size="48" 
+        font-weight="bold" 
+        text-anchor="middle" 
+        fill="white"
+        filter="url(#glow)">
+    Portfolio
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="300" y="220" 
+        font-family="Arial, sans-serif" 
+        font-size="20" 
+        font-weight="500"
+        text-anchor="middle" 
+        fill="rgba(255,255,255,0.9)">
+    Astro + Tailwind CSS
+  </text>
+  
+  <!-- Decorative elements -->
+  <polygon points="380,260 400,280 420,260 400,240" fill="rgba(255,255,255,0.3)"/>
+  <polygon points="180,120 200,140 220,120 200,100" fill="rgba(255,255,255,0.3)"/>
+  
+  <!-- Tech icons representation -->
+  <circle cx="250" cy="300" r="20" fill="rgba(255,255,255,0.2)"/>
+  <text x="250" y="307" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">A</text>
+  
+  <circle cx="300" cy="300" r="20" fill="rgba(255,255,255,0.2)"/>
+  <text x="300" y="307" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">T</text>
+  
+  <circle cx="350" cy="300" r="20" fill="rgba(255,255,255,0.2)"/>
+  <text x="350" y="307" font-family="Arial" font-size="14" text-anchor="middle" fill="white" font-weight="bold">JS</text>
+</svg>

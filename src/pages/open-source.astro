@@ -2,14 +2,184 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getSiteMetadata, getPersonalInfo, getOpenSourceInfo } from '../utils/portfolio-data.js';
+import { getSiteMetadata, getPersonalInfo } from '../utils/portfolio-data.js';
+import { 
+  fetchGitHubProfile, 
+  fetchGitHubRepositories, 
+  fetchGitHubEvents,
+  calculateGitHubStats,
+  categorizeRepositories,
+  formatRepositoryForDisplay
+} from '../utils/github-api.js';
 
 // Get site metadata and personal info
 const siteMetadata = getSiteMetadata();
 const personalInfo = getPersonalInfo();
 
-// Get open source data
-const openSourceData = getOpenSourceInfo();
+// Fetch real GitHub data directly
+let openSourceData = {
+  categories: [] as Array<{
+    name: string;
+    slug: string;
+    icon: string;
+    count?: number;
+    repositories?: any[];
+  }>,
+  repositories: [] as Array<{
+    name: string;
+    description: string;
+    url: string;
+    stars: number;
+    forks: number;
+    language: string;
+    category: string;
+  }>,
+  contributions: [] as Array<{
+    name: string;
+    description: string;
+    url: string;
+    category: string;
+    date: string;
+  }>,
+  githubStats: {
+    repositoryCount: 0,
+    contributionCount: 0,
+    issuesPRsCount: 0,
+    stars: 0,
+    followers: 0,
+    lastUpdated: new Date().toISOString().split('T')[0]
+  }
+};
+
+let dataError = null;
+
+try {
+  console.log('Fetching GitHub data directly...');
+
+  // Fetch data from GitHub API directly
+  const [profile, repositories, events] = await Promise.all([
+    fetchGitHubProfile(),
+    fetchGitHubRepositories(),
+    fetchGitHubEvents()
+  ]);
+
+  if (!profile) {
+    throw new Error('Failed to fetch GitHub profile');
+  }
+
+  // Calculate statistics
+  const githubStats = calculateGitHubStats(profile, repositories, events);
+
+  // Categorize repositories
+  const categorizedRepos = categorizeRepositories(repositories);
+
+  // Format repositories for display (limit to most recent/popular ones)
+  const formattedRepositories = repositories
+    .filter(repo => !repo.fork && !repo.archived) // Exclude forks and archived repos
+    .sort((a, b) => {
+      // Sort by stars first, then by update date
+      if (b.stargazers_count !== a.stargazers_count) {
+        return b.stargazers_count - a.stargazers_count;
+      }
+      return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+    })
+    .slice(0, 12) // Limit to top 12 repositories
+    .map(formatRepositoryForDisplay);
+
+  // Create categories with repository counts
+  const categories = [
+    {
+      name: "Infrastructure as Code",
+      slug: "iac",
+      icon: "devicon-terraform-plain colored",
+      count: categorizedRepos.iac.length,
+      repositories: categorizedRepos.iac.slice(0, 6).map(formatRepositoryForDisplay)
+    },
+    {
+      name: "Azure Cloud",
+      slug: "azure", 
+      icon: "devicon-azure-plain colored",
+      count: categorizedRepos.azure.length,
+      repositories: categorizedRepos.azure.slice(0, 6).map(formatRepositoryForDisplay)
+    },
+    {
+      name: "DevOps",
+      slug: "devops",
+      icon: "devicon-jenkins-plain colored", 
+      count: categorizedRepos.devops.length,
+      repositories: categorizedRepos.devops.slice(0, 6).map(formatRepositoryForDisplay)
+    },
+    {
+      name: "Kubernetes",
+      slug: "kubernetes",
+      icon: "devicon-kubernetes-plain colored",
+      count: categorizedRepos.kubernetes.length,
+      repositories: categorizedRepos.kubernetes.slice(0, 6).map(formatRepositoryForDisplay)
+    },
+    {
+      name: "Automation", 
+      slug: "automation",
+      icon: "devicon-python-plain colored",
+      count: categorizedRepos.automation.length,
+      repositories: categorizedRepos.automation.slice(0, 6).map(formatRepositoryForDisplay)
+    },
+    {
+      name: "Web Development",
+      slug: "web",
+      icon: "devicon-javascript-plain colored",
+      count: categorizedRepos.web.length,
+      repositories: categorizedRepos.web.slice(0, 6).map(formatRepositoryForDisplay)
+    }
+  ];
+
+  // Process contributions from recent events
+  const contributions = events
+    .filter(event => ['PushEvent', 'PullRequestEvent', 'IssuesEvent'].includes(event.type))
+    .slice(0, 10)
+    .map(event => {
+      let category = 'general';
+      
+      // Categorize based on repository name/topics
+      if (event.repo?.name) {
+        const repoName = event.repo.name.toLowerCase();
+        if (repoName.includes('terraform') || repoName.includes('ansible')) {
+          category = 'iac';
+        } else if (repoName.includes('azure') || repoName.includes('az-')) {
+          category = 'azure';
+        } else if (repoName.includes('k8s') || repoName.includes('kubernetes')) {
+          category = 'kubernetes';
+        } else if (repoName.includes('docker') || repoName.includes('ci') || repoName.includes('jenkins')) {
+          category = 'devops';
+        } else if (repoName.includes('script') || repoName.includes('automation')) {
+          category = 'automation';
+        } else if (repoName.includes('web') || repoName.includes('js') || repoName.includes('react')) {
+          category = 'web';
+        }
+      }
+
+      return {
+        name: event.repo?.name || 'Unknown Repository',
+        description: `${event.type.replace('Event', '')} activity`,
+        url: `https://github.com/${event.repo?.name}`,
+        category,
+        date: new Date(event.created_at).toLocaleDateString()
+      };
+    });
+
+  // Update data
+  openSourceData = {
+    categories,
+    repositories: formattedRepositories,
+    contributions,
+    githubStats
+  };
+
+  console.log('GitHub data fetched successfully');
+} catch (error) {
+  console.error('Error fetching GitHub data:', error);
+  dataError = 'Unable to load GitHub data. Please try again later.';
+}
+
 const { categories, contributions, repositories, githubStats } = openSourceData;
 ---
 
@@ -33,6 +203,29 @@ const { categories, contributions, repositories, githubStats } = openSourceData;
         </div>
       </div>
     </section>
+
+    <!-- Error Message (if data failed to load) -->
+    {dataError && (
+      <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg p-4">
+            <div class="flex">
+              <svg class="w-5 h-5 text-yellow-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+              </svg>
+              <div class="ml-3">
+                <p class="text-sm font-medium text-yellow-800 dark:text-yellow-200">
+                  Unable to load live GitHub data
+                </p>
+                <p class="text-sm text-yellow-700 dark:text-yellow-300 mt-1">
+                  {dataError}. Showing example data below. Please refresh to try again.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
 
     <!-- GitHub Stats -->
     <section class="py-16">
@@ -189,11 +382,14 @@ const { categories, contributions, repositories, githubStats } = openSourceData;
                     </p>
                   </div>
                   <div class="ml-4 flex-shrink-0">
-                    {categories.find(cat => cat.slug === contribution.category) && (
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200">
-                        {categories.find(cat => cat.slug === contribution.category).name}
-                      </span>
-                    )}
+                    {(() => {
+                      const category = categories.find(cat => cat.slug === contribution.category);
+                      return category ? (
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200">
+                          {category.name}
+                        </span>
+                      ) : null;
+                    })()}
                   </div>
                 </div>
               </div>
@@ -242,11 +438,14 @@ const { categories, contributions, repositories, githubStats } = openSourceData;
                   <span class="ml-1 text-gray-600 dark:text-gray-300">{repo.forks}</span>
                 </div>
                 <div class="flex items-center">
-                  {categories.find(cat => cat.slug === repo.category) && (
-                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200">
-                      {categories.find(cat => cat.slug === repo.category).name}
-                    </span>
-                  )}
+                  {(() => {
+                    const category = categories.find(cat => cat.slug === repo.category);
+                    return category ? (
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200">
+                        {category.name}
+                      </span>
+                    ) : null;
+                  })()}
                 </div>
               </div>
             </div>

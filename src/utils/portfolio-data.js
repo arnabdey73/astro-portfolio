@@ -7,7 +7,6 @@ import skills from '../data/skills.json';
 import experience from '../data/experience.json';
 import certifications from '../data/certifications.json';
 import contact from '../data/contact.json';
-import openSource from '../data/open-source.json';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { marked } from 'marked';
@@ -77,11 +76,6 @@ export function getCertifications() {
 // Get contact information
 export function getContactInfo() {
   return contact;
-}
-
-// Get open source contributions and repositories
-export function getOpenSourceInfo() {
-  return openSource;
 }
 
 // Get all social links
