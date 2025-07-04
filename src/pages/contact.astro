@@ -139,7 +139,10 @@ const contactInfo = getContactInfo();
               Have a specific question or project in mind? Fill out this form and I'll get back to you soon.
             </p>
             
-            <form class="mt-8 space-y-6" id="contact-form" method="POST">
+            <form class="mt-8 space-y-6" id="contact-form" method="POST" name="contact" data-netlify="true">
+              <!-- Netlify form identifier -->
+              <input type="hidden" name="form-name" value="contact" />
+              
               <!-- Honeypot field for spam protection -->
               <div class="hidden">
                 <label>Don't fill this out if you're human: <input name="_gotcha" /></label>
@@ -287,7 +290,7 @@ const contactInfo = getContactInfo();
                     <p class="text-sm font-medium text-green-800 dark:text-green-200">
                       Message sent successfully!
                     </p>
-                    <p class="text-sm text-green-700 dark:text-green-300 mt-1">
+                    <p id="success-message" class="text-sm text-green-700 dark:text-green-300 mt-1">
                       Thank you for reaching out. I'll get back to you within 24-48 hours.
                     </p>
                   </div>
@@ -528,9 +531,13 @@ const contactInfo = getContactInfo();
     }
 
     // Show success message
-    function showSuccess() {
+    function showSuccess(message: string = 'Thank you for your message! I\'ll get back to you as soon as possible.') {
       formSuccess.classList.remove('hidden');
       formError.classList.add('hidden');
+      const successMessage = document.querySelector('#success-message');
+      if (successMessage) {
+        successMessage.textContent = message;
+      }
       formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
@@ -542,12 +549,36 @@ const contactInfo = getContactInfo();
       formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    // Submit form to Formspree (primary method for static sites)
+    // Submit form to Netlify Forms (primary method for static sites)
+    async function submitToNetlify(formData: FormData): Promise<boolean> {
+      try {
+        // Add Netlify form identifier
+        formData.append('form-name', 'contact');
+        
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData as any).toString()
+        });
+        
+        if (response.ok) {
+          console.log('Form submitted successfully via Netlify');
+          return true;
+        } else {
+          console.error('Netlify submission failed:', response.status);
+          return false;
+        }
+      } catch (error) {
+        console.error('Netlify submission error:', error);
+        return false;
+      }
+    }
+
+    // Submit form to Formspree (backup method)
     async function submitToFormspree(formData: FormData): Promise<boolean> {
       try {
-        // You can replace this with your actual Formspree form ID
-        // For now, we'll simulate a successful submission
-        const response = await fetch('https://formspree.io/f/xdknkqkg', {
+        // Using a test endpoint - replace with your actual Formspree form ID
+        const response = await fetch('https://formspree.io/f/mjkbokqw', {
           method: 'POST',
           body: formData,
           headers: {
@@ -564,6 +595,34 @@ const contactInfo = getContactInfo();
         }
       } catch (error) {
         console.error('Formspree submission error:', error);
+        return false;
+      }
+    }
+
+    // Submit via mailto as final fallback
+    function submitViaEmail(formData: FormData): boolean {
+      try {
+        const name = formData.get('name') as string;
+        const email = formData.get('email') as string;
+        const subject = formData.get('subject') as string;
+        const message = formData.get('message') as string;
+        const budget = formData.get('budget') as string;
+        const timeline = formData.get('timeline') as string;
+        
+        const emailBody = `Name: ${name}%0D%0A` +
+                         `Email: ${email}%0D%0A` +
+                         `Subject: ${subject}%0D%0A` +
+                         `Budget: ${budget}%0D%0A` +
+                         `Timeline: ${timeline}%0D%0A%0D%0A` +
+                         `Message:%0D%0A${message}`;
+        
+        const mailtoLink = `mailto:contact@arnabdey.dev?subject=${encodeURIComponent(subject)}&body=${emailBody}`;
+        window.open(mailtoLink, '_blank');
+        
+        console.log('Opened email client as fallback');
+        return true;
+      } catch (error) {
+        console.error('Email fallback error:', error);
         return false;
       }
     }
@@ -639,11 +698,21 @@ const contactInfo = getContactInfo();
       setLoadingState(true);
       
       const formData = new FormData(contactForm);
+      let success = false;
       
-      // Try Formspree first (works with static sites)
-      let success = await submitToFormspree(formData);
+      // Try multiple submission methods in order
+      console.log('Attempting form submission...');
       
-      // If Formspree fails, try custom API (for server deployments)
+      // 1. Try Netlify Forms (works if deployed on Netlify)
+      success = await submitToNetlify(formData);
+      
+      // 2. If Netlify fails, try Formspree
+      if (!success) {
+        console.log('Netlify failed, trying Formspree...');
+        success = await submitToFormspree(formData);
+      }
+      
+      // 3. If Formspree fails, try custom API
       if (!success) {
         console.log('Formspree failed, trying custom API...');
         success = await submitToAPI(formData);
@@ -656,7 +725,15 @@ const contactInfo = getContactInfo();
         contactForm.reset();
         messageCount.textContent = '0';
       } else {
-        showError('There was an error sending your message. Please try contacting me directly via email.');
+        // 4. Final fallback: open email client
+        console.log('All methods failed, opening email client...');
+        const emailOpened = submitViaEmail(formData);
+        
+        if (emailOpened) {
+          showSuccess('Your email client has been opened. Please send the email to complete your message.');
+        } else {
+          showError('Unable to send message automatically. Please email me directly at contact@arnabdey.dev');
+        }
       }
     });
 
