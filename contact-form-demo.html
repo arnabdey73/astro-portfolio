@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .transition-all-smooth {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 py-12">
+    <div class="max-w-2xl mx-auto px-4">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">Enhanced Contact Form Demo</h1>
+            <p class="text-gray-600">This demonstrates the new contact form features and functionality.</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold mb-6">Contact Form Features</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="font-medium text-blue-900 mb-2">✨ Enhanced UX</h3>
+                    <ul class="text-sm text-blue-800 space-y-1">
+                        <li>• Real-time validation</li>
+                        <li>• Character counter</li>
+                        <li>• Loading states</li>
+                        <li>• Success/error messages</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h3 class="font-medium text-green-900 mb-2">🔒 Security</h3>
+                    <ul class="text-sm text-green-800 space-y-1">
+                        <li>• Honeypot spam protection</li>
+                        <li>• Client-side validation</li>
+                        <li>• Input sanitization</li>
+                        <li>• Privacy policy requirement</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-purple-50 p-4 rounded-lg">
+                    <h3 class="font-medium text-purple-900 mb-2">📧 Backend Support</h3>
+                    <ul class="text-sm text-purple-800 space-y-1">
+                        <li>• Netlify Forms</li>
+                        <li>• Formspree integration</li>
+                        <li>• EmailJS support</li>
+                        <li>• Custom backend ready</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-orange-50 p-4 rounded-lg">
+                    <h3 class="font-medium text-orange-900 mb-2">📱 Professional</h3>
+                    <ul class="text-sm text-orange-800 space-y-1">
+                        <li>• Budget/timeline fields</li>
+                        <li>• Subject categorization</li>
+                        <li>• Responsive design</li>
+                        <li>• Accessibility features</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t pt-6">
+                <h3 class="text-lg font-medium mb-4">Setup Instructions</h3>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-700 mb-3">
+                        <strong>For Netlify hosting:</strong> The form works out of the box! Just deploy your site and check the Netlify dashboard for submissions.
+                    </p>
+                    <p class="text-sm text-gray-700 mb-3">
+                        <strong>For other hosting:</strong> Follow the setup guide to configure Formspree, EmailJS, or a custom backend.
+                    </p>
+                    <p class="text-sm text-gray-700">
+                        <strong>Documentation:</strong> Check the <code class="bg-gray-200 px-1 rounded">contact-form-setup-guide.md</code> file for detailed instructions.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-lg font-medium mb-4">Form Validation Demo</h3>
+            <div class="space-y-4">
+                <div class="p-3 bg-red-50 border border-red-200 rounded">
+                    <p class="text-sm text-red-700">
+                        <strong>Try this:</strong> Submit the form without filling required fields to see validation in action.
+                    </p>
+                </div>
+                <div class="p-3 bg-blue-50 border border-blue-200 rounded">
+                    <p class="text-sm text-blue-700">
+                        <strong>Type in message:</strong> Watch the character counter update in real-time.
+                    </p>
+                </div>
+                <div class="p-3 bg-green-50 border border-green-200 rounded">
+                    <p class="text-sm text-green-700">
+                        <strong>Submit valid form:</strong> See the success message and loading state.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center">
+            <a href="#" onclick="window.history.back()" class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                ← Back to Contact Page
+            </a>
+        </div>
+    </div>
+</body>
+</html>
