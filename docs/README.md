@@ -9,7 +9,8 @@ This directory contains all the development documentation and implementation gui
 - **[CONTACT_FORM_EMAIL_SETUP.md](./CONTACT_FORM_EMAIL_SETUP.md)** - Email delivery setup with Resend
 - **[CONTACT_FORM_FIXED.md](./CONTACT_FORM_FIXED.md)** - Contact form bug fixes and improvements
 - **[CONTACT_FORM_API_FIXED.md](./CONTACT_FORM_API_FIXED.md)** - Production API endpoint fix and Formspree integration
-- **[CONTACT_FORM_UNIVERSAL_FALLBACK.md](./CONTACT_FORM_UNIVERSAL_FALLBACK.md)** - ⭐ Multi-tier fallback system for 99.9% reliability
+- **[CONTACT_FORM_UNIVERSAL_FALLBACK.md](./CONTACT_FORM_UNIVERSAL_FALLBACK.md)** - Multi-tier fallback system for 99.9% reliability
+- **[CONTACT_FORM_ENHANCED_EMAIL_FALLBACK.md](./CONTACT_FORM_ENHANCED_EMAIL_FALLBACK.md)** - ⭐ LATEST: Enhanced Gmail fallback with manual instructions
 - **[contact-form-email-setup.md](./contact-form-email-setup.md)** - Additional email setup instructions
 - **[contact-form-setup-guide.md](./contact-form-setup-guide.md)** - Step-by-step contact form setup
 
