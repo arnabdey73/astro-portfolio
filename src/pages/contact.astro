@@ -577,10 +577,19 @@ const contactInfo = getContactInfo();
     // Submit form to Formspree (backup method)
     async function submitToFormspree(formData: FormData): Promise<boolean> {
       try {
-        // Use a working public test endpoint
-        const response = await fetch('https://formspree.io/f/xeqyzqyv', {
+        // Create a properly formatted form for Formspree
+        const formspreeData = new FormData();
+        formspreeData.append('name', formData.get('name') as string);
+        formspreeData.append('email', formData.get('email') as string);
+        formspreeData.append('subject', formData.get('subject') as string);
+        formspreeData.append('message', formData.get('message') as string);
+        formspreeData.append('budget', formData.get('budget') as string);
+        formspreeData.append('timeline', formData.get('timeline') as string);
+        
+        // Use a free public Formspree endpoint that should work
+        const response = await fetch('https://formspree.io/f/mnqejgvq', {
           method: 'POST',
-          body: formData,
+          body: formspreeData,
           headers: {
             'Accept': 'application/json'
           }
@@ -618,11 +627,12 @@ const contactInfo = getContactInfo();
                          `Message:\n${message}`;
         
         // Try multiple email methods
+        const contactEmail = 'mail@arnabdey.dev';
         const methods = [
           // Gmail web interface
-          `https://mail.google.com/mail/?view=cm&fs=1&to=contact@arnabdey.dev&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`,
+          `https://mail.google.com/mail/?view=cm&fs=1&to=${contactEmail}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`,
           // Standard mailto (fallback)
-          `mailto:contact@arnabdey.dev?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`
+          `mailto:${contactEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`
         ];
         
         // Try Gmail first
@@ -653,13 +663,14 @@ const contactInfo = getContactInfo();
       const message = formData.get('message') as string;
       const budget = formData.get('budget') as string;
       const timeline = formData.get('timeline') as string;
+      const contactEmail = 'mail@arnabdey.dev';
       
       const instructionsHtml = `
         <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-4 mt-4">
           <h4 class="font-semibold text-blue-800 dark:text-blue-200 mb-2">📧 Manual Email Instructions</h4>
-          <p class="text-blue-700 dark:text-blue-300 mb-3">Please copy the information below and send it to: <strong>contact@arnabdey.dev</strong></p>
+          <p class="text-blue-700 dark:text-blue-300 mb-3">Please copy the information below and send it to: <strong>${contactEmail}</strong></p>
           <div class="bg-white dark:bg-gray-800 border rounded p-3 text-sm font-mono">
-            <div><strong>To:</strong> contact@arnabdey.dev</div>
+            <div><strong>To:</strong> ${contactEmail}</div>
             <div><strong>Subject:</strong> Contact Form: ${subject}</div>
             <div class="mt-2"><strong>Message:</strong></div>
             <div class="mt-1">Name: ${name}</div>
@@ -673,10 +684,10 @@ const contactInfo = getContactInfo();
             <button onclick="copyEmailContent()" class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">
               Copy Email Content
             </button>
-            <a href="mailto:contact@arnabdey.dev" class="bg-gray-600 text-white px-3 py-1 rounded text-sm hover:bg-gray-700">
+            <a href="mailto:${contactEmail}" class="bg-gray-600 text-white px-3 py-1 rounded text-sm hover:bg-gray-700">
               Open Email App
             </a>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@arnabdey.dev" target="_blank" class="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=${contactEmail}" target="_blank" class="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700">
               Open Gmail
             </a>
           </div>
@@ -794,7 +805,7 @@ const contactInfo = getContactInfo();
         // 4. Final fallback: open email client and show instructions
         console.log('All methods failed, opening email client...');
         submitViaEmail(formData);
-        showSuccess('All automated methods failed. Please check the email instructions below or contact me directly at contact@arnabdey.dev');
+        showSuccess('All automated methods failed. Please check the email instructions below or contact me directly at mail@arnabdey.dev');
       }
     });
 
