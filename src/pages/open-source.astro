@@ -75,8 +75,8 @@ try {
 
   // Format repositories for display (limit to most recent/popular ones)
   const formattedRepositories = repositories
-    .filter(repo => !repo.fork && !repo.archived) // Exclude forks and archived repos
-    .sort((a, b) => {
+    .filter((repo: any) => !repo.fork && !repo.archived) // Exclude forks and archived repos
+    .sort((a: any, b: any) => {
       // Sort by stars first, then by update date
       if (b.stargazers_count !== a.stargazers_count) {
         return b.stargazers_count - a.stargazers_count;
@@ -134,9 +134,9 @@ try {
 
   // Process contributions from recent events
   const contributions = events
-    .filter(event => ['PushEvent', 'PullRequestEvent', 'IssuesEvent'].includes(event.type))
+    .filter((event: any) => ['PushEvent', 'PullRequestEvent', 'IssuesEvent'].includes(event.type))
     .slice(0, 10)
-    .map(event => {
+    .map((event: any) => {
       let category = 'general';
       
       // Categorize based on repository name/topics
