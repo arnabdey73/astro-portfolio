@@ -31,6 +31,7 @@ This directory contains all the development documentation and implementation gui
 
 ### 📊 Project Status
 - **[site-status.md](./site-status.md)** - ⭐ **CURRENT SITE STATUS**: Complete production readiness summary with all features and fixes
+- **[GDPR_COOKIE_ENHANCEMENT.md](./GDPR_COOKIE_ENHANCEMENT.md)** - ⭐ **LATEST**: GDPR compliance and comprehensive cookie policy enhancement
 
 ## 📖 How to Use This Documentation
 

@@ -37,7 +37,7 @@ const siteMetadata = getSiteMetadata();
           <!-- Last Updated -->
           <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg p-4 mb-8">
             <p class="text-blue-800 dark:text-blue-200 text-sm mb-0">
-              <strong>Last Updated:</strong> January 5, 2025
+              <strong>Last Updated:</strong> July 5, 2025
             </p>
           </div>
 
@@ -118,11 +118,93 @@ const siteMetadata = getSiteMetadata();
             To exercise any of these rights, please contact me at <a href={`mailto:${personalInfo.email}`} class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500">{personalInfo.email}</a>.
           </p>
 
-          <!-- Cookies and Tracking -->
-          <h2>Cookies and Tracking</h2>
+          <!-- GDPR Compliance (EU General Data Protection Regulation) -->
+          <h2>GDPR Compliance</h2>
           <p>
-            This website does not use cookies for tracking or analytics. The site is built as a static website and does not collect browsing data or use tracking technologies.
+            This website complies with the EU General Data Protection Regulation (GDPR) for all users, regardless of location. Under GDPR, you have enhanced rights regarding your personal data:
           </p>
+          
+          <h3>Legal Basis for Processing</h3>
+          <p>I process your personal data based on the following legal grounds:</p>
+          <ul>
+            <li><strong>Consent (Article 6(1)(a)):</strong> When you voluntarily submit the contact form</li>
+            <li><strong>Legitimate Interest (Article 6(1)(f)):</strong> To respond to your inquiries and provide requested services</li>
+            <li><strong>Contract Performance (Article 6(1)(b)):</strong> When processing is necessary for project communications</li>
+          </ul>
+          
+          <h3>Your GDPR Rights</h3>
+          <p>Under GDPR, you have the following rights:</p>
+          <ul>
+            <li><strong>Right to be Informed (Article 13-14):</strong> This privacy policy fulfills this requirement</li>
+            <li><strong>Right of Access (Article 15):</strong> Request a copy of all personal data I hold about you</li>
+            <li><strong>Right to Rectification (Article 16):</strong> Correct inaccurate or incomplete data</li>
+            <li><strong>Right to Erasure (Article 17):</strong> Request deletion of your personal data ("right to be forgotten")</li>
+            <li><strong>Right to Restrict Processing (Article 18):</strong> Limit how your data is used</li>
+            <li><strong>Right to Data Portability (Article 20):</strong> Receive your data in a machine-readable format</li>
+            <li><strong>Right to Object (Article 21):</strong> Object to processing based on legitimate interests</li>
+            <li><strong>Rights Related to Automated Decision Making (Article 22):</strong> Not applicable as no automated decisions are made</li>
+          </ul>
+          
+          <h3>Data Protection Officer</h3>
+          <p>
+            As a small personal website, I am not required to appoint a Data Protection Officer. However, I take data protection seriously and you can contact me directly at <a href={`mailto:${personalInfo.email}`} class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500">{personalInfo.email}</a> for any GDPR-related inquiries.
+          </p>
+          
+          <h3>Supervisory Authority</h3>
+          <p>
+            If you believe your data protection rights have been violated, you have the right to lodge a complaint with the Swedish Authority for Privacy Protection (Integritetsskyddsmyndigheten) or your local data protection authority.
+          </p>
+
+          <!-- Cookies and Tracking -->
+          <h2>Cookies and Website Analytics</h2>
+          
+          <h3>Cookie Policy</h3>
+          <p>
+            This website is designed with privacy in mind and uses minimal tracking technology:
+          </p>
+          
+          <h4>Essential Cookies</h4>
+          <ul>
+            <li><strong>Session Storage:</strong> Used temporarily for form validation and user experience (not persistent)</li>
+            <li><strong>Local Storage:</strong> May store theme preferences (dark/light mode) locally in your browser</li>
+            <li><strong>No Third-Party Tracking:</strong> This site does not use Google Analytics, Facebook Pixel, or similar tracking services</li>
+          </ul>
+          
+          <h4>Technical Cookies</h4>
+          <p>The following technical storage may be used:</p>
+          <ul>
+            <li><strong>Theme Preference:</strong> Remembers your dark/light mode choice (stored locally, not transmitted)</li>
+            <li><strong>Form State:</strong> Temporarily preserves form data to prevent loss during submission</li>
+            <li><strong>Security:</strong> CSRF protection tokens when using contact forms</li>
+          </ul>
+          
+          <h4>No Marketing or Analytics Cookies</h4>
+          <p>This website explicitly does NOT use:</p>
+          <ul>
+            <li>Google Analytics or similar analytics services</li>
+            <li>Social media tracking pixels</li>
+            <li>Advertising cookies or retargeting</li>
+            <li>Cross-site tracking technologies</li>
+            <li>Third-party marketing tools</li>
+          </ul>
+          
+          <h3>How to Control Cookies</h3>
+          <p>You can control cookies through your browser settings:</p>
+          <ul>
+            <li><strong>Block All Cookies:</strong> Set your browser to reject all cookies (may affect functionality)</li>
+            <li><strong>Block Third-Party Cookies:</strong> This site doesn't use them, but it's a good general practice</li>
+            <li><strong>Clear Existing Cookies:</strong> Delete any stored preferences</li>
+            <li><strong>Privacy Mode:</strong> Use incognito/private browsing for no persistent storage</li>
+          </ul>
+          
+          <h3>External Services</h3>
+          <p>When you submit the contact form, your data may be processed by these privacy-compliant services:</p>
+          <ul>
+            <li><strong>Netlify Forms:</strong> GDPR-compliant form processing (if deployed on Netlify)</li>
+            <li><strong>Formspree:</strong> GDPR-compliant email delivery service</li>
+            <li><strong>FormSubmit:</strong> Privacy-focused form handling with encrypted endpoints</li>
+          </ul>
+          <p>Each service has their own privacy policies and GDPR compliance measures.</p>
 
           <!-- Third-Party Services -->
           <h2>Third-Party Services</h2>
@@ -141,11 +223,28 @@ const siteMetadata = getSiteMetadata();
             This website is not intended for children under 13 years of age. I do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided personal information, please contact me to have it removed.
           </p>
 
-          <!-- International Users -->
-          <h2>International Users</h2>
+          <!-- International Data Transfers -->
+          <h2>International Data Transfers</h2>
           <p>
-            This website is operated from Sweden. If you are accessing this site from outside Sweden, please be aware that your information may be transferred to, stored, and processed in Sweden where privacy laws may differ from your jurisdiction.
+            This website is operated from Sweden, which is part of the European Economic Area (EEA) and subject to GDPR. For users outside the EEA:
           </p>
+          <ul>
+            <li><strong>Data Processing Location:</strong> Primary data processing occurs within the EEA (Sweden)</li>
+            <li><strong>Third-Party Services:</strong> Some form processing services may transfer data outside the EEA using appropriate safeguards</li>
+            <li><strong>Adequacy Decisions:</strong> Transfers only occur to countries with adequate data protection or with appropriate safeguards</li>
+            <li><strong>Standard Contractual Clauses:</strong> Used when necessary for international transfers</li>
+          </ul>
+          
+          <h3>Cross-Border Data Protection</h3>
+          <p>
+            If you are accessing this site from outside the EEA, please be aware that:
+          </p>
+          <ul>
+            <li>Your data receives the same level of protection as required by GDPR</li>
+            <li>All third-party services used are GDPR-compliant or have adequate data protection measures</li>
+            <li>You retain all the rights outlined in this privacy policy regardless of your location</li>
+            <li>Data transfers are minimized and only occur when necessary for service delivery</li>
+          </ul>
 
           <!-- Changes to This Policy -->
           <h2>Changes to This Privacy Policy</h2>
@@ -166,11 +265,24 @@ const siteMetadata = getSiteMetadata();
             </ul>
           </div>
 
-          <!-- Consent -->
+          <!-- GDPR Consent and Agreement -->
           <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-4 mt-8">
-            <h3 class="text-green-800 dark:text-green-200 mt-0">Your Consent</h3>
+            <h3 class="text-green-800 dark:text-green-200 mt-0">GDPR Consent and Data Processing Agreement</h3>
+            <p class="text-green-700 dark:text-green-300 mb-4">
+              By using the contact form on this website, you provide <strong>explicit consent</strong> for the processing of your personal data as described in this privacy policy.
+            </p>
+            <p class="text-green-700 dark:text-green-300 mb-4">
+              <strong>You have the right to:</strong>
+            </p>
+            <ul class="text-green-700 dark:text-green-300 mb-4 space-y-1">
+              <li>✓ Withdraw consent at any time without affecting previous processing</li>
+              <li>✓ Request immediate deletion of your data</li>
+              <li>✓ Access all information I have about you</li>
+              <li>✓ Correct any inaccurate information</li>
+              <li>✓ Lodge a complaint with data protection authorities</li>
+            </ul>
             <p class="text-green-700 dark:text-green-300 mb-0">
-              By using the contact form on this website, you consent to the collection and use of your information as described in this privacy policy. If you do not agree with this policy, please do not use the contact form and instead reach out to me directly via email or social media.
+              If you do not agree with this policy or wish to withdraw consent, please do not use the contact form and instead reach out to me directly via email or social media. Your consent can be withdrawn at any time by contacting <a href={`mailto:${personalInfo.email}`} class="text-green-600 dark:text-green-400 hover:text-green-500 underline font-medium">{personalInfo.email}</a>.
             </p>
           </div>
         </div>

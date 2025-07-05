@@ -12,9 +12,10 @@ All requested tasks have been successfully completed. The portfolio site is prod
 - **Multi-tier fallback system implemented**:
   1. **Netlify Forms** (if deployed on Netlify)
   2. **Formspree** (with multiple endpoints and error handling)
-  3. **FormSubmit** (additional fallback service)
+  3. **FormSubmit** (additional fallback service with encoded endpoint)
   4. **Custom API endpoint** (for server deployments)
   5. **Enhanced email fallback**: Gmail web interface, mailto, and manual copy instructions
+- **Security**: FormSubmit endpoint uses encoded hash instead of naked email address
 - **Email-first solution**: Manual email instructions with "Copy Email Content" button
 - **Correct email address**: All references updated to `mail@arnabdey.dev`
 - **Enhanced UI**: Color-coded buttons, auto-scroll, clear user guidance
@@ -34,7 +35,9 @@ All requested tasks have been successfully completed. The portfolio site is prod
 - **Error handling**: Graceful degradation, no build failures
 
 ### 4. **Missing Pages & Links ✅**
-- **Privacy policy page**: Created comprehensive `/src/pages/privacy.astro`
+- **Privacy policy page**: Created comprehensive `/src/pages/privacy.astro` with full GDPR compliance
+- **GDPR compliance**: Complete GDPR rights, legal basis, data transfers, and supervisory authority information  
+- **Cookie policy**: Detailed cookie usage, analytics opt-out, and browser control instructions
 - **All navigation links working**: No 404 errors for referenced pages
 - **Consistent email addresses**: `mail@arnabdey.dev` throughout the site
 
