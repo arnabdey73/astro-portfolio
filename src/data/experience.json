@@ -1,6 +1,20 @@
 [
   {
     "role": "Cloud Engineer",
+    "company": "AFRY",
+    "period": "February 2025 - Present",
+    "location": "Sweden",
+    "description": [
+      "Design and implement cloud-native solutions using Azure services and infrastructure as code principles",
+      "Develop and maintain CI/CD pipelines for automated deployment and infrastructure management",
+      "Collaborate with cross-functional teams to deliver scalable cloud architectures for enterprise clients",
+      "Optimize cloud resource utilization and cost management strategies",
+      "Provide technical expertise in cloud migration and modernization projects"
+    ],
+    "technologies": ["Azure", "Terraform", "Azure DevOps", "Kubernetes", "Docker", "Infrastructure as Code", "Cloud Architecture"]
+  },
+  {
+    "role": "Cloud Engineer",
     "company": "Stena Metall AB",
     "period": "August 2024 - January 2025",
     "location": "Sweden",

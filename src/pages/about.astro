@@ -71,18 +71,73 @@ const certifications = getCertifications();
           <!-- Right Column - Content -->
           <div class="lg:col-span-8">
             <!-- Professional Summary -->
-            <div class="mb-10">
-              <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Professional Summary</h2>
-              <div class="prose dark:prose-invert prose-indigo max-w-none">
-                <p class="text-gray-600 dark:text-gray-300">
-                  An accomplished Senior Cloud DevOps Engineer with 8+ years of experience in public cloud environments (14+ years in IT). Proven expertise in optimizing CI/CD pipelines for high-quality deployments on public and hybrid cloud platforms. Strong problem solver with a focus on performance monitoring, cloud security, and promoting DevOps best practices.
-                </p>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Skilled in Azure DevOps, Jenkins, Kubernetes, Docker, GitHub, GitHub Actions, Ansible, and Terraform. Proficient in scripting with Bash, Python, and PowerShell for automated infrastructure management. Experienced in the SAFe framework and Product Owner roles, aligning product vision with stakeholder needs.
-                </p>
-                <p class="text-gray-600 dark:text-gray-300">
-                  Currently based in Göteborg, Sweden, I specialize in cloud platforms (Azure, AWS, OpenStack), infrastructure automation, and implementing enterprise-scale governance solutions.
-                </p>
+            <div class="mb-12">
+              <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Professional Summary</h2>
+              
+              <!-- Key Stats -->
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="text-center p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                  <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">14+</div>
+                  <div class="text-sm text-gray-600 dark:text-gray-300">Years in IT</div>
+                </div>
+                <div class="text-center p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                  <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">8+</div>
+                  <div class="text-sm text-gray-600 dark:text-gray-300">Years in Cloud</div>
+                </div>
+                <div class="text-center p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                  <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">3</div>
+                  <div class="text-sm text-gray-600 dark:text-gray-300">Cloud Platforms</div>
+                </div>
+                <div class="text-center p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                  <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">Senior</div>
+                  <div class="text-sm text-gray-600 dark:text-gray-300">Cloud Engineer</div>
+                </div>
+              </div>
+
+              <!-- Main Summary Content -->
+              <div class="space-y-6">
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Expertise & Focus
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    An accomplished Senior Cloud DevOps Engineer with proven expertise in optimizing CI/CD pipelines for high-quality deployments on public and hybrid cloud platforms. Strong problem solver with a focus on performance monitoring, cloud security, and promoting DevOps best practices across enterprise environments.
+                  </p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                    </svg>
+                    Technical Proficiency
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                    Skilled in modern DevOps toolchains including Azure DevOps, Jenkins, Kubernetes, Docker, GitHub Actions, Ansible, and Terraform. Proficient in scripting with Bash, Python, and PowerShell for automated infrastructure management.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    {['Azure', 'AWS', 'Kubernetes', 'Docker', 'Terraform', 'Jenkins', 'GitHub Actions', 'Python', 'PowerShell'].map(tech => (
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                    </svg>
+                    Current Role & Location
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Currently serving as a Cloud Engineer at AFRY in Göteborg, Sweden, specializing in enterprise-scale cloud platforms (Azure, AWS, OpenStack), infrastructure automation, and implementing comprehensive governance solutions. Experienced in SAFe framework and Product Owner roles, effectively aligning product vision with stakeholder needs.
+                  </p>
+                </div>
               </div>
             </div>
             
@@ -145,7 +200,7 @@ const certifications = getCertifications();
                         <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
                       </svg>
                     )}
-                    {(category.name === 'Monitoring & Logging' || category.name === 'Operating Systems' || category.name === 'Version Control' || category.name === 'Virtualization') && (
+                    {(category.name === 'Monitoring & Logging' || category.name === 'Operating Systems' || category.name === 'Version Control' || category.name === 'Virtualization' || category.name === 'Cloud Governance & Security') && (
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                       </svg>
@@ -159,8 +214,8 @@ const certifications = getCertifications();
                       return (
                         <div>
                           <div class="flex justify-between">
-                            <span class="font-medium text-sm">{skill.name}</span>
-                            <span class="text-xs text-gray-500">{levelText}</span>
+                            <span class="font-medium text-sm text-gray-900 dark:text-white">{skill.name}</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">{levelText}</span>
                           </div>
                           <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
                             <div class="bg-indigo-600 h-1.5 rounded-full" style={`width: ${levelWidth}%`}></div>

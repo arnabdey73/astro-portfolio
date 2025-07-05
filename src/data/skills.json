@@ -9,9 +9,19 @@
           "level": 5
         },
         {
+          "name": "Azure Logic Apps",
+          "icon": "devicon-azure-plain colored",
+          "level": 4
+        },
+        {
+          "name": "Entra ID (Azure AD)",
+          "icon": "devicon-azure-plain colored",
+          "level": 4
+        },
+        {
           "name": "AWS",
           "icon": "devicon-amazonwebservices-original colored",
-          "level": 4
+          "level": 3
         },
         {
           "name": "OpenStack",
@@ -104,6 +114,16 @@
       "name": "Monitoring & Logging",
       "skills": [
         {
+          "name": "Azure Monitor",
+          "icon": "devicon-azure-plain colored",
+          "level": 5
+        },
+        {
+          "name": "KQL (Kusto Query Language)",
+          "icon": "devicon-azure-plain colored",
+          "level": 4
+        },
+        {
           "name": "Prometheus",
           "icon": "devicon-prometheus-original colored",
           "level": 4
@@ -112,11 +132,6 @@
           "name": "Grafana",
           "icon": "devicon-grafana-original colored",
           "level": 4
-        },
-        {
-          "name": "Azure Monitor",
-          "icon": "devicon-azure-plain colored",
-          "level": 5
         },
         {
           "name": "ELK Stack",
@@ -166,6 +181,26 @@
         {
           "name": "VMware",
           "icon": "devicon-vmware-plain colored",
+          "level": 4
+        }
+      ]
+    },
+    {
+      "name": "Cloud Governance & Security",
+      "skills": [
+        {
+          "name": "Azure Cloud Adoption Framework",
+          "icon": "devicon-azure-plain colored",
+          "level": 4
+        },
+        {
+          "name": "Azure Governance",
+          "icon": "devicon-azure-plain colored",
+          "level": 4
+        },
+        {
+          "name": "Security Auditing",
+          "icon": "devicon-azure-plain colored",
           "level": 4
         }
       ]
