@@ -9,16 +9,6 @@
           "level": 5
         },
         {
-          "name": "Azure Logic Apps",
-          "icon": "devicon-azure-plain colored",
-          "level": 4
-        },
-        {
-          "name": "Entra ID (Azure AD)",
-          "icon": "devicon-azure-plain colored",
-          "level": 4
-        },
-        {
           "name": "AWS",
           "icon": "devicon-amazonwebservices-original colored",
           "level": 3
@@ -27,6 +17,11 @@
           "name": "OpenStack",
           "icon": "devicon-openstack-plain colored",
           "level": 3
+        },
+        {
+          "name": "GCP",
+          "icon": "devicon-googlecloud-plain colored",
+          "level": 2
         }
       ]
     },

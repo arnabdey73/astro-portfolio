@@ -1,6 +1,6 @@
 [
   {
-    "role": "DevOps Engineer",
+    "role": "Senior DevOps Engineer",
     "company": "AFRY",
     "period": "May 2025 - Present",
     "location": "Stockholm, Sweden",
@@ -18,7 +18,8 @@
     "role": "Cloud Engineer",
     "company": "Stena Metall AB",
     "period": "August 2024 - January 2025",
-    "location": "Sweden",
+    "location": "Göteborg, Sweden",
+    "locationLink": "https://maps.app.goo.gl/ZCzgXLpaJ27eAZzx7",
     "description": [
       "Upgraded the Cloud Adoption Framework (v5.2.1 to v6.0.0), improving compliance with Azure Governance standards",
       "Conducted security audits and automated tasks using Terraform and Azure Pipelines, reducing manual intervention by 40%",
@@ -28,10 +29,11 @@
     "technologies": ["Azure", "Terraform", "Azure Pipelines", "KQL", "Azure Monitor", "Logic Apps", "Entra ID"]
   },
   {
-    "role": "Senior Software Engineer (DevOps)",
+    "role": "Senior DevOps Engineer",
     "company": "Capgemini Sverige AB",
     "period": "September 2021 - July 2024",
-    "location": "Sweden",
+    "location": "Göteborg, Sweden",
+    "locationLink": "https://maps.app.goo.gl/msfSAiahT3CcRxWU7",
     "description": [
       "Implemented CI/CD pipeline automation using Azure DevOps, cutting deployment time by 30%",
       "Upgraded on-prem hardware to prepare for Kubeflow platform using Ubuntu, xCAT, and Rancher RKE",
@@ -44,7 +46,8 @@
     "role": "Senior Business Consultant (DevOps)",
     "company": "Tech Mahindra",
     "period": "February 2017 - September 2021",
-    "location": "India/Remote",
+    "location": "Bangalore, India",
+    "locationLink": "https://maps.app.goo.gl/nBUbR1A82VDkFmS26",
     "description": [
       "Deployed CI/CD pipelines using Jenkins and Azure DevOps for business applications hosted on public/hybrid cloud platforms",
       "Automated microservice orchestration with Docker and Kubernetes, enhancing resource utilization by 25%",
@@ -57,7 +60,8 @@
     "role": "Senior AEM Administrator (Cloud)",
     "company": "ICF Next",
     "period": "September 2015 - January 2017",
-    "location": "Remote",
+    "location": "Bangalore, India",
+    "locationLink": "https://maps.app.goo.gl/FruFbnxtZWkFNP6G6",
     "description": [
       "Managed AWS cloud and VMware infrastructure, improving uptime by 15% through optimized resource management",
       "Automated cloud operations with Ansible and Shell scripting",
@@ -70,7 +74,8 @@
     "role": "Unix/Linux Systems Administrator",
     "company": "Hewlett Packard Enterprise",
     "period": "November 2011 - August 2015",
-    "location": "India",
+    "location": "Bangalore, India",
+    "locationLink": "https://maps.app.goo.gl/ueEV5ogR94kUjojj8",
     "description": [
       "Administered Unix-based cloud and on-prem VMware platforms, enhancing system performance and reliability",
       "Developed SOPs and UML diagrams, reducing incident response time by 20%",
@@ -83,7 +88,8 @@
     "role": "Linux Systems Engineer",
     "company": "Axon Networks (Now Trianz)",
     "period": "May 2011 - October 2011",
-    "location": "India",
+    "location": "Bangalore, India",
+    "locationLink": "https://maps.app.goo.gl/gA4KaQBPfRtkvpuk6",
     "description": [
       "Managed the installation and optimization of over 100 Linux servers, achieving high availability",
       "Implemented monitoring solutions for server performance and availability",
@@ -91,5 +97,20 @@
       "Provided technical support for Linux-based infrastructure"
     ],
     "technologies": ["Linux", "Server Administration", "Performance Optimization", "Monitoring", "Scripting"]
+  },
+  {
+    "role": "Jr. System Administrator",
+    "company": "Poornam Info Vision Pvt. Ltd.",
+    "period": "November 2009 - May 2010",
+    "location": "Kochi, India",
+    "locationLink": "https://maps.app.goo.gl/tJdDzRgSTkBHzej97",
+    "description": [
+      "Built, installed, configured, and managed Linux VPS remotely for enterprise clients",
+      "Implemented and administered DNS, DHCP, and SMTP servers for business operations",
+      "Performed troubleshooting of RAID/LVM issues and system optimization",
+      "Communicated system and network events, conducted RCA and log analysis after resolution",
+      "Handled critical issues including server downtime, service failures, and resource shortages"
+    ],
+    "technologies": ["Linux", "Shell Scripting", "DNS", "DHCP", "SMTP", "System Administration", "VPS Management", "RAID", "LVM"]
   }
 ]
