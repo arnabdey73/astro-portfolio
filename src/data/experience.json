@@ -1,42 +1,80 @@
 [
   {
-    "role": "DevOps Engineer",
-    "company": "AFRY",
-    "period": "2025 - Present",
+    "role": "Cloud Engineer",
+    "company": "Stena Metall AB",
+    "period": "August 2024 - January 2025",
     "location": "Sweden",
     "description": [
-      "Implemented Azure landing zone architecture using Terraform and Azure Bicep",
-      "Designed and implemented CI/CD pipelines using Azure DevOps for multiple client projects",
-      "Established infrastructure monitoring solutions using Azure Monitor, Log Analytics, and Grafana",
-      "Created automated cost optimization processes, achieving 20% reduction in cloud spend"
+      "Upgraded the Cloud Adoption Framework (v5.2.1 to v6.0.0), improving compliance with Azure Governance standards",
+      "Conducted security audits and automated tasks using Terraform and Azure Pipelines, reducing manual intervention by 40%",
+      "Monitored cloud platform patterns and anomalies using KQL and resolved incidents per SLA, achieving a 20% reduction in downtime",
+      "Managed Azure services including Logic Apps, IaaS, PaaS, and Entra ID (formerly Azure AD)"
     ],
-    "technologies": ["Azure", "Terraform", "Azure DevOps", "PowerShell", "Kubernetes"]
+    "technologies": ["Azure", "Terraform", "Azure Pipelines", "KQL", "Azure Monitor", "Logic Apps", "Entra ID"]
   },
   {
-    "role": "Senior Cloud Infrastructure Engineer",
-    "company": "Previous Employer",
-    "period": "2018 - 2022",
+    "role": "Senior Software Engineer (DevOps)",
+    "company": "Capgemini Sverige AB",
+    "period": "September 2021 - July 2024",
+    "location": "Sweden",
+    "description": [
+      "Implemented CI/CD pipeline automation using Azure DevOps, cutting deployment time by 30%",
+      "Upgraded on-prem hardware to prepare for Kubeflow platform using Ubuntu, xCAT, and Rancher RKE",
+      "Automated Azure Databricks cluster scaling with Terraform and GitHub Actions",
+      "Acted as a Product Owner, coordinating backlog priorities and ensuring alignment with stakeholder vision by creating product roadmap and vision board"
+    ],
+    "technologies": ["Azure DevOps", "Kubeflow", "Ubuntu", "Rancher RKE", "Azure Databricks", "Terraform", "GitHub Actions", "SAFe"]
+  },
+  {
+    "role": "Senior Business Consultant (DevOps)",
+    "company": "Tech Mahindra",
+    "period": "February 2017 - September 2021",
+    "location": "India/Remote",
+    "description": [
+      "Deployed CI/CD pipelines using Jenkins and Azure DevOps for business applications hosted on public/hybrid cloud platforms",
+      "Automated microservice orchestration with Docker and Kubernetes, enhancing resource utilization by 25%",
+      "Managed ELK stack for indexing product generated CSVs as well as centralized logging and monitoring",
+      "Reduced operational overhead by 20% through automated platform/infrastructure provisioning with Terraform/Ansible"
+    ],
+    "technologies": ["Jenkins", "Azure DevOps", "Docker", "Kubernetes", "ELK Stack", "Terraform", "Ansible", "Microservices"]
+  },
+  {
+    "role": "Senior AEM Administrator (Cloud)",
+    "company": "ICF Next",
+    "period": "September 2015 - January 2017",
     "location": "Remote",
     "description": [
-      "Led cloud infrastructure design and implementation for enterprise customers",
-      "Migrated legacy on-premise applications to Azure PaaS and IaaS solutions",
-      "Automated infrastructure provisioning using Terraform and Ansible",
-      "Managed AWS-based infrastructure hosting Production/Stage/UAT environments for multiple clients",
-      "Implemented comprehensive Disaster Recovery solutions at both application and infrastructure levels"
+      "Managed AWS cloud and VMware infrastructure, improving uptime by 15% through optimized resource management",
+      "Automated cloud operations with Ansible and Shell scripting",
+      "Administered Adobe Experience Manager (AEM) instances in cloud environments",
+      "Implemented monitoring and alerting solutions for improved system reliability"
     ],
-    "technologies": ["AWS", "Jenkins", "Chef", "Zabbix", "Git"]
+    "technologies": ["AWS", "VMware", "Ansible", "Shell Scripting", "Adobe AEM", "Cloud Infrastructure"]
   },
   {
-    "role": "IT Infrastructure Specialist",
-    "company": "Earlier Company",
-    "period": "2015 - 2018",
+    "role": "Unix/Linux Systems Administrator",
+    "company": "Hewlett Packard Enterprise",
+    "period": "November 2011 - August 2015",
     "location": "India",
     "description": [
-      "Managed on-premise data center operations with 200+ physical and virtual servers",
-      "Implemented virtualization solutions using VMware vSphere",
-      "Automated routine system administration tasks using PowerShell and Bash scripts",
-      "Designed and maintained backup and disaster recovery processes"
+      "Administered Unix-based cloud and on-prem VMware platforms, enhancing system performance and reliability",
+      "Developed SOPs and UML diagrams, reducing incident response time by 20%",
+      "Managed large-scale enterprise infrastructure across multiple data centers",
+      "Implemented automated backup and disaster recovery solutions"
     ],
-    "technologies": ["VMware", "Windows Server", "Linux", "PowerShell", "Networking"]
+    "technologies": ["Unix", "Linux", "VMware", "Cloud Platforms", "System Administration", "Disaster Recovery"]
+  },
+  {
+    "role": "Linux Systems Engineer",
+    "company": "Axon Networks (Now Trianz)",
+    "period": "May 2011 - October 2011",
+    "location": "India",
+    "description": [
+      "Managed the installation and optimization of over 100 Linux servers, achieving high availability",
+      "Implemented monitoring solutions for server performance and availability",
+      "Automated routine maintenance tasks through scripting",
+      "Provided technical support for Linux-based infrastructure"
+    ],
+    "technologies": ["Linux", "Server Administration", "Performance Optimization", "Monitoring", "Scripting"]
   }
 ]

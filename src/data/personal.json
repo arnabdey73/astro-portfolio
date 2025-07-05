@@ -4,7 +4,7 @@
   "tagline": "I help organizations build scalable, resilient cloud infrastructure and streamline their development workflows with modern DevOps practices.",
   "email": "mail@arnabdey.dev",
   "phone": "+46 76 45 16 092",
-  "location": "Sweden",
+  "location": "Göteborg, Sweden",
   "resumeUrl": "https://github.com/arnabdey73/resume/raw/master/Arnab-Dey-Cloud-DevOps-Engineer.pdf",
   "socialLinks": [
     {
@@ -29,13 +29,14 @@
     }
   ],
   "professional": {
-    "experience": "14+ years of IT experience",
-    "specialties": ["DevOps", "CI/CD", "Azure"],
+    "experience": "8+ years in cloud environments (14+ years IT)",
+    "specialties": ["Cloud DevOps", "CI/CD", "Azure", "Infrastructure Automation"],
     "currentEmployer": {
-      "name": "AFRY",
-      "title": "DevOps Engineer"
+      "name": "Stena Metall AB",
+      "title": "Cloud Engineer"
     },
-    "education": "West Bengal University of Technology"
+    "education": "B.Tech in Computer Science - West Bengal University of Technology (2005-2009)",
+    "certifications": ["Microsoft Certified: Azure Fundamentals"]
   },
   "blogUrl": "https://blog.arnabdey.dev"
 }

@@ -75,10 +75,13 @@ const certifications = getCertifications();
               <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Professional Summary</h2>
               <div class="prose dark:prose-invert prose-indigo max-w-none">
                 <p class="text-gray-600 dark:text-gray-300">
-                  With over 12 years of experience in the IT industry, I've evolved from a system administrator to a specialized Cloud & DevOps Engineer. My expertise centers around designing and implementing robust cloud infrastructures on Azure and AWS using Infrastructure as Code principles.
+                  An accomplished Senior Cloud DevOps Engineer with 8+ years of experience in public cloud environments (14+ years in IT). Proven expertise in optimizing CI/CD pipelines for high-quality deployments on public and hybrid cloud platforms. Strong problem solver with a focus on performance monitoring, cloud security, and promoting DevOps best practices.
                 </p>
                 <p class="text-gray-600 dark:text-gray-300">
-                  I'm passionate about automation, infrastructure optimization, and modern cloud-native solutions that enhance efficiency, reliability, and security. I approach technology implementation with a business-first mindset, focusing on outcomes rather than technical novelty.
+                  Skilled in Azure DevOps, Jenkins, Kubernetes, Docker, GitHub, GitHub Actions, Ansible, and Terraform. Proficient in scripting with Bash, Python, and PowerShell for automated infrastructure management. Experienced in the SAFe framework and Product Owner roles, aligning product vision with stakeholder needs.
+                </p>
+                <p class="text-gray-600 dark:text-gray-300">
+                  Currently based in Göteborg, Sweden, I specialize in cloud platforms (Azure, AWS, OpenStack), infrastructure automation, and implementing enterprise-scale governance solutions.
                 </p>
               </div>
             </div>
@@ -124,197 +127,50 @@ const certifications = getCertifications();
               <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-5">Skills & Expertise</h2>
 
               <div class="grid gap-6 grid-cols-1 md:grid-cols-2">
-                <!-- Cloud Platforms -->
+                {skills.map((category: any) => (
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-5">
                   <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z" />
-                    </svg>
-                    Cloud Platforms
+                    {category.name === 'Cloud Platforms' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z" />
+                      </svg>
+                    )}
+                    {(category.name === 'Configuration Management' || category.name === 'Scripting Languages') && (
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    )}
+                    {(category.name === 'CI/CD Tools' || category.name === 'Orchestration & Containerization') && (
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                      </svg>
+                    )}
+                    {(category.name === 'Monitoring & Logging' || category.name === 'Operating Systems' || category.name === 'Version Control' || category.name === 'Virtualization') && (
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                    )}
+                    {category.name}
                   </h3>
                   <div class="space-y-3">
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">Azure</span>
-                        <span class="text-xs text-gray-500">Expert</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 95%"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">Azure DevOps</span>
-                        <span class="text-xs text-gray-500">Expert</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 95%"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">Azure Kubernetes Service</span>
-                        <span class="text-xs text-gray-500">Advanced</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 85%"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">AWS</span>
-                        <span class="text-xs text-gray-500">Intermediate</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 75%"></div>
-                      </div>
-                    </div>
+                    {category.skills.map((skill: any) => {
+                      const levelText = skill.level === 5 ? 'Expert' : skill.level === 4 ? 'Advanced' : skill.level === 3 ? 'Intermediate' : 'Beginner';
+                      const levelWidth = skill.level * 20;
+                      return (
+                        <div>
+                          <div class="flex justify-between">
+                            <span class="font-medium text-sm">{skill.name}</span>
+                            <span class="text-xs text-gray-500">{levelText}</span>
+                          </div>
+                          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
+                            <div class="bg-indigo-600 h-1.5 rounded-full" style={`width: ${levelWidth}%`}></div>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
-
-                <!-- Infrastructure as Code -->
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-5">
-                  <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                    Infrastructure as Code
-                  </h3>
-                  <div class="space-y-3">
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">Terraform</span>
-                        <span class="text-xs text-gray-500">Expert</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 95%"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">Azure Bicep</span>
-                        <span class="text-xs text-gray-500">Advanced</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 85%"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">ARM Templates</span>
-                        <span class="text-xs text-gray-500">Advanced</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 80%"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">Pulumi</span>
-                        <span class="text-xs text-gray-500">Intermediate</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 70%"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- DevOps & Automation -->
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-5">
-                  <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
-                    </svg>
-                    DevOps & Containerization
-                  </h3>
-                  <div class="space-y-3">
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">Docker</span>
-                        <span class="text-xs text-gray-500">Advanced</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 85%"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">Kubernetes</span>
-                        <span class="text-xs text-gray-500">Advanced</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 85%"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">CI/CD Pipelines</span>
-                        <span class="text-xs text-gray-500">Expert</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 90%"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">Helm</span>
-                        <span class="text-xs text-gray-500">Intermediate</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 75%"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Monitoring & Security -->
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-5">
-                  <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    Monitoring & Security
-                  </h3>
-                  <div class="space-y-3">
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">Azure Monitor</span>
-                        <span class="text-xs text-gray-500">Expert</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 90%"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">Log Analytics</span>
-                        <span class="text-xs text-gray-500">Advanced</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 85%"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">Prometheus/Grafana</span>
-                        <span class="text-xs text-gray-500">Advanced</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 80%"></div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="flex justify-between">
-                        <span class="font-medium text-sm">Security Best Practices</span>
-                        <span class="text-xs text-gray-500">Advanced</span>
-                      </div>
-                      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                        <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 85%"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
