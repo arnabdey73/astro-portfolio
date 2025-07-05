@@ -135,7 +135,7 @@ const certifications = getCertifications();
                     Current Role & Location
                   </h3>
                   <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Currently serving as a Cloud Engineer at AFRY in Göteborg, Sweden, specializing in enterprise-scale cloud platforms (Azure, AWS, OpenStack), infrastructure automation, and implementing comprehensive governance solutions. Experienced in SAFe framework and Product Owner roles, effectively aligning product vision with stakeholder needs.
+                    Currently serving as a Cloud Engineer at AFRY in Stockholm, Sweden, specializing in enterprise-scale cloud platforms (Primarily Azure), infrastructure automation, and implementing comprehensive governance solutions. Experienced in SAFe framework and Product Owner roles, effectively aligning product vision with stakeholder needs.
                   </p>
                 </div>
               </div>
@@ -157,7 +157,23 @@ const certifications = getCertifications();
                     <h3 class="text-lg font-medium text-gray-900 dark:text-white">{job.role}</h3>
                     <p class="text-sm text-indigo-600 dark:text-indigo-400">{job.company} • {job.period}</p>
                     <div class="mt-2 text-gray-600 dark:text-gray-300">
-                      <p class="mb-1">{job.location}</p>
+                      {job.locationLink ? (
+                        <p class="mb-1">
+                          <a 
+                            href={job.locationLink} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                            </svg>
+                            {job.location}
+                          </a>
+                        </p>
+                      ) : (
+                        <p class="mb-1">{job.location}</p>
+                      )}
                       <ul class="mt-2 list-disc list-inside space-y-1 text-sm">
                         {job.description.map(item => (
                           <li>{item}</li>

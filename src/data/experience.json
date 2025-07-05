@@ -1,9 +1,10 @@
 [
   {
-    "role": "Cloud Engineer",
+    "role": "DevOps Engineer",
     "company": "AFRY",
-    "period": "February 2025 - Present",
-    "location": "Sweden",
+    "period": "May 2025 - Present",
+    "location": "Stockholm, Sweden",
+    "locationLink": "https://maps.app.goo.gl/oAWyikRsARoRpdLF9",
     "description": [
       "Design and implement cloud-native solutions using Azure services and infrastructure as code principles",
       "Develop and maintain CI/CD pipelines for automated deployment and infrastructure management",
