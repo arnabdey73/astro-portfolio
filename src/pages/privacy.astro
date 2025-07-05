@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import BackToTop from '../components/BackToTop.astro';
 import { getPersonalInfo, getSiteMetadata } from '../utils/portfolio-data.js';
 
 const personalInfo = getPersonalInfo();
@@ -291,6 +292,7 @@ const siteMetadata = getSiteMetadata();
   </main>
   
   <Footer />
+  <BackToTop />
 </Layout>
 
 <style>

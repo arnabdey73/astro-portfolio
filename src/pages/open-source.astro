@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import BackToTop from '../components/BackToTop.astro';
 import { getSiteMetadata, getPersonalInfo } from '../utils/portfolio-data.js';
 import { 
   fetchGitHubProfile, 
@@ -507,4 +508,5 @@ const { categories, contributions, repositories, githubStats } = openSourceData;
   </main>
   
   <Footer />
+  <BackToTop />
 </Layout>
