@@ -41,7 +41,7 @@
         {
           "name": "GitLab CI",
           "icon": "devicon-gitlab-plain colored",
-          "level": 4
+          "level": 3
         },
         {
           "name": "GitHub Actions",
@@ -96,12 +96,12 @@
         {
           "name": "Python",
           "icon": "devicon-python-plain colored",
-          "level": 4
+          "level": 3
         },
         {
           "name": "PowerShell",
           "icon": "devicon-powershell-plain colored",
-          "level": 4
+          "level": 3
         }
       ]
     },
