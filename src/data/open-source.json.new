@@ -1,0 +1,168 @@
+{
+  "githubStats": {
+    "repositoryCount": 35,
+    "contributionCount": 1200,
+    "issuesPRsCount": 180,
+    "stars": 150,
+    "followers": 65,
+    "lastUpdated": "2025-07-06"
+  },
+  "categories": [
+    {
+      "name": "Infrastructure as Code",
+      "slug": "iac",
+      "icon": "devicon-terraform-plain colored",
+      "count": 8
+    },
+    {
+      "name": "Azure Cloud",
+      "slug": "azure",
+      "icon": "devicon-azure-plain colored",
+      "count": 12
+    },
+    {
+      "name": "DevOps",
+      "slug": "devops",
+      "icon": "devicon-jenkins-plain colored",
+      "count": 15
+    },
+    {
+      "name": "Kubernetes",
+      "slug": "kubernetes",
+      "icon": "devicon-kubernetes-plain colored",
+      "count": 6
+    },
+    {
+      "name": "Automation",
+      "slug": "automation",
+      "icon": "devicon-python-plain colored",
+      "count": 10
+    },
+    {
+      "name": "Web Development",
+      "slug": "web",
+      "icon": "devicon-javascript-plain colored",
+      "count": 9
+    }
+  ],
+  "repositories": [
+    {
+      "name": "iac-azure-core-governance",
+      "description": "Azure governance patterns at enterprise scale with comprehensive governance controls including management groups, policies, and RBAC.",
+      "url": "https://github.com/arnabdey73/iac-azure-core-governance",
+      "stars": 15,
+      "forks": 8,
+      "language": "HCL",
+      "category": "iac",
+      "topics": ["terraform", "azure", "governance", "enterprise"],
+      "lastUpdated": "2025-06-15"
+    },
+    {
+      "name": "iac-module-library-azure",
+      "description": "Comprehensive library of reusable Terraform modules for Azure cloud resources following best practices.",
+      "url": "https://github.com/arnabdey73/iac-module-library-azure",
+      "stars": 22,
+      "forks": 12,
+      "language": "HCL",
+      "category": "iac",
+      "topics": ["terraform", "azure", "modules", "infrastructure"],
+      "lastUpdated": "2025-07-01"
+    },
+    {
+      "name": "azure-core-governance-sre-agent",
+      "description": "Intelligent SRE agent for automated monitoring, incident response, and governance compliance in Azure environments.",
+      "url": "https://github.com/arnabdey73/azure-core-governance-sre-agent",
+      "stars": 18,
+      "forks": 6,
+      "language": "Python",
+      "category": "automation",
+      "topics": ["sre", "azure", "monitoring", "automation"],
+      "lastUpdated": "2025-06-20"
+    },
+    {
+      "name": "openstack-devops-suite",
+      "description": "GitLab-centered DevOps solution for OpenStack environments with automated testing and security scanning.",
+      "url": "https://github.com/arnabdey73/openstack-devops-suite",
+      "stars": 12,
+      "forks": 5,
+      "language": "Python",
+      "category": "devops",
+      "topics": ["gitlab", "openstack", "devops", "ci-cd"],
+      "lastUpdated": "2025-05-30"
+    },
+    {
+      "name": "astro-portfolio",
+      "description": "Personal portfolio website built with Astro and Tailwind CSS showcasing projects and professional experience.",
+      "url": "https://github.com/arnabdey73/astro-portfolio",
+      "stars": 8,
+      "forks": 3,
+      "language": "Astro",
+      "category": "web",
+      "topics": ["astro", "portfolio", "tailwindcss", "responsive"],
+      "lastUpdated": "2025-07-06"
+    },
+    {
+      "name": "kubernetes-cluster-automation",
+      "description": "Automated Kubernetes cluster provisioning and management scripts with monitoring and logging setup.",
+      "url": "https://github.com/arnabdey73/kubernetes-automation",
+      "stars": 14,
+      "forks": 7,
+      "language": "Shell",
+      "category": "kubernetes",
+      "topics": ["kubernetes", "automation", "monitoring", "devops"],
+      "lastUpdated": "2025-06-10"
+    },
+    {
+      "name": "azure-cost-optimizer",
+      "description": "Tool for identifying cost optimization opportunities in Azure subscriptions through automated analysis.",
+      "url": "https://github.com/arnabdey73/azure-cost-optimizer",
+      "stars": 16,
+      "forks": 8,
+      "language": "Python",
+      "category": "azure",
+      "topics": ["azure", "cost-optimization", "python", "automation"],
+      "lastUpdated": "2025-06-25"
+    },
+    {
+      "name": "terraform-azure-landing-zones",
+      "description": "Enterprise-ready Azure landing zone implementation using Terraform with security and governance best practices.",
+      "url": "https://github.com/arnabdey73/terraform-azure-landing-zones",
+      "stars": 25,
+      "forks": 15,
+      "language": "HCL",
+      "category": "iac",
+      "topics": ["terraform", "azure", "landing-zones", "enterprise"],
+      "lastUpdated": "2025-07-02"
+    }
+  ],
+  "contributions": [
+    {
+      "name": "Terraform Azure Provider",
+      "description": "Contributions to Azure modules in the Terraform Registry, focusing on security improvements and best practices.",
+      "url": "https://github.com/terraform-providers/terraform-provider-azurerm",
+      "category": "iac",
+      "type": "contribution"
+    },
+    {
+      "name": "Azure DevOps Extensions",
+      "description": "Development of custom Azure DevOps pipeline tasks for infrastructure automation and security scanning.",
+      "url": "https://github.com/Microsoft/azure-devops-extension-api",
+      "category": "devops",
+      "type": "contribution"
+    },
+    {
+      "name": "Kubernetes Community",
+      "description": "Active participation in Kubernetes community discussions and contributions to documentation.",
+      "url": "https://github.com/kubernetes/kubernetes",
+      "category": "kubernetes",
+      "type": "contribution"
+    },
+    {
+      "name": "OpenStack Automation",
+      "description": "Automation improvements in OpenStack Ansible playbooks for simplified deployment.",
+      "url": "https://github.com/openstack/openstack-ansible",
+      "category": "automation",
+      "type": "contribution"
+    }
+  ]
+}

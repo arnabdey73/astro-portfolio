@@ -4,6 +4,7 @@
     "description": "This project implements Azure governance patterns at enterprise scale, providing a foundation for Azure landing zones with comprehensive governance controls including management groups, policies, role assignments, and security baselines.",
     "technologies": ["Terraform", "Azure", "RBAC", "Policies"],
     "githubUrl": "https://github.com/arnabdey73/iac-azure-core-governance",
+    "liveUrl": null,
     "featured": true
   },
   {
@@ -11,6 +12,7 @@
     "description": "A comprehensive library of reusable Terraform modules for Azure cloud resources. These modules follow best practices for security, scalability, and maintainability, enabling consistent and reliable infrastructure deployments across different environments.",
     "technologies": ["Terraform", "Azure", "IaC", "Modules"],
     "githubUrl": "https://github.com/arnabdey73/iac-module-library-azure",
+    "liveUrl": null,
     "featured": true
   },
   {
@@ -18,6 +20,7 @@
     "description": "A tool that identifies cost optimization opportunities in Azure subscriptions through automated analysis of resource usage patterns, idle resources, and right-sizing recommendations, helping organizations reduce cloud spend.",
     "technologies": ["Python", "Azure CLI", "Azure SDK", "Cost Management API"],
     "githubUrl": "https://github.com/arnabdey73/iac-module-library-azure",
+    "liveUrl": null,
     "featured": true
   },
   {
@@ -25,6 +28,7 @@
     "description": "A comprehensive DevOps solution built around GitLab that facilitates continuous integration, delivery, and deployment for OpenStack environments with automated testing, security scanning, and infrastructure provisioning.",
     "technologies": ["GitLab CI/CD", "OpenStack", "Python", "Ansible"],
     "githubUrl": "https://github.com/arnabdey73/openstack-devops-suite",
+    "liveUrl": null,
     "featured": true
   },
   {
@@ -32,6 +36,7 @@
     "description": "An intelligent Site Reliability Engineering (SRE) agent that automates monitoring, incident response, and governance compliance for Azure cloud environments, helping to maintain high reliability and compliance standards.",
     "technologies": ["Python", "Azure Functions", "AI/ML", "Monitoring"],
     "githubUrl": "https://github.com/arnabdey73/azure-core-governance-sre-agent",
+    "liveUrl": null,
     "featured": true
   },
   {
@@ -39,6 +44,7 @@
     "description": "Personal portfolio website showcasing projects, certifications, and contact information, built with Astro and Tailwind CSS for superior performance and SEO.",
     "technologies": ["Astro", "Tailwind CSS", "JavaScript", "Responsive Design"],
     "githubUrl": "https://github.com/arnabdey73/astro-portfolio",
+    "liveUrl": "https://arnabdey.dev",
     "featured": true,
     "thumbnail": "/assets/img/portfolio-thumbnail.svg"
   }

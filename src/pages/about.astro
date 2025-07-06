@@ -20,26 +20,26 @@ const certifications = getCertifications();
   <main class="bg-white dark:bg-gray-900">
     <!-- Hero Section -->
     <section class="relative py-10 sm:py-12 lg:py-16 overflow-hidden">
-      <!-- Skills-themed Background Pattern -->
-      <div class="absolute inset-0 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-gray-900 dark:via-emerald-900 dark:to-teal-900"></div>
+      <!-- Skills-themed Background Pattern with Blue/Purple theme -->
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900"></div>
       
-      <!-- Skills Icons Pattern -->
-      <div class="absolute inset-0 opacity-10 dark:opacity-20">
+      <!-- Skills Icons Pattern with Blue/Purple colors -->
+      <div class="absolute inset-0 opacity-15 dark:opacity-25">
         <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
           <defs>
             <pattern id="skills-pattern" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
-              <g fill="none" stroke="currentColor" stroke-width="1" class="text-emerald-600 dark:text-emerald-400">
+              <g fill="none" stroke="currentColor" stroke-width="1.5" class="text-blue-600 dark:text-blue-400">
                 <!-- Cloud icon -->
-                <path d="M20,60 Q15,50 25,50 Q30,45 40,50 Q50,45 60,50 Q65,50 60,60 L20,60 Z" fill="currentColor" opacity="0.3"/>
+                <path d="M20,60 Q15,50 25,50 Q30,45 40,50 Q50,45 60,50 Q65,50 60,60 L20,60 Z" fill="currentColor" opacity="0.4" class="text-indigo-500 dark:text-indigo-400"/>
                 <!-- Code brackets -->
-                <path d="M80,30 L70,40 L80,50" stroke-width="2"/>
-                <path d="M100,30 L110,40 L100,50" stroke-width="2"/>
+                <path d="M80,30 L70,40 L80,50" stroke-width="2" class="text-purple-600 dark:text-purple-400"/>
+                <path d="M100,30 L110,40 L100,50" stroke-width="2" class="text-purple-600 dark:text-purple-400"/>
                 <!-- Docker container -->
-                <rect x="15" y="80" width="30" height="20" rx="2" fill="none" stroke="currentColor"/>
-                <line x1="20" y1="85" x2="40" y2="85" stroke="currentColor"/>
+                <rect x="15" y="80" width="30" height="20" rx="2" fill="none" stroke="currentColor" class="text-blue-600 dark:text-blue-400"/>
+                <line x1="20" y1="85" x2="40" y2="85" stroke="currentColor" class="text-blue-600 dark:text-blue-400"/>
                 <!-- Database -->
-                <ellipse cx="90" cy="85" rx="15" ry="5" fill="none" stroke="currentColor"/>
-                <path d="M75,85 L75,95 Q75,100 90,100 Q105,100 105,95 L105,85" fill="none" stroke="currentColor"/>
+                <ellipse cx="90" cy="85" rx="15" ry="5" fill="none" stroke="currentColor" class="text-indigo-600 dark:text-indigo-400"/>
+                <path d="M75,85 L75,95 Q75,100 90,100 Q105,100 105,95 L105,85" fill="none" stroke="currentColor" class="text-indigo-600 dark:text-indigo-400"/>
               </g>
             </pattern>
           </defs>
@@ -47,35 +47,35 @@ const certifications = getCertifications();
         </svg>
       </div>
 
-      <!-- Floating Skill Elements -->
+      <!-- Floating Skill Elements with Blue/Purple theme -->
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-16 left-16 transform -rotate-12 opacity-20 dark:opacity-30">
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300">
-            <div class="text-emerald-600 dark:text-emerald-400">Experience</div>
-            <div class="text-teal-600 dark:text-teal-400">8+ years</div>
+        <div class="absolute top-16 left-16 transform -rotate-12 opacity-25 dark:opacity-35">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300 border border-blue-200 dark:border-blue-700">
+            <div class="text-blue-600 dark:text-blue-400">Experience</div>
+            <div class="text-indigo-600 dark:text-indigo-400">8+ years</div>
           </div>
         </div>
         
-        <div class="absolute top-32 right-20 transform rotate-12 opacity-20 dark:opacity-30">
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300">
-            <div class="text-blue-600 dark:text-blue-400">Cloud</div>
-            <div class="text-cyan-600 dark:text-cyan-400">Expert</div>
+        <div class="absolute top-32 right-20 transform rotate-12 opacity-25 dark:opacity-35">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300 border border-purple-200 dark:border-purple-700">
+            <div class="text-purple-600 dark:text-purple-400">Cloud</div>
+            <div class="text-indigo-600 dark:text-indigo-400">Expert</div>
           </div>
         </div>
         
-        <div class="absolute bottom-32 left-24 transform -rotate-6 opacity-20 dark:opacity-30">
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300">
+        <div class="absolute bottom-32 left-24 transform -rotate-6 opacity-25 dark:opacity-35">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300 border border-indigo-200 dark:border-indigo-700">
             <div class="text-purple-600 dark:text-purple-400">DevOps</div>
             <div class="text-indigo-600 dark:text-indigo-400">Specialist</div>
           </div>
         </div>
       </div>
 
-      <!-- Animated Background Shapes -->
+      <!-- Animated Background Shapes with Blue/Purple theme -->
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-        <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-teal-400 to-emerald-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+        <div class="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-blob"></div>
+        <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-gradient-to-r from-purple-400 to-violet-500 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-blob animation-delay-2000"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
 
       <!-- Hero Content -->

@@ -1,0 +1,100 @@
+{
+  "githubStats": {
+    "repositoryCount": 35,
+    "contributionCount": 1200,
+    "issuesPRsCount": 180,
+    "stars": 150,
+    "followers": 65,
+    "lastUpdated": "2025-07-06"
+  },
+  "categories": [
+    {
+      "name": "Infrastructure as Code",
+      "slug": "iac",
+      "icon": "devicon-terraform-plain colored",
+      "count": 8
+    },
+    {
+      "name": "Azure Cloud",
+      "slug": "azure",
+      "icon": "devicon-azure-plain colored",
+      "count": 12
+    },
+    {
+      "name": "DevOps",
+      "slug": "devops",
+      "icon": "devicon-jenkins-plain colored",
+      "count": 15
+    },
+    {
+      "name": "Kubernetes",
+      "slug": "kubernetes",
+      "icon": "devicon-kubernetes-plain colored",
+      "count": 6
+    },
+    {
+      "name": "Automation",
+      "slug": "automation",
+      "icon": "devicon-python-plain colored",
+      "count": 10
+    },
+    {
+      "name": "Web Development",
+      "slug": "web",
+      "icon": "devicon-javascript-plain colored",
+      "count": 9
+    }
+  ],
+  "repositories": [
+    {
+      "name": "iac-azure-core-governance",
+      "description": "Azure governance patterns at enterprise scale with comprehensive governance controls including management groups, policies, and RBAC.",
+      "url": "https://github.com/arnabdey73/iac-azure-core-governance",
+      "stars": 15,
+      "forks": 8,
+      "language": "HCL",
+      "category": "iac",
+      "topics": ["terraform", "azure", "governance", "enterprise"],
+      "lastUpdated": "2025-06-15"
+    },
+    {
+      "name": "iac-module-library-azure",
+      "description": "Comprehensive library of reusable Terraform modules for Azure cloud resources following best practices.",
+      "url": "https://github.com/arnabdey73/iac-module-library-azure",
+      "stars": 22,
+      "forks": 12,
+      "language": "HCL",
+      "category": "iac",
+      "topics": ["terraform", "azure", "modules", "infrastructure"],
+      "lastUpdated": "2025-07-01"
+    },
+    {
+      "name": "azure-core-governance-sre-agent",
+      "description": "Intelligent SRE agent for automated monitoring, incident response, and governance compliance in Azure environments.",
+      "url": "https://github.com/arnabdey73/azure-core-governance-sre-agent",
+      "stars": 18,
+      "forks": 6,
+      "language": "Python",
+      "category": "automation",
+      "topics": ["sre", "azure", "monitoring", "automation"],
+      "lastUpdated": "2025-06-20"
+    },
+    {
+      "name": "openstack-devops-suite",
+      "description": "GitLab-centered DevOps solution for OpenStack environments with automated testing and security scanning.",
+      "url": "https://github.com/arnabdey73/openstack-devops-suite",
+      "stars": 12,
+      "forks": 5,
+      "language": "Python",
+      "category": "devops",
+      "topics": ["gitlab", "openstack", "devops", "ci-cd"],
+      "lastUpdated": "2025-05-30"
+    },
+    {
+      "name": "astro-portfolio",
+      "description": "Personal portfolio website built with Astro and Tailwind CSS showcasing projects and professional experience.",
+      "url": "https://github.com/arnabdey73/astro-portfolio",
+      "stars": 8,
+      "forks": 3,
+      "language": "Astro",
+      "cat

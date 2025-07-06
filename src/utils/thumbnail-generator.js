@@ -133,7 +133,8 @@ export function generateProjectThumbnail(projectTitle, technologies = [], option
     </svg>
   `;
   
-  return `data:image/svg+xml;base64,${btoa(svg)}`;
+  // Use URL encoding for better browser compatibility
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 
 /**
@@ -192,5 +193,5 @@ export function generateTechIcon(technology, size = 24) {
 
   const svg = `<svg width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">${icon}</svg>`;
   
-  return `data:image/svg+xml;base64,${btoa(svg)}`;
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }

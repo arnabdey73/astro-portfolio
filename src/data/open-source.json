@@ -1,102 +1,158 @@
 {
   "githubStats": {
-    "repositoryCount": 35,
-    "contributionCount": 874,
-    "issuesPRsCount": 142,
-    "stars": 127,
-    "followers": 48,
-    "lastUpdated": "2024-08-30"
+    "repositoryCount": 34,
+    "contributionCount": 1205,
+    "issuesPRsCount": 0,
+    "commitCount": 91,
+    "recentActivity": 99,
+    "stars": 0,
+    "followers": 3,
+    "lastUpdated": "2025-07-06"
   },
   "categories": [
     {
       "name": "Infrastructure as Code",
       "slug": "iac",
-      "icon": "devicon-terraform-plain colored"
+      "icon": "devicon-terraform-plain colored",
+      "count": 6
     },
     {
       "name": "Azure Cloud",
       "slug": "azure",
-      "icon": "devicon-azure-plain colored"
+      "icon": "devicon-azure-plain colored",
+      "count": 2
     },
     {
       "name": "DevOps",
       "slug": "devops",
-      "icon": "devicon-jenkins-plain colored"
+      "icon": "devicon-jenkins-plain colored",
+      "count": 0
     },
     {
       "name": "Kubernetes",
       "slug": "kubernetes",
-      "icon": "devicon-kubernetes-plain colored"
+      "icon": "devicon-kubernetes-plain colored",
+      "count": 0
     },
     {
       "name": "Automation",
       "slug": "automation",
-      "icon": "devicon-python-plain colored"
+      "icon": "devicon-python-plain colored",
+      "count": 3
     },
     {
-      "name": "Monitoring",
-      "slug": "monitoring",
-      "icon": "devicon-grafana-original colored"
-    }
-  ],
-  "contributions": [
-    {
-      "name": "Terraform Azure Modules",
-      "description": "Contributions to Azure modules in the Terraform Registry, focusing on security improvements and best practices.",
-      "url": "https://github.com/terraform-providers/terraform-provider-azurerm",
-      "category": "iac"
-    },
-    {
-      "name": "Azure DevOps Task Extensions",
-      "description": "Developed and maintained custom Azure DevOps task extensions for specialized deployment scenarios.",
-      "url": "https://github.com/arnabdey73/azure-devops-extensions",
-      "category": "devops"
-    },
-    {
-      "name": "Kubernetes Monitoring Tools",
-      "description": "Contributed to open-source monitoring solutions for Kubernetes with custom dashboards and alerts.",
-      "url": "https://github.com/arnabdey73/k8s-monitoring",
-      "category": "kubernetes"
-    },
-    {
-      "name": "Azure Core Governance SRE Agent",
-      "description": "Contributed to project for automating governance policies and remediation in Azure environments.",
-      "url": "https://github.com/arnabdey73/azure-core-governance-sre-agent",
-      "category": "azure"
+      "name": "Web Development",
+      "slug": "web",
+      "icon": "devicon-javascript-plain colored",
+      "count": 4
     }
   ],
   "repositories": [
     {
-      "name": "azure-governance-module",
-      "description": "Terraform module for implementing Azure governance at scale",
-      "stars": 35,
-      "forks": 12,
-      "url": "https://github.com/arnabdey73/azure-governance-module",
-      "category": "iac"
+      "name": "astro-portfolio",
+      "description": "Professional portfolio website built with Astro and Tailwind CSS",
+      "url": "https://github.com/arnabdey73/astro-portfolio",
+      "stars": 0,
+      "forks": 0,
+      "language": "Astro",
+      "category": "web",
+      "topics": [
+        "astro",
+        "cloud-engineer",
+        "devops-engineer",
+        "personal-website",
+        "portfolio",
+        "static-site",
+        "tailwindcss",
+        "web-development"
+      ],
+      "lastUpdated": "2025-07-06"
     },
     {
-      "name": "azure-cost-optimizer",
-      "description": "Python tool for optimizing Azure resource costs",
-      "stars": 43,
-      "forks": 15,
-      "url": "https://github.com/arnabdey73/azure-cost-optimizer",
-      "category": "azure"
+      "name": "astro-paper-project",
+      "description": "My personal tech blog built with Astro",
+      "url": "https://github.com/arnabdey73/astro-paper-project",
+      "stars": 0,
+      "forks": 0,
+      "language": "Astro",
+      "category": "web",
+      "topics": [],
+      "lastUpdated": "2025-07-05"
     },
     {
-      "name": "k8s-monitoring",
-      "description": "Comprehensive monitoring solution for Kubernetes clusters",
-      "stars": 24,
-      "forks": 8,
-      "url": "https://github.com/arnabdey73/k8s-monitoring",
-      "category": "kubernetes"
+      "name": "single-node-gitops",
+      "description": "Shell project",
+      "url": "https://github.com/arnabdey73/single-node-gitops",
+      "stars": 0,
+      "forks": 0,
+      "language": "Shell",
+      "category": "automation",
+      "topics": [],
+      "lastUpdated": "2025-06-27"
     },
     {
-      "name": "azure-core-governance-sre-agent",
-      "description": "Intelligent agent for automating governance policies and remediation in Azure",
-      "stars": 18,
-      "forks": 6,
-      "url": "https://github.com/arnabdey73/azure-core-governance-sre-agent",
-      "category": "azure"
+      "name": "go-url-shortener",
+      "description": "A lightweight, fast Go-based URL shortener service tailored for deployment on single-node-gitops platform",
+      "url": "https://github.com/arnabdey73/go-url-shortener",
+      "stars": 0,
+      "forks": 0,
+      "language": "Go",
+      "category": "automation",
+      "topics": [],
+      "lastUpdated": "2025-06-23"
+    },
+    {
+      "name": "weather-app",
+      "description": "A Flask weather web application for single-node-gitops deployment",
+      "url": "https://github.com/arnabdey73/weather-app",
+      "stars": 0,
+      "forks": 0,
+      "language": "CSS",
+      "category": "automation",
+      "topics": [],
+      "lastUpdated": "2025-06-23"
+    },
+    {
+      "name": "arnabdey73.github.io",
+      "description": "Welcome to my personal portfolio repository! This project showcases my work, certifications, and contact information. It is built using Jekyll and Tailwind CSS.",
+      "url": "https://github.com/arnabdey73/arnabdey73.github.io",
+      "stars": 0,
+      "forks": 0,
+      "language": "CSS",
+      "category": "web",
+      "topics": [],
+      "lastUpdated": "2025-06-17"
+    },
+    {
+      "name": "test-automation-agent",
+      "description": "A modern test automation agent with AI-powered features including GPT test generation, visual regression, and test prioritization",
+      "url": "https://github.com/arnabdey73/test-automation-agent",
+      "stars": 0,
+      "forks": 0,
+      "language": "JavaScript",
+      "category": "automation",
+      "topics": [],
+      "lastUpdated": "2025-06-16"
+    },
+    {
+      "name": "openstack-devops-suite",
+      "description": "A modernized Terraform and Ansible-based solution to deploy a complete GitLab-centered DevOps platform on VMware OpenStack environments. This suite uses GitLab as the primary CI/CD and SCM platform, eliminating the need for Jenkins while providing comprehensive DevOps tooling optimized for VMware infrastructure.",
+      "url": "https://github.com/arnabdey73/openstack-devops-suite",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "category": "iac",
+      "topics": [],
+      "lastUpdated": "2025-06-08"
+    }
+  ],
+  "contributions": [
+    {
+      "name": "Open Source Contributions",
+      "description": "Various contributions to open source projects in the cloud and infrastructure space.",
+      "url": "https://github.com/arnabdey73",
+      "category": "iac",
+      "type": "contribution"
     }
   ]
 }

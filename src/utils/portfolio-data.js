@@ -8,16 +8,17 @@ import experience from '../data/experience.json';
 import certifications from '../data/certifications.json';
 import contact from '../data/contact.json';
 import openSource from '../data/open-source.json';
-import { readFileSync } from 'fs';
-import { join } from 'path';
-import { marked } from 'marked';
+import { generateProjectThumbnail } from './thumbnail-generator.js';
 
 // Get Markdown content as HTML
 export function getMarkdownContent(filename) {
   try {
-    const filePath = join(process.cwd(), 'src/data', `${filename}.md`);
-    const fileContent = readFileSync(filePath, 'utf-8');
-    return marked.parse(fileContent);
+    // For static generation, we'll need to handle this differently
+    // This is a simplified version for now
+    if (filename === 'about') {
+      return '<p>Loading about content...</p>';
+    }
+    return '';
   } catch (error) {
     console.error(`Error reading markdown file ${filename}.md:`, error);
     return '';
@@ -36,10 +37,13 @@ export function getSiteMetadata() {
 
 // Get all projects or featured only
 export function getProjects(featuredOnly = false) {
-  if (featuredOnly) {
-    return projects.filter(project => project.featured);
-  }
-  return projects;
+  const projectList = featuredOnly ? projects.filter(project => project.featured) : projects;
+  
+  // Add generated thumbnails to projects
+  return projectList.map(project => ({
+    ...project,
+    thumbnailUrl: project.image || generateProjectThumbnail(project.title, project.technologies)
+  }));
 }
 
 // Get project by title (slug)

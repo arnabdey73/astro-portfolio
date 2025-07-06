@@ -3,149 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BackToTop from '../components/BackToTop.astro';
-import { getSiteMetadata, getPersonalInfo } from '../utils/portfolio-data.js';
+import { getSiteMetadata, getPersonalInfo, getOpenSourceInfo } from '../utils/portfolio-data.js';
 
 // Get site metadata and personal info
 const siteMetadata = getSiteMetadata();
 const personalInfo = getPersonalInfo();
 
-// Use static data for build time to avoid API call timeouts
-// In production, this could be populated during a separate build step or SSR
-const categories = [
-  {
-    name: "Infrastructure as Code",
-    slug: "iac",
-    icon: "devicon-terraform-plain colored",
-    count: 8
-  },
-  {
-    name: "Azure Cloud",
-    slug: "azure", 
-    icon: "devicon-azure-plain colored",
-    count: 12
-  },
-  {
-    name: "DevOps",
-    slug: "devops",
-    icon: "devicon-jenkins-plain colored", 
-    count: 15
-  },
-  {
-    name: "Kubernetes",
-    slug: "kubernetes",
-    icon: "devicon-kubernetes-plain colored",
-    count: 6
-  },
-  {
-    name: "Automation", 
-    slug: "automation",
-    icon: "devicon-python-plain colored",
-    count: 10
-  },
-  {
-    name: "Web Development",
-    slug: "web",
-    icon: "devicon-javascript-plain colored",
-    count: 9
-  }
-];
-
-const repositories = [
-  {
-    name: 'astro-portfolio',
-    description: 'Personal portfolio built with Astro, showcasing projects and skills with modern design',
-    url: 'https://github.com/arnabdey73/astro-portfolio',
-    stars: 5,
-    forks: 2,
-    language: 'Astro',
-    category: 'web'
-  },
-  {
-    name: 'devops-automation-scripts',
-    description: 'Collection of DevOps automation scripts for CI/CD pipelines and infrastructure management',
-    url: 'https://github.com/arnabdey73/devops-scripts',
-    stars: 8,
-    forks: 3,
-    language: 'Shell',
-    category: 'devops'
-  },
-  {
-    name: 'azure-terraform-modules',
-    description: 'Reusable Terraform modules for Azure infrastructure provisioning and management',
-    url: 'https://github.com/arnabdey73/azure-terraform',
-    stars: 12,
-    forks: 5,
-    language: 'HCL',
-    category: 'iac'
-  },
-  {
-    name: 'kubernetes-manifests',
-    description: 'Kubernetes deployment manifests and Helm charts for containerized applications',
-    url: 'https://github.com/arnabdey73/k8s-manifests',
-    stars: 6,
-    forks: 2,
-    language: 'YAML',
-    category: 'kubernetes'
-  },
-  {
-    name: 'cloud-cost-optimizer',
-    description: 'Python tool for analyzing and optimizing cloud resource costs across multiple providers',
-    url: 'https://github.com/arnabdey73/cloud-optimizer',
-    stars: 15,
-    forks: 7,
-    language: 'Python',
-    category: 'automation'
-  },
-  {
-    name: 'azure-functions-toolkit',
-    description: 'Serverless functions and utilities for Azure cloud automation and monitoring',
-    url: 'https://github.com/arnabdey73/azure-functions',
-    stars: 9,
-    forks: 4,
-    language: 'C#',
-    category: 'azure'
-  }
-];
-
-const contributions = [
-  {
-    name: 'microsoft/azure-cli',
-    description: 'Contributed bug fixes and feature enhancements to Azure CLI',
-    url: 'https://github.com/microsoft/azure-cli',
-    category: 'azure',
-    date: '2024-11-15'
-  },
-  {
-    name: 'hashicorp/terraform',
-    description: 'Pull request for Azure provider improvements',
-    url: 'https://github.com/hashicorp/terraform',
-    category: 'iac',
-    date: '2024-10-28'
-  },
-  {
-    name: 'kubernetes/kubernetes',
-    description: 'Documentation improvements for cluster management',
-    url: 'https://github.com/kubernetes/kubernetes',
-    category: 'kubernetes',
-    date: '2024-10-12'
-  },
-  {
-    name: 'ansible/ansible',
-    description: 'Issues and feature requests for automation playbooks',
-    url: 'https://github.com/ansible/ansible',
-    category: 'automation',
-    date: '2024-09-30'
-  }
-];
-
-const githubStats = {
-  repositoryCount: 42,
-  contributionCount: 156,
-  issuesPRsCount: 23,
-  stars: 89,
-  followers: 28,
-  lastUpdated: new Date().toISOString().split('T')[0]
-};
+// Get open source data
+const openSourceData = getOpenSourceInfo();
+const { githubStats, categories, repositories, contributions } = openSourceData;
 
 let dataError = null;
 ---
@@ -159,35 +25,35 @@ let dataError = null;
   <main class="bg-white dark:bg-gray-900">
     <!-- Hero Section -->
     <section class="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
-      <!-- Open Source-themed Background Pattern -->
-      <div class="absolute inset-0 bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 dark:from-gray-900 dark:via-green-900 dark:to-emerald-900"></div>
+      <!-- Open Source-themed Background Pattern with Blue/Purple theme -->
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900"></div>
       
-      <!-- Open Source & Collaboration Pattern -->
-      <div class="absolute inset-0 opacity-10 dark:opacity-20">
+      <!-- Open Source & Collaboration Pattern with Blue/Purple colors -->
+      <div class="absolute inset-0 opacity-15 dark:opacity-25">
         <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
           <defs>
             <pattern id="opensource-pattern" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
-              <g fill="none" stroke="currentColor" stroke-width="1" class="text-green-600 dark:text-green-400">
+              <g fill="none" stroke="currentColor" stroke-width="1.5" class="text-blue-600 dark:text-blue-400">
                 <!-- GitHub-style nodes -->
-                <circle cx="30" cy="30" r="5" fill="currentColor"/>
-                <circle cx="90" cy="30" r="5" fill="currentColor"/>
-                <circle cx="60" cy="70" r="5" fill="currentColor"/>
-                <circle cx="30" cy="90" r="5" fill="currentColor"/>
+                <circle cx="30" cy="30" r="5" fill="currentColor" class="text-indigo-600 dark:text-indigo-400"/>
+                <circle cx="90" cy="30" r="5" fill="currentColor" class="text-purple-600 dark:text-purple-400"/>
+                <circle cx="60" cy="70" r="5" fill="currentColor" class="text-blue-600 dark:text-blue-400"/>
+                <circle cx="30" cy="90" r="5" fill="currentColor" class="text-violet-600 dark:text-violet-400"/>
                 <!-- Collaboration lines -->
-                <path d="M35,30 L85,30" stroke-width="2" opacity="0.6"/>
-                <path d="M60,35 L60,65" stroke-width="2" opacity="0.6"/>
-                <path d="M30,35 L30,85" stroke-width="2" opacity="0.6"/>
-                <path d="M55,70 L35,90" stroke-width="2" opacity="0.6"/>
+                <path d="M35,30 L85,30" stroke-width="2" opacity="0.7" class="text-indigo-600 dark:text-indigo-400"/>
+                <path d="M60,35 L60,65" stroke-width="2" opacity="0.7" class="text-blue-600 dark:text-blue-400"/>
+                <path d="M30,35 L30,85" stroke-width="2" opacity="0.7" class="text-purple-600 dark:text-purple-400"/>
+                <path d="M55,70 L35,90" stroke-width="2" opacity="0.7" class="text-violet-600 dark:text-violet-400"/>
                 <!-- Fork symbol -->
-                <path d="M15,50 L20,45 L25,50" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M20,45 L20,60" stroke="currentColor" stroke-width="2"/>
-                <path d="M15,60 L25,60" stroke="currentColor" stroke-width="2"/>
+                <path d="M15,50 L20,45 L25,50" fill="none" stroke="currentColor" stroke-width="2" class="text-indigo-600 dark:text-indigo-400"/>
+                <path d="M20,45 L20,60" stroke="currentColor" stroke-width="2" class="text-indigo-600 dark:text-indigo-400"/>
+                <path d="M15,60 L25,60" stroke="currentColor" stroke-width="2" class="text-indigo-600 dark:text-indigo-400"/>
                 <!-- Star -->
-                <path d="M80,60 L82,65 L87,65 L83,68 L85,73 L80,70 L75,73 L77,68 L73,65 L78,65 Z" fill="currentColor" opacity="0.5"/>
+                <path d="M80,60 L82,65 L87,65 L83,68 L85,73 L80,70 L75,73 L77,68 L73,65 L78,65 Z" fill="currentColor" opacity="0.6" class="text-purple-500 dark:text-purple-400"/>
                 <!-- Pull request merge -->
-                <path d="M95,80 Q100,85 105,80" fill="none" stroke="currentColor" stroke-width="2"/>
-                <circle cx="95" cy="80" r="2" fill="currentColor"/>
-                <circle cx="105" cy="80" r="2" fill="currentColor"/>
+                <path d="M95,80 Q100,85 105,80" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-600 dark:text-blue-400"/>
+                <circle cx="95" cy="80" r="2" fill="currentColor" class="text-blue-600 dark:text-blue-400"/>
+                <circle cx="105" cy="80" r="2" fill="currentColor" class="text-purple-600 dark:text-purple-400"/>
               </g>
             </pattern>
           </defs>
@@ -195,35 +61,35 @@ let dataError = null;
         </svg>
       </div>
 
-      <!-- Floating Open Source Elements -->
+      <!-- Floating Open Source Elements with Blue/Purple theme -->
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-20 left-12 transform -rotate-12 opacity-20 dark:opacity-30">
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300">
-            <div class="text-green-600 dark:text-green-400">git fork</div>
-            <div class="text-emerald-600 dark:text-emerald-400">contrib</div>
+        <div class="absolute top-20 left-12 transform -rotate-12 opacity-25 dark:opacity-35">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300 border border-blue-200 dark:border-blue-700">
+            <div class="text-blue-600 dark:text-blue-400">git fork</div>
+            <div class="text-indigo-600 dark:text-indigo-400">contrib</div>
           </div>
         </div>
         
-        <div class="absolute top-40 right-16 transform rotate-12 opacity-20 dark:opacity-30">
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300">
-            <div class="text-lime-600 dark:text-lime-400">MIT</div>
-            <div class="text-green-600 dark:text-green-400">License</div>
+        <div class="absolute top-40 right-16 transform rotate-12 opacity-25 dark:opacity-35">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300 border border-purple-200 dark:border-purple-700">
+            <div class="text-purple-600 dark:text-purple-400">MIT</div>
+            <div class="text-indigo-600 dark:text-indigo-400">License</div>
           </div>
         </div>
         
-        <div class="absolute bottom-32 left-20 transform -rotate-6 opacity-20 dark:opacity-30">
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300">
-            <div class="text-yellow-600 dark:text-yellow-400">⭐ Stars</div>
-            <div class="text-amber-600 dark:text-amber-400">Community</div>
+        <div class="absolute bottom-32 left-20 transform -rotate-6 opacity-25 dark:opacity-35">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300 border border-indigo-200 dark:border-indigo-700">
+            <div class="text-violet-600 dark:text-violet-400">⭐ Stars</div>
+            <div class="text-purple-600 dark:text-purple-400">Community</div>
           </div>
         </div>
       </div>
 
-      <!-- Animated Background Shapes -->
+      <!-- Animated Background Shapes with Blue/Purple theme -->
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-r from-green-400 to-lime-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-        <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-lime-400 to-green-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+        <div class="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-blob"></div>
+        <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-gradient-to-r from-purple-400 to-violet-500 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-blob animation-delay-2000"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
       <!-- Hero Content -->
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
