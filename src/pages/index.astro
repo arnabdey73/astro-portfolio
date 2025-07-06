@@ -15,8 +15,65 @@ const skillCategories = getSkills() || [];
   
   <main class="min-h-screen">
     <!-- Hero Section -->
-    <section class="py-20 lg:py-32 bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <!-- Generated Background Pattern -->
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900"></div>
+      
+      <!-- Tech Pattern Overlay -->
+      <div class="absolute inset-0 opacity-10 dark:opacity-20">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+          <!-- Circuit board pattern -->
+          <defs>
+            <pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+              <g fill="none" stroke="currentColor" stroke-width="1" class="text-indigo-600 dark:text-indigo-400">
+                <circle cx="20" cy="20" r="2" fill="currentColor"/>
+                <circle cx="80" cy="80" r="2" fill="currentColor"/>
+                <path d="M20,20 L50,20 L50,50 L80,50 L80,80"/>
+                <path d="M20,80 L20,50 L50,50 L50,20 L80,20"/>
+              </g>
+            </pattern>
+            <pattern id="dots" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+              <circle cx="25" cy="25" r="1" fill="currentColor" class="text-blue-500 dark:text-blue-400"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#circuit)"/>
+          <rect width="100%" height="100%" fill="url(#dots)" opacity="0.3"/>
+        </svg>
+      </div>
+
+      <!-- Floating Code Elements -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-20 left-10 transform -rotate-12 opacity-20 dark:opacity-30">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300">
+            <div class="text-blue-600 dark:text-blue-400">const</div>
+            <div class="text-purple-600 dark:text-purple-400">cloud = "Azure"</div>
+          </div>
+        </div>
+        
+        <div class="absolute top-40 right-20 transform rotate-12 opacity-20 dark:opacity-30">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300">
+            <div class="text-green-600 dark:text-green-400">kubectl</div>
+            <div class="text-blue-600 dark:text-blue-400">apply -f</div>
+          </div>
+        </div>
+        
+        <div class="absolute bottom-40 left-20 transform -rotate-6 opacity-20 dark:opacity-30">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300">
+            <div class="text-red-600 dark:text-red-400">terraform</div>
+            <div class="text-yellow-600 dark:text-yellow-400">plan</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Background Shapes -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-gradient-to-r from-indigo-400 to-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-green-400 to-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:grid lg:grid-cols-12 lg:gap-8">
           <div class="lg:col-span-7">
             <div class="text-center lg:text-left">
@@ -29,12 +86,18 @@ const skillCategories = getSkills() || [];
               </p>
               <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
                 <div class="rounded-md shadow">
-                  <a href="/projects" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                  <a href="/projects" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition-all duration-200 transform hover:scale-105 md:py-4 md:text-lg md:px-10">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
                     View Projects
                   </a>
                 </div>
                 <div class="mt-3 sm:mt-0 sm:ml-3">
-                  <a href="/contact" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 dark:text-indigo-400 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 md:py-4 md:text-lg md:px-10">
+                  <a href="/contact" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-indigo-600 dark:text-indigo-400 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 transform hover:scale-105 md:py-4 md:text-lg md:px-10">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
                     Get in Touch
                   </a>
                 </div>
@@ -81,31 +144,78 @@ const skillCategories = getSkills() || [];
         
         <div class="mt-12 grid gap-8 lg:grid-cols-3 sm:grid-cols-2">
           {featuredProjects.map(project => (
-            <div class="group relative bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div class="h-48 bg-gray-200 dark:bg-gray-700">
-                <!-- Project image placeholder -->
-                <div class="w-full h-full flex items-center justify-center text-gray-500 dark:text-gray-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+            <div class="group relative bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <!-- Project thumbnail -->
+              <div class="relative h-48 overflow-hidden">
+                <img 
+                  src={project.thumbnailUrl} 
+                  alt={`${project.title} project thumbnail`}
+                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
+                
+                <!-- Overlay for better text readability -->
+                <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
+                
+                <!-- Technology badges overlay -->
+                <div class="absolute top-3 right-3">
+                  <div class="flex flex-wrap gap-1 justify-end">
+                    {project.technologies.slice(0, 2).map((tech: string) => (
+                      <span class="px-2 py-1 text-xs bg-white bg-opacity-90 text-gray-800 rounded-full backdrop-blur-sm">
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 2 && (
+                      <span class="px-2 py-1 text-xs bg-white bg-opacity-90 text-gray-800 rounded-full backdrop-blur-sm">
+                        +{project.technologies.length - 2}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                
+                <!-- Featured badge -->
+                <div class="absolute top-3 left-3">
+                  <span class="px-3 py-1 text-xs bg-indigo-600 text-white rounded-full font-medium">
+                    Featured
+                  </span>
                 </div>
               </div>
               <div class="p-6">
-                <h3 class="text-lg font-medium text-gray-900 dark:text-white">{project.title}</h3>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">
+                    {project.title}
+                  </h3>
+                </div>
+                
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed line-clamp-3">
                   {project.description}
                 </p>
-                <div class="mt-4 flex flex-wrap gap-2">
+                
+                <!-- Technology stack -->
+                <div class="flex flex-wrap gap-2 mb-6">
                   {project.technologies.map((tech: string) => (
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-700">
                       {tech}
                     </span>
                   ))}
                 </div>
-                <div class="mt-6 flex space-x-3">
+                
+                <!-- Action buttons -->
+                <div class="flex space-x-3">
                   {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-3 py-2 border border-gray-300 dark:border-gray-600 text-sm leading-4 font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
-                      Source Code
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-lg text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200">
+                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"/>
+                      </svg>
+                      Source
+                    </a>
+                  )}
+                  {project.liveUrl && (
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200">
+                      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                      </svg>
+                      Live Demo
                     </a>
                   )}
                 </div>
