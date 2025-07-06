@@ -7,10 +7,10 @@ import skills from '../data/skills.json';
 import experience from '../data/experience.json';
 import certifications from '../data/certifications.json';
 import contact from '../data/contact.json';
+import openSource from '../data/open-source.json';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { marked } from 'marked';
-import { addThumbnailsToProjects, getProjectThumbnail } from './thumbnail-generator.js';
 
 // Get Markdown content as HTML
 export function getMarkdownContent(filename) {
@@ -36,15 +36,10 @@ export function getSiteMetadata() {
 
 // Get all projects or featured only
 export function getProjects(featuredOnly = false) {
-  let projectList;
   if (featuredOnly) {
-    projectList = projects.filter(project => project.featured);
-  } else {
-    projectList = projects;
+    return projects.filter(project => project.featured);
   }
-  
-  // Add thumbnails to all projects
-  return addThumbnailsToProjects(projectList);
+  return projects;
 }
 
 // Get project by title (slug)
@@ -76,6 +71,11 @@ export function getCertifications() {
 // Get contact information
 export function getContactInfo() {
   return contact;
+}
+
+// Get open source contributions and repositories
+export function getOpenSourceInfo() {
+  return openSource;
 }
 
 // Get all social links
