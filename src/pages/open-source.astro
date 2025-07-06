@@ -2,8 +2,88 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import BackToTop from '../components/BackToTop.astro';
-import { getSiteMetadata, getPersonalInfo } from '../utils/portfolio-data.js';
+import BackToTop from '../components/BackToT  <main class="bg-white dark:bg-gray-900">
+    <!-- Hero Section -->
+    <section class="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
+      <!-- Open Source-themed Background Pattern -->
+      <div class="absolute inset-0 bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 dark:from-gray-900 dark:via-green-900 dark:to-emerald-900"></div>
+      
+      <!-- Open Source & Collaboration Pattern -->
+      <div class="absolute inset-0 opacity-10 dark:opacity-20">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+          <defs>
+            <pattern id="opensource-pattern" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+              <g fill="none" stroke="currentColor" stroke-width="1" class="text-green-600 dark:text-green-400">
+                <!-- GitHub-style nodes -->
+                <circle cx="30" cy="30" r="5" fill="currentColor"/>
+                <circle cx="90" cy="30" r="5" fill="currentColor"/>
+                <circle cx="60" cy="70" r="5" fill="currentColor"/>
+                <circle cx="30" cy="90" r="5" fill="currentColor"/>
+                <!-- Collaboration lines -->
+                <path d="M35,30 L85,30" stroke-width="2" opacity="0.6"/>
+                <path d="M60,35 L60,65" stroke-width="2" opacity="0.6"/>
+                <path d="M30,35 L30,85" stroke-width="2" opacity="0.6"/>
+                <path d="M55,70 L35,90" stroke-width="2" opacity="0.6"/>
+                <!-- Fork symbol -->
+                <path d="M15,50 L20,45 L25,50" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M20,45 L20,60" stroke="currentColor" stroke-width="2"/>
+                <path d="M15,60 L25,60" stroke="currentColor" stroke-width="2"/>
+                <!-- Star -->
+                <path d="M80,60 L82,65 L87,65 L83,68 L85,73 L80,70 L75,73 L77,68 L73,65 L78,65 Z" fill="currentColor" opacity="0.5"/>
+                <!-- Pull request merge -->
+                <path d="M95,80 Q100,85 105,80" fill="none" stroke="currentColor" stroke-width="2"/>
+                <circle cx="95" cy="80" r="2" fill="currentColor"/>
+                <circle cx="105" cy="80" r="2" fill="currentColor"/>
+              </g>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#opensource-pattern)"/>
+        </svg>
+      </div>
+
+      <!-- Floating Open Source Elements -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-20 left-12 transform -rotate-12 opacity-20 dark:opacity-30">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300">
+            <div class="text-green-600 dark:text-green-400">git fork</div>
+            <div class="text-emerald-600 dark:text-emerald-400">contrib</div>
+          </div>
+        </div>
+        
+        <div class="absolute top-40 right-16 transform rotate-12 opacity-20 dark:opacity-30">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300">
+            <div class="text-lime-600 dark:text-lime-400">MIT</div>
+            <div class="text-green-600 dark:text-green-400">License</div>
+          </div>
+        </div>
+        
+        <div class="absolute bottom-32 left-20 transform -rotate-6 opacity-20 dark:opacity-30">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300">
+            <div class="text-yellow-600 dark:text-yellow-400">⭐ Stars</div>
+            <div class="text-amber-600 dark:text-amber-400">Community</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Background Shapes -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-r from-green-400 to-lime-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-lime-400 to-green-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl sm:tracking-tight lg:text-5xl">
+            Open Source
+          </h1>
+          <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-600 dark:text-gray-300">
+            Explore my contributions to the open source community and collaborative projects.
+          </p>
+        </div>
+      </div>
+    </section>ort { getSiteMetadata, getPersonalInfo } from '../utils/portfolio-data.js';
 import { 
   fetchGitHubProfile, 
   fetchGitHubRepositories, 
