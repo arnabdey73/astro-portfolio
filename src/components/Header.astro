@@ -8,7 +8,7 @@ const navItems = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Projects", path: "/projects" },
-  { name: "Blog", path: "/blog" },
+  { name: "Blog", path: "/blog", external: true },
   { name: "Open Source", path: "/open-source" },
   { name: "Contact", path: "/contact" },
 ];
@@ -42,6 +42,8 @@ const currentPath = Astro.url.pathname;
           navItems.map((item) => (
             <a
               href={item.path}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener noreferrer" : undefined}
               class={`text-base font-medium ${
                 currentPath === item.path
                   ? "text-indigo-600 dark:text-indigo-400"
@@ -83,6 +85,8 @@ const currentPath = Astro.url.pathname;
         navItems.map((item) => (
           <a
             href={item.path}
+            target={item.external ? "_blank" : undefined}
+            rel={item.external ? "noopener noreferrer" : undefined}
             class={`block py-2 px-3 rounded-md ${
               currentPath === item.path
                 ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400"
@@ -130,10 +134,10 @@ const currentPath = Astro.url.pathname;
   const mobileThemeToggleIcon = document.getElementById('mobile-theme-toggle-icon');
   const themeLabel = document.getElementById('theme-label');
   
-  // Check if theme is set in localStorage or use system preference
+  // Set dark mode as default, check if theme is in localStorage
   if (
     localStorage.getItem('color-theme') === 'dark' ||
-    (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    !localStorage.getItem('color-theme') // Default to dark if no preference stored
   ) {
     document.documentElement.classList.add('dark');
     themeToggleLightIcon?.classList.remove('hidden');
