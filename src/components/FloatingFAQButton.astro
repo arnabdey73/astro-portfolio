@@ -4,13 +4,15 @@
 
 <button 
   id="floatingFAQ" 
-  class="fixed bottom-20 right-6 bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out transform scale-0 opacity-0 z-[100]"
+  class="fixed bottom-32 right-6 bg-indigo-600 hover:bg-indigo-700 text-white p-4 rounded-full shadow-xl transition-all duration-300 ease-in-out transform scale-100 opacity-100 z-[100]"
   aria-label="View FAQs"
   title="View FAQs"
 >
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>
+  <div class="flex items-center justify-center">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  </div>
 </button>
 
 <script>
@@ -33,14 +35,19 @@
     function toggleFloatingFAQ() {
       // Check if FAQ section is in viewport
       const isFAQVisible = isElementInViewport(faqSection);
+      const scrolledEnough = window.pageYOffset > 300;
       
-      // Only show if we've scrolled down and FAQ section is not yet visible
-      if (window.pageYOffset > 800 && !isFAQVisible) {
+      console.log('FAQ visibility check:', { scrollY: window.pageYOffset, isFAQVisible, buttonElement: !!floatingFAQButton });
+      
+      // Show button when we've scrolled down unless FAQ section is visible
+      if (scrolledEnough && !isFAQVisible) {
         floatingFAQButton?.classList.remove('scale-0', 'opacity-0');
         floatingFAQButton?.classList.add('scale-100', 'opacity-100');
-      } else {
+        console.log('Showing FAQ button');
+      } else if (isFAQVisible) {
         floatingFAQButton?.classList.remove('scale-100', 'opacity-100');
         floatingFAQButton?.classList.add('scale-0', 'opacity-0');
+        console.log('Hiding FAQ button - FAQ is visible');
       }
     }
 
@@ -51,10 +58,14 @@
 
     // Event listeners
     window.addEventListener('scroll', toggleFloatingFAQ);
+    window.addEventListener('resize', toggleFloatingFAQ); // Also check on resize
     floatingFAQButton?.addEventListener('click', scrollToFAQ);
 
-    // Initial check
-    toggleFloatingFAQ();
+    // Run the initial check after a slight delay to ensure DOM is fully processed
+    setTimeout(toggleFloatingFAQ, 500);
+    
+    // Make button visible immediately by default
+    floatingFAQButton.style.display = 'flex';
   }
 
   // Initialize when DOM is loaded
