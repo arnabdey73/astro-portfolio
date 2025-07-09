@@ -4,7 +4,7 @@
 
 <button 
   id="floatingFAQ" 
-  class="fixed bottom-20 right-6 bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out transform scale-0 opacity-0 z-50"
+  class="fixed bottom-20 right-6 bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out transform scale-0 opacity-0 z-[100]"
   aria-label="View FAQs"
   title="View FAQs"
 >
@@ -20,9 +20,22 @@
     
     if (!floatingFAQButton || !faqSection) return;
 
-    // Show button after scrolling
+    // Check if FAQ section is in viewport
+    function isElementInViewport(el: Element) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.bottom >= 0
+      );
+    }
+    
+    // Show button after scrolling and hide when FAQ section is in view
     function toggleFloatingFAQ() {
-      if (window.pageYOffset > 800) {
+      // Check if FAQ section is in viewport
+      const isFAQVisible = isElementInViewport(faqSection);
+      
+      // Only show if we've scrolled down and FAQ section is not yet visible
+      if (window.pageYOffset > 800 && !isFAQVisible) {
         floatingFAQButton?.classList.remove('scale-0', 'opacity-0');
         floatingFAQButton?.classList.add('scale-100', 'opacity-100');
       } else {
