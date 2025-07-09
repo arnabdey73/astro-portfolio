@@ -1,0 +1,44 @@
+---
+interface Props {
+  href?: string;
+  variant?: "default" | "outline";
+  class?: string;
+  target?: string;
+  rel?: string;
+}
+
+const { 
+  href, 
+  variant = "default", 
+  class: className = "", 
+  target, 
+  rel = href?.startsWith("http") ? "noopener noreferrer" : undefined,
+  ...rest 
+} = Astro.props;
+
+const variantClasses = {
+  default: "bg-indigo-600 hover:bg-indigo-700 text-white",
+  outline: "bg-transparent hover:bg-indigo-600/10 text-indigo-400 border border-indigo-600",
+};
+---
+
+{
+  href ? (
+    <a
+      href={href}
+      class={`inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-all ${variantClasses[variant]} ${className}`}
+      target={target}
+      rel={rel}
+      {...rest}
+    >
+      <slot />
+    </a>
+  ) : (
+    <button
+      class={`inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-all ${variantClasses[variant]} ${className}`}
+      {...rest}
+    >
+      <slot />
+    </button>
+  )
+}

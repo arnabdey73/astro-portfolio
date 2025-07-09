@@ -2,6 +2,8 @@
 import "../styles/global.css";
 import "../styles/flip-animation.css";
 import { getSiteMetadata } from "../utils/portfolio-data.js";
+import FloatingContactButton from "../components/FloatingContactButton.astro";
+import FloatingFAQButton from "../components/FloatingFAQButton.astro";
 
 interface Props {
 	title?: string;
@@ -53,5 +55,11 @@ const {
 	</head>
 	<body class="min-h-screen bg-white dark:bg-gray-900">
 		<slot />
+		
+		<!-- Floating buttons -->
+		{Astro.url.pathname !== '/contact/' && Astro.url.pathname !== '/contact' 
+		  ? <FloatingContactButton /> 
+		  : <FloatingFAQButton />
+		}
 	</body>
 </html>
