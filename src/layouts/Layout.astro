@@ -4,6 +4,8 @@ import "../styles/flip-animation.css";
 import { getSiteMetadata } from "../utils/portfolio-data.js";
 import FloatingContactButton from "../components/FloatingContactButton.astro";
 import FloatingFAQButton from "../components/FloatingFAQButton.astro";
+import BackToTop from "../components/BackToTop.astro";
+import WhatsAppChat from "../components/WhatsAppChat.astro";
 
 interface Props {
 	title?: string;
@@ -61,6 +63,10 @@ const {
 		  ? <FloatingContactButton /> 
 		  : <FloatingFAQButton />
 		}
+		
+		<!-- Always visible floating buttons -->
+		<BackToTop />
+		<WhatsAppChat />
 		
 		<!-- Page Path Debug -->
 		<script>
