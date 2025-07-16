@@ -3,21 +3,58 @@
 ---
 
 <a
-  href="https://wa.me/46701234567?text=Hi%20Arnab%2C%20I%27d%20like%20to%20discuss%20a%20DevOps%20project."
+  href="https://wa.me/46764516092?text=Hi%20Arnab%2C%20I%27d%20like%20to%20discuss%20a%20DevOps%20project."
   target="_blank"
   rel="noopener"
-  class="fixed bottom-[120px] right-6 z-[110] flex items-center gap-2 px-4 py-3 rounded-full shadow-lg bg-green-500 hover:bg-green-600 text-white transition-all duration-300"
+  id="whatsappChat"
+  class="fixed bottom-[140px] right-6 bg-green-600 hover:bg-green-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out transform scale-0 opacity-0 z-[110]"
   title="Chat with Arnab on WhatsApp"
 >
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    class="h-5 w-5"
-    fill="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      d="M20.52 3.48A11.91 11.91 0 0 0 12 0a11.9 11.9 0 0 0-10 18.65L0 24l5.52-1.44A11.9 11.9 0 0 0 12 24a11.91 11.91 0 0 0 8.48-3.52A11.91 11.91 0 0 0 24 12a11.91 11.91 0 0 0-3.48-8.52zM12 22a9.92 9.92 0 0 1-5.2-1.44l-.37-.23-3.28.86.87-3.2-.25-.4A9.92 9.92 0 0 1 2 12a10 10 0 1 1 10 10zm5.18-7.82c-.29-.14-1.74-.86-2.01-.96s-.47-.14-.67.14-.77.95-.94 1.15-.35.21-.64.07a8.06 8.06 0 0 1-2.35-1.45 8.77 8.77 0 0 1-1.6-2c-.17-.3 0-.46.13-.6.13-.13.29-.35.43-.52a2.1 2.1 0 0 0 .3-.5.55.55 0 0 0 0-.52c-.07-.15-.67-1.61-.91-2.2-.24-.58-.49-.5-.67-.51a5.5 5.5 0 0 0-.51 0c-.17 0-.45.06-.68.33a2.8 2.8 0 0 0-.88 2.07c0 1.21.88 2.37 1 2.53s1.74 2.67 4.23 3.74c.59.26 1.06.41 1.42.53.6.19 1.14.17 1.57.1.48-.07 1.48-.6 1.69-1.17s.21-1.07.14-1.17-.27-.2-.56-.33z"
-    />
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M20.52 3.48A11.91 11.91 0 0 0 12 0a11.9 11.9 0 0 0-10 18.65L0 24l5.52-1.44A11.9 11.9 0 0 0 12 24a11.91 11.91 0 0 0 8.48-3.52A11.91 11.91 0 0 0 24 12a11.91 11.91 0 0 0-3.48-8.52zM12 22a9.92 9.92 0 0 1-5.2-1.44l-.37-.23-3.28.86.87-3.2-.25-.4A9.92 9.92 0 0 1 2 12a10 10 0 1 1 10 10zm5.18-7.82c-.29-.14-1.74-.86-2.01-.96s-.47-.14-.67.14-.77.95-.94 1.15-.35.21-.64.07a8.06 8.06 0 0 1-2.35-1.45 8.77 8.77 0 0 1-1.6-2c-.17-.3 0-.46.13-.6.13-.13.29-.35.43-.52a2.1 2.1 0 0 0 .3-.5.55.55 0 0 0 0-.52c-.07-.15-.67-1.61-.91-2.2-.24-.58-.49-.5-.67-.51a5.5 5.5 0 0 0-.51 0c-.17 0-.45.06-.68.33a2.8 2.8 0 0 0-.88 2.07c0 1.21.88 2.37 1 2.53s1.74 2.67 4.23 3.74c.59.26 1.06.41 1.42.53.6.19 1.14.17 1.57.1.48-.07 1.48-.6 1.69-1.17s.21-1.07.14-1.17-.27-.2-.56-.33z" />
   </svg>
-  <span class="hidden sm:inline text-sm font-medium">Chat with Arnab</span>
 </a>
+
+<script>
+  function initWhatsAppChat() {
+    const whatsappChatButton = document.getElementById('whatsappChat');
+    
+    if (!whatsappChatButton) return;
+
+    // Show button after scrolling
+    function toggleWhatsAppChat() {
+      if (window.pageYOffset > 300) {
+        whatsappChatButton?.classList.remove('scale-0', 'opacity-0');
+        whatsappChatButton?.classList.add('scale-100', 'opacity-100');
+      } else {
+        whatsappChatButton?.classList.remove('scale-100', 'opacity-100');
+        whatsappChatButton?.classList.add('scale-0', 'opacity-0');
+      }
+    }
+
+    // Throttle scroll events for better performance
+    let throttleTimer = false;
+    const throttle = (callback: () => void, time: number) => {
+      if (throttleTimer) return;
+      throttleTimer = true;
+      setTimeout(() => {
+        callback();
+        throttleTimer = false;
+      }, time);
+    };
+
+    window.addEventListener('scroll', () => {
+      throttle(toggleWhatsAppChat, 100);
+    });
+
+    // Initial check
+    toggleWhatsAppChat();
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWhatsAppChat);
+  } else {
+    initWhatsAppChat();
+  }
+</script>
