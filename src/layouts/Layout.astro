@@ -3,7 +3,7 @@ import "../styles/global.css";
 import "../styles/flip-animation.css";
 import { getSiteMetadata } from "../utils/portfolio-data.js";
 import FloatingContactButton from "../components/FloatingContactButton.astro";
-import FloatingFAQButton from "../components/FloatingFAQButton.astro";
+import FloatingServicesButton from "../components/FloatingFAQButton.astro";
 import BackToTop from "../components/BackToTop.astro";
 import WhatsAppChat from "../components/WhatsAppChat.astro";
 
@@ -61,7 +61,12 @@ const {
 		<!-- Floating buttons -->
 		{Astro.url.pathname !== '/contact/' && Astro.url.pathname !== '/contact' 
 		  ? <FloatingContactButton /> 
-		  : <FloatingFAQButton />
+		  : null
+		}
+		
+		{Astro.url.pathname !== '/services/' && Astro.url.pathname !== '/services' 
+		  ? <FloatingServicesButton /> 
+		  : null
 		}
 		
 		<!-- Always visible floating buttons -->

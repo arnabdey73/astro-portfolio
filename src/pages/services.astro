@@ -1,0 +1,547 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import { getSiteMetadata } from '../utils/portfolio-data.js';
+
+const siteInfo = getSiteMetadata();
+---
+
+<Layout title="Services - DevOps & Cloud Solutions">
+  <Header />
+  
+  <main class="min-h-screen bg-white dark:bg-gray-900">
+    <!-- Hero Section -->
+    <section class="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
+      <!-- Services-themed Background Pattern -->
+      <div class="absolute inset-0 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-gray-900 dark:via-emerald-900 dark:to-teal-900"></div>
+      
+      <!-- DevOps & Cloud Services Pattern -->
+      <div class="absolute inset-0 opacity-10 dark:opacity-20">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+          <defs>
+            <pattern id="services-pattern" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+              <g fill="none" stroke="currentColor" stroke-width="1.5" class="text-emerald-600 dark:text-emerald-400">
+                <!-- Cloud icon -->
+                <path d="M20,40 Q15,30 25,30 Q30,25 40,30 Q50,25 60,30 Q65,30 60,40 L20,40 Z" fill="currentColor" opacity="0.4" class="text-teal-500 dark:text-teal-400"/>
+                <!-- Server/Infrastructure -->
+                <rect x="15" y="50" width="30" height="20" rx="2" fill="none" stroke="currentColor" class="text-emerald-600 dark:text-emerald-400"/>
+                <line x1="20" y1="55" x2="40" y2="55" stroke="currentColor"/>
+                <line x1="20" y1="60" x2="35" y2="60" stroke="currentColor"/>
+                <!-- CI/CD Pipeline -->
+                <circle cx="75" cy="25" r="8" fill="none" stroke="currentColor" class="text-cyan-600 dark:text-cyan-400"/>
+                <path d="M83,25 L95,25" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+                <circle cx="100" cy="25" r="5" fill="currentColor" class="text-teal-500 dark:text-teal-400"/>
+                <!-- Monitoring waves -->
+                <path d="M70,50 Q75,45 80,50 Q85,55 90,50 Q95,45 100,50" stroke="currentColor" stroke-width="2" fill="none" class="text-emerald-600 dark:text-emerald-400"/>
+                <!-- Docker container -->
+                <rect x="70" y="60" width="25" height="15" rx="2" fill="none" stroke="currentColor" class="text-cyan-600 dark:text-cyan-400"/>
+                <line x1="75" y1="65" x2="90" y2="65" stroke="currentColor"/>
+                <line x1="75" y1="70" x2="85" y2="70" stroke="currentColor"/>
+                <!-- Kubernetes icon -->
+                <path d="M25,90 L35,85 L35,95 Z" fill="currentColor" opacity="0.5" class="text-teal-600 dark:text-teal-400"/>
+                <circle cx="30" cy="90" r="3" fill="none" stroke="currentColor" class="text-emerald-600 dark:text-emerald-400"/>
+                <!-- Automation gear -->
+                <circle cx="85" cy="90" r="8" fill="none" stroke="currentColor" class="text-cyan-600 dark:text-cyan-400"/>
+                <path d="M80,90 L90,90 M85,85 L85,95" stroke="currentColor" stroke-width="1"/>
+              </g>
+              <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="currentColor"/>
+                </marker>
+              </defs>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#services-pattern)"/>
+        </svg>
+      </div>
+
+      <!-- Floating Service Elements -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-20 left-12 transform -rotate-12 opacity-20 dark:opacity-30">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300 border border-emerald-200 dark:border-emerald-700">
+            <div class="text-emerald-600 dark:text-emerald-400">terraform</div>
+            <div class="text-teal-600 dark:text-teal-400">apply</div>
+          </div>
+        </div>
+        
+        <div class="absolute top-40 right-16 transform rotate-12 opacity-20 dark:opacity-30">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300 border border-cyan-200 dark:border-cyan-700">
+            <div class="text-cyan-600 dark:text-cyan-400">kubectl</div>
+            <div class="text-emerald-600 dark:text-emerald-400">deploy</div>
+          </div>
+        </div>
+        
+        <div class="absolute bottom-32 left-20 transform -rotate-6 opacity-20 dark:opacity-30">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300 border border-teal-200 dark:border-teal-700">
+            <div class="text-teal-600 dark:text-teal-400">monitoring</div>
+            <div class="text-cyan-600 dark:text-cyan-400">24/7</div>
+          </div>
+        </div>
+        
+        <div class="absolute top-1/2 right-1/4 transform rotate-6 opacity-20 dark:opacity-30">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg text-xs font-mono text-gray-700 dark:text-gray-300 border border-emerald-200 dark:border-emerald-700">
+            <div class="text-emerald-600 dark:text-emerald-400">CI/CD</div>
+            <div class="text-teal-600 dark:text-teal-400">pipeline</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Background Shapes -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-teal-400 to-emerald-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+      </div>
+      
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl sm:tracking-tight lg:text-5xl">
+            DevOps & Cloud Services
+          </h1>
+          <p class="mt-6 max-w-3xl mx-auto text-xl text-gray-600 dark:text-gray-300">
+            Transform your infrastructure with expert cloud engineering, automation, and DevOps solutions. Get a custom quote for your project.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Service Card 1 -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700">
+            <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Infrastructure as Code</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">Terraform, Pulumi, and ARM templates for scalable infrastructure</p>
+            <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+              <li>• Azure, AWS, GCP deployments</li>
+              <li>• Terraform modules & best practices</li>
+              <li>• Infrastructure automation</li>
+            </ul>
+          </div>
+
+          <!-- Service Card 2 -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700">
+            <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">CI/CD Automation</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">End-to-end deployment pipelines and automation</p>
+            <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+              <li>• GitHub Actions, Azure DevOps</li>
+              <li>• GitLab CI, Jenkins pipelines</li>
+              <li>• Automated testing & deployment</li>
+            </ul>
+          </div>
+
+          <!-- Service Card 3 -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700">
+            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Container Orchestration</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">Kubernetes, Docker, and container management</p>
+            <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+              <li>• Kubernetes cluster setup</li>
+              <li>• Docker containerization</li>
+              <li>• Microservices architecture</li>
+            </ul>
+          </div>
+
+          <!-- Service Card 4 -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700">
+            <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Cloud Migration</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">Seamless migration to cloud platforms</p>
+            <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+              <li>• Migration strategy & planning</li>
+              <li>• Data migration & validation</li>
+              <li>• Performance optimization</li>
+            </ul>
+          </div>
+
+          <!-- Service Card 5 -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700">
+            <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Monitoring & Observability</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">Comprehensive monitoring and alerting solutions</p>
+            <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+              <li>• Prometheus, Grafana setup</li>
+              <li>• Application monitoring</li>
+              <li>• Log aggregation & analysis</li>
+            </ul>
+          </div>
+
+          <!-- Service Card 6 -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700">
+            <div class="w-12 h-12 bg-red-100 dark:bg-red-900 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Security & Compliance</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">Security best practices and compliance frameworks</p>
+            <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+              <li>• Security scanning & hardening</li>
+              <li>• Compliance automation</li>
+              <li>• Identity & access management</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Service Estimator -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Project Cost Estimator
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300">
+            Get an instant estimate for your DevOps and cloud engineering project
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
+          <!-- Service Selection -->
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Select Services</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Service Options -->
+              <div class="service-option">
+                <label class="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                  <input type="checkbox" class="service-checkbox" data-service="iac" data-base-cost="25000" data-weekly-cost="15000">
+                  <div class="ml-3">
+                    <h4 class="text-lg font-medium text-gray-900 dark:text-white">Infrastructure as Code</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Terraform, Pulumi, ARM templates</p>
+                    <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400">From SEK 25,000</p>
+                  </div>
+                </label>
+              </div>
+
+              <div class="service-option">
+                <label class="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                  <input type="checkbox" class="service-checkbox" data-service="cicd" data-base-cost="20000" data-weekly-cost="12000">
+                  <div class="ml-3">
+                    <h4 class="text-lg font-medium text-gray-900 dark:text-white">CI/CD Automation</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Pipeline setup and automation</p>
+                    <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400">From SEK 20,000</p>
+                  </div>
+                </label>
+              </div>
+
+              <div class="service-option">
+                <label class="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                  <input type="checkbox" class="service-checkbox" data-service="kubernetes" data-base-cost="35000" data-weekly-cost="18000">
+                  <div class="ml-3">
+                    <h4 class="text-lg font-medium text-gray-900 dark:text-white">Container Orchestration</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Kubernetes, Docker setup</p>
+                    <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400">From SEK 35,000</p>
+                  </div>
+                </label>
+              </div>
+
+              <div class="service-option">
+                <label class="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                  <input type="checkbox" class="service-checkbox" data-service="migration" data-base-cost="40000" data-weekly-cost="20000">
+                  <div class="ml-3">
+                    <h4 class="text-lg font-medium text-gray-900 dark:text-white">Cloud Migration</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Migration strategy & execution</p>
+                    <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400">From SEK 40,000</p>
+                  </div>
+                </label>
+              </div>
+
+              <div class="service-option">
+                <label class="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                  <input type="checkbox" class="service-checkbox" data-service="monitoring" data-base-cost="15000" data-weekly-cost="8000">
+                  <div class="ml-3">
+                    <h4 class="text-lg font-medium text-gray-900 dark:text-white">Monitoring & Observability</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Prometheus, Grafana, alerting</p>
+                    <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400">From SEK 15,000</p>
+                  </div>
+                </label>
+              </div>
+
+              <div class="service-option">
+                <label class="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                  <input type="checkbox" class="service-checkbox" data-service="security" data-base-cost="30000" data-weekly-cost="16000">
+                  <div class="ml-3">
+                    <h4 class="text-lg font-medium text-gray-900 dark:text-white">Security & Compliance</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Security hardening, compliance</p>
+                    <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400">From SEK 30,000</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Timeline -->
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Project Timeline</h3>
+            <div class="flex flex-wrap gap-4">
+              <label class="flex items-center">
+                <input type="radio" name="timeline" value="2" class="timeline-radio" checked>
+                <span class="ml-2 text-gray-700 dark:text-gray-300">2 weeks</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="timeline" value="4" class="timeline-radio">
+                <span class="ml-2 text-gray-700 dark:text-gray-300">1 month</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="timeline" value="8" class="timeline-radio">
+                <span class="ml-2 text-gray-700 dark:text-gray-300">2 months</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="timeline" value="12" class="timeline-radio">
+                <span class="ml-2 text-gray-700 dark:text-gray-300">3 months</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="timeline" value="24" class="timeline-radio">
+                <span class="ml-2 text-gray-700 dark:text-gray-300">6 months</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Project Complexity -->
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Project Complexity</h3>
+            <div class="flex flex-wrap gap-4">
+              <label class="flex items-center">
+                <input type="radio" name="complexity" value="1" class="complexity-radio" checked>
+                <span class="ml-2 text-gray-700 dark:text-gray-300">Simple (1x)</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="complexity" value="1.5" class="complexity-radio">
+                <span class="ml-2 text-gray-700 dark:text-gray-300">Medium (1.5x)</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="complexity" value="2" class="complexity-radio">
+                <span class="ml-2 text-gray-700 dark:text-gray-300">Complex (2x)</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="complexity" value="3" class="complexity-radio">
+                <span class="ml-2 text-gray-700 dark:text-gray-300">Enterprise (3x)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Cost Breakdown -->
+          <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Cost Breakdown</h3>
+            <div id="cost-breakdown" class="space-y-2">
+              <p class="text-gray-600 dark:text-gray-300">Select services to see cost breakdown</p>
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-4 mt-4">
+              <div class="flex justify-between items-center">
+                <span class="text-lg font-semibold text-gray-900 dark:text-white">Total Estimated Cost:</span>
+                <span id="total-cost" class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">SEK 0</span>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">
+                * Estimates include setup, implementation, documentation, and 30-day support
+              </p>
+            </div>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button id="get-quote-btn" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+              Get Detailed Quote
+            </button>
+            <a href="/contact" class="px-8 py-3 border border-indigo-600 text-indigo-600 hover:bg-indigo-50 dark:text-indigo-400 dark:border-indigo-400 dark:hover:bg-indigo-900/20 font-medium rounded-lg transition-colors text-center">
+              Discuss Your Project
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Me -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Why Choose My Services?
+          </h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Proven Track Record</h3>
+            <p class="text-gray-600 dark:text-gray-300">15+ years of experience with 99.9% uptime delivery</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Fast Delivery</h3>
+            <p class="text-gray-600 dark:text-gray-300">Agile methodology with rapid deployment cycles</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">24/7 Support</h3>
+            <p class="text-gray-600 dark:text-gray-300">Ongoing support and maintenance included</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  // Service Estimator Logic
+  class ServiceEstimator {
+    constructor() {
+      this.services = new Map();
+      this.timeline = 2; // Default 2 weeks
+      this.complexity = 1; // Default simple
+      this.init();
+    }
+
+    init() {
+      // Service checkboxes
+      document.querySelectorAll('.service-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+          const service = e.target.dataset.service;
+          const baseCost = parseInt(e.target.dataset.baseCost);
+          const weeklyCost = parseInt(e.target.dataset.weeklyCost);
+          
+          if (e.target.checked) {
+            this.services.set(service, { baseCost, weeklyCost, name: e.target.closest('label').querySelector('h4').textContent });
+          } else {
+            this.services.delete(service);
+          }
+          
+          this.updateEstimate();
+        });
+      });
+
+      // Timeline radio buttons
+      document.querySelectorAll('.timeline-radio').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          this.timeline = parseInt(e.target.value);
+          this.updateEstimate();
+        });
+      });
+
+      // Complexity radio buttons
+      document.querySelectorAll('.complexity-radio').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          this.complexity = parseFloat(e.target.value);
+          this.updateEstimate();
+        });
+      });
+
+      // Get quote button
+      document.getElementById('get-quote-btn').addEventListener('click', () => {
+        this.generateQuote();
+      });
+    }
+
+    updateEstimate() {
+      const costBreakdown = document.getElementById('cost-breakdown');
+      const totalCostElement = document.getElementById('total-cost');
+      const getQuoteBtn = document.getElementById('get-quote-btn');
+
+      if (this.services.size === 0) {
+        costBreakdown.innerHTML = '<p class="text-gray-600 dark:text-gray-300">Select services to see cost breakdown</p>';
+        totalCostElement.textContent = 'SEK 0';
+        getQuoteBtn.disabled = true;
+        return;
+      }
+
+      let totalCost = 0;
+      let breakdownHTML = '';
+
+      this.services.forEach((service, key) => {
+        const serviceCost = (service.baseCost + (service.weeklyCost * this.timeline)) * this.complexity;
+        totalCost += serviceCost;
+        
+        breakdownHTML += `
+          <div class="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+            <span class="text-gray-700 dark:text-gray-300">${service.name}</span>
+            <span class="font-medium text-gray-900 dark:text-white">SEK ${serviceCost.toLocaleString()}</span>
+          </div>
+        `;
+      });
+
+      costBreakdown.innerHTML = breakdownHTML;
+      totalCostElement.textContent = `SEK ${totalCost.toLocaleString()}`;
+      getQuoteBtn.disabled = false;
+    }
+
+    generateQuote() {
+      const selectedServices = Array.from(this.services.values()).map(s => s.name);
+      const totalCost = document.getElementById('total-cost').textContent;
+      
+      const quoteData = {
+        services: selectedServices,
+        timeline: this.timeline,
+        complexity: this.complexity,
+        totalCost: totalCost
+      };
+
+      // Create email content
+      const emailSubject = 'DevOps Service Quote Request';
+      const emailBody = `Hi Arnab,
+
+I'd like to request a detailed quote for the following services:
+
+Selected Services:
+${selectedServices.map(s => `• ${s}`).join('\n')}
+
+Project Timeline: ${this.timeline} weeks
+Project Complexity: ${this.complexity}x
+Estimated Total Cost: ${totalCost}
+
+Please provide a detailed quote with:
+- Detailed project breakdown
+- Timeline and milestones
+- Deliverables and documentation
+- Support and maintenance terms
+
+Looking forward to discussing this project further.
+
+Best regards`;
+
+      // Open email client
+      window.location.href = `mailto:arnab.dey@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    }
+  }
+
+  // Initialize estimator when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    new ServiceEstimator();
+  });
+</script>

@@ -414,140 +414,61 @@ const contactInfo = getContactInfo();
       </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="py-16 bg-gray-50 dark:bg-gray-800" id="faq-section">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <section class="mt-16">
-          <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8" id="faq-heading">Frequently Asked Questions</h2>
-
-          <div class="space-y-4 text-gray-900 dark:text-white">
-            <!-- FAQ Item 1 -->
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white text-left">What kind of freelance work do you take on?</h3>
-                <svg class="faq-icon h-6 w-6 text-indigo-600 dark:text-indigo-400 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    <!-- Services CTA Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Need a Quote for Your Project?
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
+            Check out our interactive service estimator to get instant pricing for your DevOps and cloud engineering needs.
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg">
+              <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                 </svg>
-              </button>
-              <div class="faq-content hidden px-6 py-4 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-                <p class="text-gray-800 dark:text-gray-200">
-                  I specialize in end-to-end Cloud & DevOps engineering projects—typically involving
-                  <strong>infrastructure provisioning</strong> (Terraform, Pulumi), <strong>CI/CD automation</strong> (GitHub Actions, Azure DevOps, GitLab CI),
-                  <strong>cloud migration</strong> (Azure, AWS, GCP), and <strong>platform modernization</strong> using containerization and Kubernetes.
-                  I usually take on roles where I can contribute to architecture, implementation, and production rollout.
-                </p>
               </div>
-            </div>
-
-            <!-- FAQ Item 2 -->
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white text-left">How do you charge? What's your pricing model?</h3>
-                <svg class="faq-icon h-6 w-6 text-indigo-600 dark:text-indigo-400 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div class="faq-content hidden px-6 py-4 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-                <p class="text-gray-800 dark:text-gray-200">
-                  My pricing is tailored to the complexity and scope of the project. For freelance contracts:
-                </p>
-                <ul class="list-disc list-inside text-gray-800 dark:text-gray-200 mt-2">
-                  <li><strong>Hourly:</strong> SEK 900–1,200 depending on urgency and technical depth.</li>
-                  <li><strong>Fixed-price:</strong> SEK 350,000–500,000 for 6-month end-to-end engagements with agreed milestones.</li>
-                </ul>
-                <p class="mt-2 text-gray-800 dark:text-gray-200">
-                  Rates include engineering time, documentation, support handover, and optional async collaboration during integration/testing phases.
-                </p>
-              </div>
-            </div>
-
-            <!-- FAQ Item 3 -->
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white text-left">How do we get started?</h3>
-                <svg class="faq-icon h-6 w-6 text-indigo-600 dark:text-indigo-400 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div class="faq-content hidden px-6 py-4 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-                <p class="text-gray-800 dark:text-gray-200">
-                  After your initial inquiry, we'll do a 30-minute discovery call to outline your needs. If it's a match, I'll send a short proposal with the scope,
-                  pricing, and timeline breakdown. Work typically starts within 1–2 weeks.
-                </p>
-                <div class="mt-4">
-                  <Button href="https://calendly.com/arnab-dey/30min" variant="outline" class="mt-2">Book a Discovery Call →</Button>
-                </div>
-              </div>
-            </div>
-
-            <!-- FAQ Item 4 -->
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white text-left">Do you work remotely or on-site?</h3>
-                <svg class="faq-icon h-6 w-6 text-indigo-600 dark:text-indigo-400 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div class="faq-content hidden px-6 py-4 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-                <p class="text-gray-800 dark:text-gray-200">
-                  I primarily work remotely from Stockholm, Sweden, which allows me to be more efficient and serve clients globally. 
-                  For clients in the Stockholm area, I'm happy to be on-site for important meetings, workshops, or critical project phases 
-                  when in-person collaboration adds significant value. My remote workflow is well-structured with regular video calls, 
-                  clear documentation, and responsive communication.
-                </p>
-              </div>
-            </div>
-
-            <!-- FAQ Item 5 -->
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white text-left">What's your availability?</h3>
-                <svg class="faq-icon h-6 w-6 text-indigo-600 dark:text-indigo-400 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div class="faq-content hidden px-6 py-4 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-                <p class="text-gray-800 dark:text-gray-200">
-                  I typically book projects 4-6 weeks in advance but can sometimes accommodate urgent needs. I work with a limited number of clients 
-                  simultaneously to ensure quality and responsiveness. For larger projects requiring full-time commitment, I'm available for 3-6 month engagements. 
-                  For advisory or part-time roles, I can dedicate 10-20 hours per week alongside other commitments.
-                </p>
-              </div>
-            </div>
-
-            <!-- FAQ Item 6 -->
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white text-left">What technologies do you specialize in?</h3>
-                <svg class="faq-icon h-6 w-6 text-indigo-600 dark:text-indigo-400 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div class="faq-content hidden px-6 py-4 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-                <p class="text-gray-800 dark:text-gray-200">
-                  My core expertise includes:
-                </p>
-                <ul class="list-disc list-inside text-gray-800 dark:text-gray-200 mt-2">
-                  <li><strong>Cloud Platforms:</strong> Azure (primary), AWS, GCP</li>
-                  <li><strong>Infrastructure as Code:</strong> Terraform, Bicep, ARM Templates, Pulumi</li>
-                  <li><strong>CI/CD:</strong> Azure DevOps, GitHub Actions, GitLab CI, Jenkins</li>
-                  <li><strong>Containerization:</strong> Docker, Kubernetes, AKS, Azure Container Apps</li>
-                  <li><strong>Monitoring:</strong> Azure Monitor, Prometheus, Grafana, ELK Stack</li>
-                  <li><strong>Languages:</strong> PowerShell, Python, Bash, Go, C#/.NET</li>
-                </ul>
-                <p class="mt-2 text-gray-800 dark:text-gray-200">
-                  I'm particularly strong in Azure cloud architecture, Kubernetes deployments, and building robust CI/CD pipelines.
-                </p>
-              </div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Interactive Calculator</h3>
+              <p class="text-gray-600 dark:text-gray-300">Get instant cost estimates based on your specific requirements</p>
             </div>
             
-            <!-- FAQ Item 7 - NEW -->
-            <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white text-left">Can you help with urgent project rescues or troubleshooting?</h3>
-                <svg class="faq-icon h-6 w-6 text-indigo-600 dark:text-indigo-400 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg">
+              <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                 </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Quick Turnaround</h3>
+              <p class="text-gray-600 dark:text-gray-300">Get detailed quotes within 24 hours of estimation</p>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg">
+              <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Transparent Pricing</h3>
+              <p class="text-gray-600 dark:text-gray-300">No hidden fees, clear breakdown of all costs</p>
+            </div>
+          </div>
+          
+          <a 
+            href="/services" 
+            class="inline-flex items-center px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+            </svg>
+            Get Service Estimate
+          </a>
+        </div>
+      </div>
+    </section>
               </button>
               <div class="faq-content hidden px-6 py-4 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
                 <p class="text-gray-800 dark:text-gray-200">

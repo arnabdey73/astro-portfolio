@@ -1,74 +1,63 @@
 ---
-// FloatingFAQButton Component
+// FloatingServicesButton Component
 ---
 
-<button 
-  id="floatingFAQ" 
-  class="fixed bottom-[60px] right-6 bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out transform scale-100 opacity-100 z-[120]"
-  aria-label="View FAQs"
-  title="View FAQs"
+<a 
+  href="/services" 
+  id="floatingServices" 
+  class="fixed bottom-[80px] right-6 bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out transform scale-0 opacity-0 z-[120]"
+  aria-label="View Services"
+  title="View Services & Get Quote"
 >
   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
   </svg>
-</button>
+</a>
 
 <script>
-  function initFloatingFAQ() {
-    const floatingFAQButton = document.getElementById('floatingFAQ');
-    const faqSection = document.getElementById('faq-section');
+  function initFloatingServices() {
+    const floatingServicesButton = document.getElementById('floatingServices');
     
-    if (!floatingFAQButton || !faqSection) return;
+    if (!floatingServicesButton) return;
 
-    // Check if FAQ section is in viewport
-    function isElementInViewport(el: Element) {
-      const rect = el.getBoundingClientRect();
-      // Consider the element in view when it's fully visible or just about to enter the viewport
-      return (
-        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.9 &&
-        rect.bottom >= 0
-      );
-    }
-    
-    // Show button after scrolling and hide when FAQ section is in view
-    function toggleFloatingFAQ() {
-      // Check if FAQ section is in viewport
-      const isFAQVisible = isElementInViewport(faqSection);
-      const scrolledEnough = window.pageYOffset > 300;
-      
-      // Show button when we've scrolled down unless FAQ section is visible
-      if (scrolledEnough && !isFAQVisible) {
-        floatingFAQButton?.classList.remove('scale-0', 'opacity-0');
-        floatingFAQButton?.classList.add('scale-100', 'opacity-100');
-        console.log('Showing FAQ button');
-      } else if (isFAQVisible) {
-        floatingFAQButton?.classList.remove('scale-100', 'opacity-100');
-        floatingFAQButton?.classList.add('scale-0', 'opacity-0');
-        console.log('Hiding FAQ button - FAQ is visible');
+    // Show button after scrolling
+    function toggleFloatingServices() {
+      if (window.pageYOffset > 300) {
+        floatingServicesButton?.classList.remove('scale-0', 'opacity-0');
+        floatingServicesButton?.classList.add('scale-100', 'opacity-100');
+      } else {
+        floatingServicesButton?.classList.remove('scale-100', 'opacity-100');
+        floatingServicesButton?.classList.add('scale-0', 'opacity-0');
       }
     }
 
-    // Scroll to FAQ section
-    function scrollToFAQ() {
-      faqSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    // Throttle scroll events for better performance
+    let throttleTimer = false;
+    const throttle = (callback: () => void, time: number) => {
+      if (throttleTimer) return;
+      throttleTimer = true;
+      setTimeout(() => {
+        callback();
+        throttleTimer = false;
+      }, time);
+    };
 
     // Event listeners
-    window.addEventListener('scroll', toggleFloatingFAQ);
-    window.addEventListener('resize', toggleFloatingFAQ); // Also check on resize
-    floatingFAQButton?.addEventListener('click', scrollToFAQ);
-
-    // Run the initial check after a slight delay to ensure DOM is fully processed
-    setTimeout(toggleFloatingFAQ, 500);
+    window.addEventListener('scroll', () => {
+      throttle(toggleFloatingServices, 100);
+    });
+    window.addEventListener('resize', () => {
+      throttle(toggleFloatingServices, 100);
+    });
     
-    // Make button visible immediately by default
-    floatingFAQButton.style.display = 'flex';
+    // Initial check
+    toggleFloatingServices();
   }
 
   // Initialize when DOM is loaded
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFloatingFAQ);
+    document.addEventListener('DOMContentLoaded', initFloatingServices);
   } else {
-    initFloatingFAQ();
+    initFloatingServices();
   }
 </script>
