@@ -5,15 +5,22 @@ import Footer from '../components/Footer.astro';
 import BackToTop from '../components/BackToTop.astro';
 import Button from '../components/Button.astro';
 import FloatingResumeButton from '../components/FloatingResumeButton.astro';
-import { getPersonalInfo, getContactInfo } from '../utils/portfolio-data.js';
+import { getPersonalInfo, getContactInfo, getSiteMetadata } from '../utils/portfolio-data.js';
 
 const personalInfo = getPersonalInfo();
+const siteMetadata = getSiteMetadata();
+
+// Enhanced SEO for contact page
+const contactPageTitle = `Contact ${personalInfo.name} | Get in Touch - DevOps & Cloud Expert`;
+const contactPageDescription = `Get in touch with ${personalInfo.name} for DevOps and cloud consulting. Available for project collaboration, consulting, and technical advisory services. Contact via email or schedule a call.`;
+const contactPageKeywords = [...siteMetadata.seo.keywords, 'contact', 'hire', 'email', 'consultation', 'get in touch', 'schedule call', 'freelance'];
 const contactInfo = getContactInfo();
 ---
 
 <Layout 
-  title={`Contact | ${personalInfo.name} - Portfolio`}
-  description={`Get in touch with ${personalInfo.name} for cloud infrastructure, DevOps projects, collaborations, or questions.`}
+  title={contactPageTitle}
+  description={contactPageDescription}
+  keywords={contactPageKeywords}
 >
   <Header />
   

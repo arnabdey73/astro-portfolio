@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://arnabdey.dev/sitemap.xml
+
+# Optional: Block any sensitive areas (if any)
+# Disallow: /admin/
+# Disallow: /private/

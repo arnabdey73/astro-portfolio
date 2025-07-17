@@ -1,12 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import { getSiteMetadata } from '../utils/portfolio-data.js';
+import { getSiteMetadata, getPersonalInfo } from '../utils/portfolio-data.js';
 
 const siteInfo = getSiteMetadata();
+const personalInfo = getPersonalInfo();
+
+// Enhanced SEO for services page
+const servicesPageTitle = `Services | ${personalInfo.name} - DevOps & Cloud Consulting`;
+const servicesPageDescription = `Professional DevOps and cloud consulting services by ${personalInfo.name}. Specializing in Azure, AWS, CI/CD, infrastructure automation, and cloud migration with 15+ years of experience.`;
+const servicesPageKeywords = [...siteInfo.seo.keywords, 'services', 'consulting', 'hire', 'freelance', 'contractor', 'devops consulting', 'cloud consulting'];
 ---
 
-<Layout title="Services - DevOps & Cloud Solutions">
+<Layout 
+  title={servicesPageTitle}
+  description={servicesPageDescription}
+  keywords={servicesPageKeywords}
+>
   <Header />
   
   <main class="min-h-screen bg-white dark:bg-gray-900">

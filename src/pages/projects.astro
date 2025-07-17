@@ -3,18 +3,25 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BackToTop from '../components/BackToTop.astro';
-import { getProjects, getPersonalInfo } from '../utils/portfolio-data.js';
+import { getProjects, getPersonalInfo, getSiteMetadata } from '../utils/portfolio-data.js';
 
 const personalInfo = getPersonalInfo();
 const allProjects = getProjects();
+const siteMetadata = getSiteMetadata();
+
+// Enhanced SEO for projects page
+const projectsPageTitle = `Projects | ${personalInfo.name} - DevOps & Cloud Portfolio`;
+const projectsPageDescription = `Explore ${allProjects.length}+ projects by ${personalInfo.name}, including ${allProjects.slice(0,3).map(p => p.title).join(', ')} and more DevOps, cloud, and automation solutions.`;
+const projectsPageKeywords = [...siteMetadata.seo.keywords, 'projects', 'portfolio', 'work', 'solutions', 'examples'];
 
 // Extract all unique technology tags for filtering
 const allTags = [...new Set(allProjects.flatMap(project => project.technologies))];
 ---
 
 <Layout 
-  title={`Projects | ${personalInfo.name} - Portfolio`}
-  description={`Explore projects built by ${personalInfo.name}, including cloud infrastructure, DevOps automation, and open source work.`}
+  title={projectsPageTitle}
+  description={projectsPageDescription}
+  keywords={projectsPageKeywords}
 >
   <Header />
   

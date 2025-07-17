@@ -3,14 +3,24 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BackToTop from '../components/BackToTop.astro';
-import { getPersonalInfo, getProjects, getSkills } from '../utils/portfolio-data.js';
+import { getPersonalInfo, getProjects, getSkills, getSiteMetadata } from '../utils/portfolio-data.js';
 
 const personalInfo = getPersonalInfo();
 const featuredProjects = getProjects(true);
 const skillCategories = getSkills() || [];
+const siteMetadata = getSiteMetadata();
+
+// Enhanced SEO for homepage
+const homePageTitle = `${personalInfo.name} | ${personalInfo.title} - Portfolio`;
+const homePageDescription = `${personalInfo.name} is a ${personalInfo.title} with 15+ years of experience in ${siteMetadata.seo.keywords.slice(0, 5).join(', ')}. View projects, skills, and get in touch.`;
+const homePageKeywords = [...siteMetadata.seo.keywords, personalInfo.name.toLowerCase(), 'portfolio', 'hire', 'freelance'];
 ---
 
-<Layout>
+<Layout 
+  title={homePageTitle}
+  description={homePageDescription}
+  keywords={homePageKeywords}
+>
   <Header />
   
   <main class="min-h-screen">

@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import "../styles/flip-animation.css";
 import { getSiteMetadata } from "../utils/portfolio-data.js";
+import { generatePersonStructuredData, generateWebsiteStructuredData } from "../utils/structured-data.js";
 import FloatingContactButton from "../components/FloatingContactButton.astro";
 import FloatingServicesButton from "../components/FloatingFAQButton.astro";
 import BackToTop from "../components/BackToTop.astro";
@@ -12,6 +13,8 @@ interface Props {
 	description?: string;
 	image?: string;
 	canonicalURL?: string;
+	keywords?: string[];
+	articleSchema?: boolean;
 }
 
 const siteMetadata = getSiteMetadata();
@@ -20,8 +23,13 @@ const {
 	title = siteMetadata.title, 
 	description = siteMetadata.description, 
 	image = siteMetadata.image || "/images/og-default.jpg",
-	canonicalURL = Astro.url.href
+	canonicalURL = Astro.url.href,
+	keywords = siteMetadata.seo.keywords,
+	articleSchema = false
 } = Astro.props;
+
+const personStructuredData = generatePersonStructuredData();
+const websiteStructuredData = generateWebsiteStructuredData();
 ---
 
 <!doctype html>
@@ -35,15 +43,25 @@ const {
 		<!-- SEO -->
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords.join(", ")} />
+		<meta name="author" content={siteMetadata.author} />
 		<meta name="robots" content="index, follow" />
+		<meta name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1" />
 		<link rel="canonical" href={canonicalURL} />
+		
+		<!-- Theme and color scheme -->
+		<meta name="theme-color" content={siteMetadata.themeColor} />
+		<meta name="color-scheme" content="light dark" />
 		
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={siteMetadata.seo.openGraph.siteName} />
 		<meta property="og:url" content={Astro.url.href} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={new URL(image, Astro.url)} />
+		<meta property="og:image:alt" content={`${siteMetadata.author} - ${siteMetadata.seo.structuredData.person.jobTitle}`} />
+		<meta property="og:locale" content="en_US" />
 		
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
@@ -51,9 +69,33 @@ const {
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content={new URL(image, Astro.url)} />
+		<meta property="twitter:image:alt" content={`${siteMetadata.author} - ${siteMetadata.seo.structuredData.person.jobTitle}`} />
+		{siteMetadata.twitterHandle && <meta property="twitter:site" content={siteMetadata.twitterHandle} />}
+		{siteMetadata.twitterHandle && <meta property="twitter:creator" content={siteMetadata.twitterHandle} />}
+		
+		<!-- Additional SEO -->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="referrer" content="origin-when-cross-origin" />
+		
+		<!-- Preconnect to external domains -->
+		<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+		<link rel="preconnect" href="https://api.github.com" crossorigin />
+		<link rel="dns-prefetch" href="https://calendly.com" />
+		
+		<!-- Resource hints for performance -->
+		<link rel="modulepreload" href="/src/utils/portfolio-data.js" />
+		
+		<!-- Structured Data -->
+		<script type="application/ld+json" set:html={personStructuredData}></script>
+		<script type="application/ld+json" set:html={websiteStructuredData}></script>
 		
 		<!-- Devicon for tech icons -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+		
+		<!-- Analytics (Plausible - privacy-first) -->
+		{siteMetadata.analyticsProvider === 'plausible' && (
+			<script defer data-domain="arnabdey.dev" src="https://plausible.io/js/script.js"></script>
+		)}
 	</head>
 	<body class="min-h-screen bg-white dark:bg-gray-900">
 		<slot />

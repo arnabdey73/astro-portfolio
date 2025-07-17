@@ -3,15 +3,25 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BackToTop from '../components/BackToTop.astro';
-import { getPersonalInfo, getExperience, getSkills, getCertifications } from '../utils/portfolio-data.js';
+import { getPersonalInfo, getExperience, getSkills, getCertifications, getSiteMetadata } from '../utils/portfolio-data.js';
 
 const personalInfo = getPersonalInfo();
 const experience = getExperience();
 const skills = getSkills();
 const certifications = getCertifications();
+const siteMetadata = getSiteMetadata();
+
+// Enhanced SEO for about page
+const aboutPageTitle = `About ${personalInfo.name} | ${personalInfo.title} - Experience & Skills`;
+const aboutPageDescription = `Learn about ${personalInfo.name}'s 15+ years of experience as a ${personalInfo.title}, including work at ${experience[0]?.company}, certifications, and technical expertise in ${skills[0]?.name}.`;
+const aboutPageKeywords = [...siteMetadata.seo.keywords, 'about', 'experience', 'biography', 'cv', 'resume', 'background'];
 ---
 
-<Layout
+<Layout 
+  title={aboutPageTitle}
+  description={aboutPageDescription}
+  keywords={aboutPageKeywords}
+>
   title={`About Me | ${personalInfo.name} - Portfolio`}
   description={`Learn about ${personalInfo.name}'s background, skills, and professional journey as a ${personalInfo.title}.`}
 >
