@@ -9,9 +9,9 @@ const navItems = [
   { name: "About", path: "/about" },
   { name: "Projects", path: "/projects" },
   { name: "Services", path: "/services" },
-  { name: "Blog", path: "/blog", external: true },
   { name: "Open Source", path: "/open-source" },
   { name: "Contact", path: "/contact" },
+  { name: "Blog", path: "/blog", external: true },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -55,14 +55,6 @@ const currentPath = Astro.url.pathname;
             </a>
           ))
         }
-        <a
-          href={personalInfo.resumeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-base font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400"
-        >
-          Resume
-        </a>
       </nav>
       
       <!-- Dark Mode Toggle -->
@@ -100,19 +92,6 @@ const currentPath = Astro.url.pathname;
       }
       
       <div class="pt-4 flex items-center">
-        <a
-          href={personalInfo.resumeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-full text-left py-2 px-3 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
-        >
-          <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <span>Resume</span>
-          </div>
-        </a>
         <button id="mobile-theme-toggle" type="button" class="w-full text-left py-2 px-3 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800">
           <div class="flex items-center">
             <svg id="mobile-theme-toggle-icon" class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

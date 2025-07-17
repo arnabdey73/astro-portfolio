@@ -1,0 +1,62 @@
+---
+import { getPersonalInfo } from '../utils/portfolio-data.js';
+
+const personalInfo = getPersonalInfo();
+---
+
+<a 
+  href={personalInfo.resumeUrl} 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  id="floatingResume" 
+  class="fixed bottom-[200px] right-6 bg-orange-600 hover:bg-orange-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out transform scale-0 opacity-0 z-[105] group"
+  aria-label="Download Resume"
+  title="Download Resume"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-4-4m4 4l4-4m-4 4V3"/>
+  </svg>
+  
+  <!-- Tooltip -->
+  <div class="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+    <div class="bg-gray-900 text-white text-sm px-3 py-2 rounded-lg whitespace-nowrap">
+      Download Resume
+      <div class="absolute left-full top-1/2 transform -translate-y-1/2 border-l-4 border-l-gray-900 border-t-4 border-t-transparent border-b-4 border-b-transparent"></div>
+    </div>
+  </div>
+</a>
+
+<script>
+  function initFloatingResume() {
+    const floatingResumeButton = document.getElementById('floatingResume');
+    
+    if (floatingResumeButton) {
+      function toggleFloatingResume() {
+        const scrollY = window.scrollY;
+        
+        // Show button after scrolling 400px
+        if (scrollY > 400) {
+          floatingResumeButton.style.transform = 'scale(1)';
+          floatingResumeButton.style.opacity = '1';
+        } else {
+          floatingResumeButton.style.transform = 'scale(0)';
+          floatingResumeButton.style.opacity = '0';
+        }
+      }
+
+      // Event listeners
+      window.addEventListener('scroll', toggleFloatingResume);
+      window.addEventListener('resize', toggleFloatingResume);
+      
+      // Initial check
+      setTimeout(toggleFloatingResume, 500);
+    }
+  }
+
+  // Initialize when DOM is loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFloatingResume);
+  } else {
+    initFloatingResume();
+  }
+</script>

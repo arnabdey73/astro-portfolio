@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BackToTop from '../components/BackToTop.astro';
 import Button from '../components/Button.astro';
+import FloatingResumeButton from '../components/FloatingResumeButton.astro';
 import { getPersonalInfo, getContactInfo } from '../utils/portfolio-data.js';
 
 const personalInfo = getPersonalInfo();
@@ -541,6 +542,7 @@ const contactInfo = getContactInfo();
   
   <Footer />
   <BackToTop />
+  <FloatingResumeButton />
 </Layout>
 
 <script>

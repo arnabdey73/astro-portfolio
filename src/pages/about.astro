@@ -98,26 +98,32 @@ const certifications = getCertifications();
           <!-- Left Column - Tall Image -->
           <div class="lg:col-span-4 mb-10 lg:mb-0">
             <div class="sticky top-24 rounded-lg bg-gray-100 dark:bg-gray-800 overflow-hidden shadow-lg">
-              <img 
-                src="/assets/img/about.jpeg" 
-                alt={`${personalInfo.name} - ${personalInfo.title}`} 
-                class="w-full h-auto object-cover" 
-                style="min-height: 600px; object-position: center top;"
-              />
-              <div class="p-4 bg-white dark:bg-gray-800 flex flex-col gap-3">
+              <!-- Download Resume Button at Top -->
+              <div class="p-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                 <a 
                   href={personalInfo.resumeUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  class="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors"
+                  class="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors w-full"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                   Download Resume
                 </a>
-                
-                <div class="flex justify-center gap-4 pt-2">
+              </div>
+              
+              <!-- Profile Image -->
+              <img 
+                src="/assets/img/about.jpeg" 
+                alt={`${personalInfo.name} - ${personalInfo.title}`} 
+                class="w-full h-auto object-cover" 
+                style="min-height: 600px; object-position: center top;"
+              />
+              
+              <!-- Social Links at Bottom -->
+              <div class="p-4 bg-white dark:bg-gray-800">
+                <div class="flex justify-center gap-4">
                   {personalInfo.socialLinks.map(link => (
                     <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name} class="text-gray-600 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400">
                       <i class={`text-xl ${link.icon}`}></i>
