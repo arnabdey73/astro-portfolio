@@ -4,7 +4,11 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BackToTop from '../components/BackToTop.astro';
 import ServicePillars from '../components/ServicePillars.astro';
-import { getPersonalInfo, getSkills, getSiteMetadata } from '../utils/portfolio-data.js';
+im                  class="discovery-call-btn w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden"
+                >
+                  <span class="phone-shake relative z-10 mr-2">📞</span>
+                  <span class="relative z-10">Book a Discovery Call</span>
+                  <!-- Wavy effect overlay -->{ getPersonalInfo, getSkills, getSiteMetadata } from '../utils/portfolio-data.js';
 
 const personalInfo = getPersonalInfo();
 const skillCategories = getSkills() || [];
