@@ -13,7 +13,7 @@ const siteMetadata = getSiteMetadata();
 
 // Enhanced SEO for about page
 const aboutPageTitle = `About ${personalInfo.name} | ${personalInfo.title} - Experience & Skills`;
-const aboutPageDescription = `Learn about ${personalInfo.name}'s 15+ years of experience as a ${personalInfo.title}, including work at ${experience[0]?.company}, certifications, and technical expertise in ${skills[0]?.name}.`;
+const aboutPageDescription = `Learn about ${personalInfo.name}'s 15+ years of experience as a ${personalInfo.title}, including professional background, certifications, and technical expertise in cloud and DevOps technologies.`;
 const aboutPageKeywords = [...siteMetadata.seo.keywords, 'about', 'experience', 'biography', 'cv', 'resume', 'background'];
 ---
 
@@ -21,9 +21,6 @@ const aboutPageKeywords = [...siteMetadata.seo.keywords, 'about', 'experience', 
   title={aboutPageTitle}
   description={aboutPageDescription}
   keywords={aboutPageKeywords}
->
-  title={`About Me | ${personalInfo.name} - Portfolio`}
-  description={`Learn about ${personalInfo.name}'s background, skills, and professional journey as a ${personalInfo.title}.`}
 >
   <Header />
   
