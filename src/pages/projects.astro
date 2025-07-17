@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BackToTop from '../components/BackToTop.astro';
 import { getProjects, getPersonalInfo, getSiteMetadata } from '../utils/portfolio-data.js';
+import { generatePortfolioStructuredData, generateMultipleProjectsStructuredData } from '../utils/structured-data.js';
 
 const personalInfo = getPersonalInfo();
 const allProjects = getProjects();
@@ -16,12 +17,21 @@ const projectsPageKeywords = [...siteMetadata.seo.keywords, 'projects', 'portfol
 
 // Extract all unique technology tags for filtering
 const allTags = [...new Set(allProjects.flatMap(project => project.technologies))];
+
+// Generate structured data for portfolio page
+const portfolioStructuredData = generatePortfolioStructuredData();
+// Generate structured data for all projects
+const multipleProjectsStructuredData = generateMultipleProjectsStructuredData(allProjects);
+
+// Combine structured data
+const combinedStructuredData = `[${portfolioStructuredData},${multipleProjectsStructuredData}]`;
 ---
 
 <Layout 
   title={projectsPageTitle}
   description={projectsPageDescription}
   keywords={projectsPageKeywords}
+  structuredData={combinedStructuredData}
 >
   <Header />
   

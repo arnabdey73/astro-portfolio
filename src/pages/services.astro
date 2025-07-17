@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import { getSiteMetadata, getPersonalInfo } from '../utils/portfolio-data.js';
+import { generateServiceStructuredData } from '../utils/structured-data.js';
 
 const siteInfo = getSiteMetadata();
 const personalInfo = getPersonalInfo();
@@ -10,12 +11,16 @@ const personalInfo = getPersonalInfo();
 const servicesPageTitle = `Services | ${personalInfo.name} - DevOps & Cloud Consulting`;
 const servicesPageDescription = `Professional DevOps and cloud consulting services by ${personalInfo.name}. Specializing in Azure, AWS, CI/CD, infrastructure automation, and cloud migration with 15+ years of experience.`;
 const servicesPageKeywords = [...siteInfo.seo.keywords, 'services', 'consulting', 'hire', 'freelance', 'contractor', 'devops consulting', 'cloud consulting'];
+
+// Generate structured data for services page
+const serviceStructuredData = generateServiceStructuredData();
 ---
 
 <Layout 
   title={servicesPageTitle}
   description={servicesPageDescription}
   keywords={servicesPageKeywords}
+  structuredData={serviceStructuredData}
 >
   <Header />
   

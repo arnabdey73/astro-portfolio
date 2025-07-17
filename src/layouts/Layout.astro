@@ -2,7 +2,11 @@
 import "../styles/global.css";
 import "../styles/flip-animation.css";
 import { getSiteMetadata } from "../utils/portfolio-data.js";
-import { generatePersonStructuredData, generateWebsiteStructuredData } from "../utils/structured-data.js";
+import { 
+	generatePersonStructuredData, 
+	generateWebsiteStructuredData,
+	generateOrganizationStructuredData
+} from "../utils/structured-data.js";
 import FloatingContactButton from "../components/FloatingContactButton.astro";
 import FloatingServicesButton from "../components/FloatingFAQButton.astro";
 import BackToTop from "../components/BackToTop.astro";
@@ -15,6 +19,7 @@ interface Props {
 	canonicalURL?: string;
 	keywords?: string[];
 	articleSchema?: boolean;
+	structuredData?: string;
 }
 
 const siteMetadata = getSiteMetadata();
@@ -25,11 +30,13 @@ const {
 	image = siteMetadata.image || "/images/og-default.jpg",
 	canonicalURL = Astro.url.href,
 	keywords = siteMetadata.seo.keywords,
-	articleSchema = false
+	articleSchema = false,
+	structuredData
 } = Astro.props;
 
 const personStructuredData = generatePersonStructuredData();
 const websiteStructuredData = generateWebsiteStructuredData();
+const organizationStructuredData = generateOrganizationStructuredData();
 ---
 
 <!doctype html>
@@ -88,6 +95,8 @@ const websiteStructuredData = generateWebsiteStructuredData();
 		<!-- Structured Data -->
 		<script type="application/ld+json" set:html={personStructuredData}></script>
 		<script type="application/ld+json" set:html={websiteStructuredData}></script>
+		<script type="application/ld+json" set:html={organizationStructuredData}></script>
+		{structuredData && <script type="application/ld+json" set:html={structuredData}></script>}
 		
 		<!-- Devicon for tech icons -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">

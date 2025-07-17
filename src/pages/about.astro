@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BackToTop from '../components/BackToTop.astro';
 import { getPersonalInfo, getExperience, getSkills, getCertifications, getSiteMetadata } from '../utils/portfolio-data.js';
+import { generateAboutPageStructuredData } from '../utils/structured-data.js';
 
 const personalInfo = getPersonalInfo();
 const experience = getExperience();
@@ -15,12 +16,16 @@ const siteMetadata = getSiteMetadata();
 const aboutPageTitle = `About ${personalInfo.name} | ${personalInfo.title} - Experience & Skills`;
 const aboutPageDescription = `Learn about ${personalInfo.name}'s 15+ years of experience as a ${personalInfo.title}, including professional background, certifications, and technical expertise in cloud and DevOps technologies.`;
 const aboutPageKeywords = [...siteMetadata.seo.keywords, 'about', 'experience', 'biography', 'cv', 'resume', 'background'];
+
+// Generate structured data for about page
+const aboutPageStructuredData = generateAboutPageStructuredData();
 ---
 
 <Layout 
   title={aboutPageTitle}
   description={aboutPageDescription}
   keywords={aboutPageKeywords}
+  structuredData={aboutPageStructuredData}
 >
   <Header />
   

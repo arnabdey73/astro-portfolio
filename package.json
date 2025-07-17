@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "validate-schema": "node scripts/validate-structured-data.js",
+    "validate-schema-simple": "node scripts/validate-schema-simple.js",
+    "test-seo": "npm run validate-schema-simple"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.4.1",

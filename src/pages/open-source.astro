@@ -4,10 +4,14 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BackToTop from '../components/BackToTop.astro';
 import { getSiteMetadata, getPersonalInfo } from '../utils/portfolio-data.js';
+import { generateOpenSourceStructuredData } from '../utils/structured-data.js';
 
 // Get site metadata and personal info
 const siteMetadata = getSiteMetadata();
 const personalInfo = getPersonalInfo();
+
+// Generate structured data for open source page
+const openSourceStructuredData = generateOpenSourceStructuredData();
 
 interface GitHubRepo {
   name: string;
@@ -83,6 +87,7 @@ const contributions: any[] = githubData?.contributions || fallbackData.contribut
 <Layout 
   title={`Open Source | ${personalInfo.name} - Portfolio`} 
   description={`Explore open source contributions and projects by ${personalInfo.name}, including contributions to various projects and personal repositories.`}
+  structuredData={openSourceStructuredData}
 >
   <Header />
   
