@@ -14,6 +14,165 @@ const siteMetadata = getSiteMetadata();
 const homePageTitle = `${personalInfo.name} | ${personalInfo.title} - Portfolio`;
 const homePageDescription = `${personalInfo.name} is a ${personalInfo.title} with 15+ years of experience in ${siteMetadata.seo.keywords.slice(0, 5).join(', ')}. View projects, skills, and get in touch.`;
 const homePageKeywords = [...siteMetadata.seo.keywords, personalInfo.name.toLowerCase(), 'portfolio', 'hire', 'freelance'];
+
+// Enhanced Schema.org structured data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteMetadata.baseUrl}#person`,
+      "name": personalInfo.name,
+      "url": siteMetadata.baseUrl,
+      "image": {
+        "@type": "ImageObject",
+        "url": `${siteMetadata.baseUrl}/assets/img/avatar.jpg`,
+        "width": 400,
+        "height": 400
+      },
+      "jobTitle": personalInfo.title,
+      "description": personalInfo.tagline,
+      "worksFor": {
+        "@type": "Organization",
+        "name": personalInfo.professional.currentEmployer.name
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "SE",
+        "addressLocality": "Göteborg",
+        "addressRegion": "Västra Götaland County"
+      },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "West Bengal University of Technology",
+        "description": "B.Tech in Computer Science (2005-2009)"
+      },
+      "email": personalInfo.email,
+      "telephone": personalInfo.phone,
+      "nationality": "Indian",
+      "knowsAbout": [
+        ...personalInfo.professional.specialties,
+        ...siteMetadata.seo.keywords.slice(0, 10)
+      ],
+      "hasCredential": personalInfo.professional.certifications.map(cert => ({
+        "@type": "EducationalOccupationalCredential",
+        "name": cert,
+        "credentialCategory": "certification"
+      })),
+      "sameAs": personalInfo.socialLinks.map(link => link.url).filter(url => url.startsWith('http')),
+      "knowsLanguage": [
+        { "@type": "Language", "name": "English", "proficiencyLevel": "Professional" },
+        { "@type": "Language", "name": "Bengali", "proficiencyLevel": "Native" },
+        { "@type": "Language", "name": "Hindi", "proficiencyLevel": "Native" }
+      ],
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Infrastructure as Code",
+            "description": "Terraform, Azure ARM Templates, GitHub, Modular Design",
+            "serviceType": "Cloud Infrastructure Development"
+          },
+          "seller": { "@id": `${siteMetadata.baseUrl}#person` }
+        },
+        {
+          "@type": "Offer", 
+          "itemOffered": {
+            "@type": "Service",
+            "name": "CI/CD Pipelines",
+            "description": "GitHub Actions, Azure DevOps, Matrix Builds, Docker",
+            "serviceType": "DevOps Automation"
+          },
+          "seller": { "@id": `${siteMetadata.baseUrl}#person` }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service", 
+            "name": "Cloud Migrations",
+            "description": "Azure, GCP, Kubernetes, Cost Optimization",
+            "serviceType": "Cloud Migration Services"
+          },
+          "seller": { "@id": `${siteMetadata.baseUrl}#person` }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Monitoring & Observability", 
+            "description": "Grafana, Prometheus, Log Analytics, Alerting",
+            "serviceType": "Infrastructure Monitoring"
+          },
+          "seller": { "@id": `${siteMetadata.baseUrl}#person` }
+        }
+      ],
+      "seeks": {
+        "@type": "Demand",
+        "name": "Cloud & DevOps Projects",
+        "description": "Looking for challenging cloud infrastructure and DevOps consulting opportunities"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteMetadata.baseUrl}#website`,
+      "url": siteMetadata.baseUrl,
+      "name": siteMetadata.title,
+      "description": siteMetadata.description,
+      "author": {
+        "@id": `${siteMetadata.baseUrl}#person`
+      },
+      "publisher": {
+        "@id": `${siteMetadata.baseUrl}#person`
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": `${siteMetadata.baseUrl}/search?q={search_term_string}`
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${Astro.url}#webpage`,
+      "url": Astro.url.toString(),
+      "name": homePageTitle,
+      "isPartOf": {
+        "@id": `${siteMetadata.baseUrl}#website`
+      },
+      "about": {
+        "@id": `${siteMetadata.baseUrl}#person`
+      },
+      "description": homePageDescription,
+      "mainEntity": {
+        "@id": `${siteMetadata.baseUrl}#person`
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": siteMetadata.baseUrl
+          }
+        ]
+      }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${siteMetadata.baseUrl}#profilepage`,
+      "mainEntity": {
+        "@id": `${siteMetadata.baseUrl}#person`
+      },
+      "url": siteMetadata.baseUrl,
+      "name": `${personalInfo.name} - Professional Profile`,
+      "description": `Professional profile of ${personalInfo.name}, ${personalInfo.title} specializing in cloud infrastructure and DevOps practices.`
+    }
+  ]
+};
 ---
 
 <Layout 
@@ -21,6 +180,9 @@ const homePageKeywords = [...siteMetadata.seo.keywords, personalInfo.name.toLowe
   description={homePageDescription}
   keywords={homePageKeywords}
 >
+  <!-- Enhanced Schema.org Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  
   <Header />
   
   <main class="min-h-screen">
