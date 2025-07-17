@@ -263,50 +263,32 @@ const structuredData = {
               
               <!-- Enhanced CTA Section - Business focused -->
               <div class="mt-8 flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-4">
-                <!-- Primary Discovery Call CTA -->
-                <a 
-                  href="/contact#discovery-call" 
-                  class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-                >
-                  <span class="mr-2">🚀</span>
-                  Book a Discovery Call
-                </a>
-                
-                <!-- Secondary Projects CTA -->
-                <a 
-                  href="/projects" 
-                  class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-blue-700 dark:text-blue-300 hover:text-blue-800 dark:hover:text-blue-200 underline underline-offset-4 font-medium transition-all duration-200"
-                >
-                  View Projects →
-                </a>
-              </div>
-              
-              <!-- Additional CTA Options -->
-              <div class="mt-6 flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-4">
-                <!-- Schedule Call with Calendly -->
+                <!-- Primary Discovery Call CTA with wavy hover effect -->
                 <a 
                   href="https://calendly.com/arnabdey009/consult" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 font-medium rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 shadow-md hover:shadow-lg"
+                  class="discovery-call-btn w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden"
                 >
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                  </svg>
-                  Schedule Call
+                  <span class="relative z-10 mr-2">🚀</span>
+                  <span class="relative z-10">Book a Discovery Call</span>
+                  <!-- Wavy effect overlay -->
+                  <div class="wavy-overlay absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 hover:opacity-20 transition-opacity duration-300"></div>
                 </a>
                 
-                <!-- Download Resume -->
+                <!-- Download Resume with glow effect -->
                 <a 
                   href={personalInfo.resumeUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  class="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                  class="resume-btn inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-2xl hover:shadow-blue-500/25 relative group"
                 >
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 animate-bounce-slow group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-4-4m4 4l4-4m-4 4V3"/>
                   </svg>
                   Download Resume
+                  <!-- Glow effect -->
+                  <div class="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-sm transition-opacity duration-300 -z-10"></div>
                 </a>
               </div>
             </div>
@@ -411,4 +393,46 @@ const structuredData = {
   <BackToTop />
   
   <script src="../scripts/flip-card.js"></script>
+  
+  <style>
+    /* Wavy hover effect for discovery call button */
+    .discovery-call-btn .wavy-overlay {
+      background: linear-gradient(45deg, 
+        rgba(59, 130, 246, 0.3) 0%, 
+        rgba(147, 51, 234, 0.3) 25%, 
+        rgba(59, 130, 246, 0.3) 50%, 
+        rgba(147, 51, 234, 0.3) 75%, 
+        rgba(59, 130, 246, 0.3) 100%);
+      background-size: 400% 400%;
+      animation: wave 3s ease-in-out infinite;
+    }
+    
+    .discovery-call-btn:hover .wavy-overlay {
+      animation: wave 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes wave {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Slow bounce animation for download arrow */
+    @keyframes bounce-slow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    
+    .animate-bounce-slow {
+      animation: bounce-slow 2s infinite;
+    }
+    
+    /* Enhanced glow effect for resume button */
+    .resume-btn:hover {
+      box-shadow: 
+        0 0 20px rgba(59, 130, 246, 0.3),
+        0 0 40px rgba(59, 130, 246, 0.2),
+        0 0 60px rgba(59, 130, 246, 0.1);
+    }
+  </style>
 </Layout>
