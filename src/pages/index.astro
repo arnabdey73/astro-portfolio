@@ -258,7 +258,7 @@ const structuredData = {
               
               <!-- Value Proposition -->
               <p class="mt-6 text-lg md:text-xl text-blue-800 dark:text-blue-300 sm:max-w-xl sm:mx-auto md:mt-8 lg:mx-0 leading-relaxed">
-                I'm <strong>{personalInfo.name}</strong> – a Freelance DevOps Engineer specializing in <strong>Terraform</strong>, <strong>CI/CD</strong>, and <strong>Azure Cloud</strong>. Based in Sweden, I help startups go from chaos to automation.
+                I'm <strong>{personalInfo.name}</strong> – a Freelance DevOps Engineer specializing in <strong>IaC</strong>, <strong>CI/CD</strong>, and <strong>Cloud</strong>. Based in Sweden, I help startups go from chaos to automation.
               </p>
               
               <!-- Enhanced CTA Section - Business focused -->
@@ -270,25 +270,25 @@ const structuredData = {
                   rel="noopener noreferrer"
                   class="discovery-call-btn w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden"
                 >
-                  <span class="relative z-10 mr-2">🚀</span>
+                  <span class="phone-shake relative z-10 mr-2">�</span>
                   <span class="relative z-10">Book a Discovery Call</span>
                   <!-- Wavy effect overlay -->
                   <div class="wavy-overlay absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 hover:opacity-20 transition-opacity duration-300"></div>
                 </a>
                 
-                <!-- Download Resume with glow effect -->
+                <!-- Download Resume with vibrant colors and pop-up effect -->
                 <a 
                   href={personalInfo.resumeUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  class="resume-btn inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-2xl hover:shadow-blue-500/25 relative group"
+                  class="resume-btn inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-2xl hover:shadow-emerald-500/50 relative group transform hover:scale-110 hover:-translate-y-1"
                 >
                   <svg class="w-5 h-5 animate-bounce-slow group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-4-4m4 4l4-4m-4 4V3"/>
                   </svg>
                   Download Resume
-                  <!-- Glow effect -->
-                  <div class="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-sm transition-opacity duration-300 -z-10"></div>
+                  <!-- Enhanced glow effect -->
+                  <div class="absolute inset-0 rounded-lg bg-gradient-to-r from-emerald-400 to-teal-400 opacity-0 group-hover:opacity-30 blur-sm transition-opacity duration-300 -z-10"></div>
                 </a>
               </div>
             </div>
@@ -417,6 +417,34 @@ const structuredData = {
       100% { background-position: 0% 50%; }
     }
     
+    /* Shaky phone emoji effect */
+    .phone-shake {
+      animation: phone-shake 2s ease-in-out infinite;
+    }
+    
+    .discovery-call-btn:hover .phone-shake {
+      animation: phone-shake-fast 0.5s ease-in-out infinite;
+    }
+    
+    @keyframes phone-shake {
+      0%, 100% { transform: rotate(0deg); }
+      10% { transform: rotate(-2deg); }
+      20% { transform: rotate(2deg); }
+      30% { transform: rotate(-1deg); }
+      40% { transform: rotate(1deg); }
+      50% { transform: rotate(0deg); }
+      60% { transform: rotate(-1deg); }
+      70% { transform: rotate(1deg); }
+      80% { transform: rotate(-2deg); }
+      90% { transform: rotate(2deg); }
+    }
+    
+    @keyframes phone-shake-fast {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-4deg); }
+      75% { transform: rotate(4deg); }
+    }
+    
     /* Slow bounce animation for download arrow */
     @keyframes bounce-slow {
       0%, 100% { transform: translateY(0); }
@@ -427,12 +455,18 @@ const structuredData = {
       animation: bounce-slow 2s infinite;
     }
     
-    /* Enhanced glow effect for resume button */
+    /* Enhanced glow and pop-up effect for resume button */
     .resume-btn:hover {
       box-shadow: 
-        0 0 20px rgba(59, 130, 246, 0.3),
-        0 0 40px rgba(59, 130, 246, 0.2),
-        0 0 60px rgba(59, 130, 246, 0.1);
+        0 0 25px rgba(16, 185, 129, 0.4),
+        0 0 50px rgba(16, 185, 129, 0.3),
+        0 0 75px rgba(16, 185, 129, 0.2),
+        0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Additional pop-up animation */
+    .resume-btn {
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
   </style>
 </Layout>
